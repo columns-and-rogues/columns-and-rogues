@@ -17,7 +17,8 @@ class AboutApp extends Component {
                         Here are the Team Profiles
                     </section>
                 </main>
-            </div>`;
+            </div>
+        `;
     }
 }
 
