@@ -33,7 +33,8 @@ async function run() {
                 explored_tiles VARCHAR(256) NOT NULL,
                 gold_tiles_remaining INTEGER NOT NULL,
                 item_tiles_remaining INTEGER NOT NULL,
-                monster_tiles_remaining INTEGER NOT NULL
+                monster_tiles_remaining INTEGER NOT NULL,
+                boards_survived INTEGER NOT NULL
             );
 
             CREATE TABLE items (
