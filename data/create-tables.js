@@ -15,7 +15,32 @@ async function run() {
                 id SERIAL PRIMARY KEY,
                 email VARCHAR(256) NOT NULL,
                 hash VARCHAR(512) NOT NULL,
-                display_name VARCHAR(256) NOT NULL
+                display_name VARCHAR(256) NOT NULL,
+                hp INTEGER NOT NULL
+            );
+
+            CREATE TABLE board (
+                id VARCHAR(64) PRIMARY KEY,
+                quote VARCHAR(1024),
+                user_id INTEGER NOT NULL REFERENCES users(id),
+                character VARCHAR(256) NOT NULL,
+                image VARCHAR(512) NOT NULL
+            );
+
+            CREATE TABLE  (
+                id VARCHAR(64) PRIMARY KEY,
+                quote VARCHAR(1024),
+                user_id INTEGER NOT NULL REFERENCES users(id),
+                character VARCHAR(256) NOT NULL,
+                image VARCHAR(512) NOT NULL
+            );
+
+            CREATE TABLE favorites (
+                id VARCHAR(64) PRIMARY KEY,
+                quote VARCHAR(1024),
+                user_id INTEGER NOT NULL REFERENCES users(id),
+                character VARCHAR(256) NOT NULL,
+                image VARCHAR(512) NOT NULL
             );
         `);
 
