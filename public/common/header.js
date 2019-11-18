@@ -3,7 +3,7 @@ import Component from '../Component.js';
 class Header extends Component {
     renderHTML() {
         const title = 
-        this.props.title || 'Columns and Rouges'; 
+        this.props.title || 'Columns and Rogues'; 
 
         return /*html*/`
         <header>
