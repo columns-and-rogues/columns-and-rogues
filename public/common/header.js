@@ -12,7 +12,7 @@ class Header extends Component {
                 <h1>${title}</h1>
                     <nav>
                         <a href="./">Login/out</a>
-                        <a href="../game-board.html">Game</a>
+                        <a href="./game-index.html">Game</a>
                         <a href="../about-us/index.html">About Us</a>
                     </nav>
         </header>
