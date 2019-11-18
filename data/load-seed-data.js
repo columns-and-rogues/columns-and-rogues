@@ -10,7 +10,7 @@ async function run() {
     try {
         await client.connect();
 
-        const MonsterInfo = await Promise.all(
+        await Promise.all(
             monsters.map(async monster => {
                 const result = await client.query(`
             INSERT INTO monsters (id, name, hp, dice, effect, image)
@@ -22,7 +22,7 @@ async function run() {
             })
         );
 
-        const ItemInfo = await Promise.all(
+        await Promise.all(
             items.map(async item => {
                 const result = await client.query(`
             INSERT INTO items (id, name, dice, effect, image)
