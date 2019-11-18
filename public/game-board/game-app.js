@@ -1,17 +1,17 @@
 import Compenent from '../Component.js';
-//import Header from '../common/header.js';
+import Header from '../common/header.js';
 import Stats from './Stats.js';
 import Info from './Info.js';
+import Board from './Board.js';
 
 //Still need to make
-import Board from './Board.js';
 //import Modale from './Modale.js';
 
 
 class GameApp extends Compenent {
     onRender(element) {
-        // const header = new Header();
-        // element.prepend(header.renderDOM());
+        const header = new Header();
+        element.prepend(header.renderDOM());
 
         const main = element.querySelector('.main');
 
