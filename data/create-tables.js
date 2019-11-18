@@ -10,6 +10,7 @@ async function run() {
         await client.connect();
     
         // run a query to create tables
+        // We will store remaining tiles of each type - gold, items, monsters - and a string that represents the array of explored tiles. When loading the page, we will use this string to rebuild the board state
         await client.query(`
             CREATE TABLE users (
                 id SERIAL PRIMARY KEY,
@@ -39,13 +40,16 @@ async function run() {
                 id VARCHAR(64) PRIMARY KEY,
                 name VARCHAR(256) NOT NULL,
                 dice INTEGER NOT NULL,
+                effect VARCHAR(512) NOT NULL,
                 image VARCHAR(512) NOT NULL
             );
 
             CREATE TABLE monsters (
                 id VARCHAR(64) PRIMARY KEY,
-                quote VARCHAR(1024),
-                character VARCHAR(256) NOT NULL,
+                name VARCHAR(256) NOT NULL,
+                hp INTEGER NOT NULL,
+                dice INTEGER NOT NULL,
+                effect VARCHAR(512) NOT NULL,
                 image VARCHAR(512) NOT NULL
             );
         `);
