@@ -9,4 +9,39 @@
 
 .cell {
     border: solid 1px white;
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 10;
+
+}
+
+.empty {
+    background-color: lightslategray; 
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.gold {
+    background-color: lightslategray; 
+    background-image: url(../assets/gold-star.gif);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.monster {
+    background-color: lightslategray; 
+    background-image: url(../assets/monster-icon.png); 
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.item {
+    background-color: lightslategray; 
+    background-image: url(../assets/item-logo.gif);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.displayPlayer{
+    background-color: red !important;
 }

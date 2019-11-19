@@ -1,4 +1,4 @@
-import Compenent from '../Component.js';
+import Component from '../Component.js';
 import Header from '../common/header.js';
 import Stats from './Stats.js';
 import Info from './Info.js';
@@ -8,7 +8,8 @@ import Board from './Board.js';
 //import Modale from './Modale.js';
 
 
-class GameApp extends Compenent {
+class GameApp extends Component {
+
     onRender(element) {
         const header = new Header();
         element.prepend(header.renderDOM());
@@ -26,6 +27,7 @@ class GameApp extends Compenent {
 
         // const modale = new Modale({ /*PROPS!!!!*/ });
         // main.appendChild(modale.renderDOM());
+        
     }
 
     renderHTML() {
