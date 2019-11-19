@@ -7,9 +7,9 @@ import { signIn, signUp } from '../services/auth-api.js';
 const success = user => {
     localStorage.setItem('TOKEN', user.token);
     localStorage.setItem('USER', user.shownName);
-    const searchParams = new URLSearchParams(location.search);
-    location = searchParams.get('redirect') || './game-board.html';
-}
+//     const searchParams = new URLSearchParams(location.search);
+//     location = searchParams.get('redirect') || './game-board.html';
+};
 
 class AuthPageApp extends Component {
     onRender(dom){

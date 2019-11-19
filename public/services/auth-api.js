@@ -2,9 +2,9 @@ const URL = '/api';
 
 const token = localStorage.getItem('TOKEN');
 if (!token && !(location.pathname === '/' || location.pathname === 'index.html')) {
-    const searchParams = new URLSearchParams();
-    searchParams.set('redirect', location.pathname);
-    location = `/?${searchParams.toString()}`;
+    // const searchParams = new URLSearchParams();
+    // searchParams.set('redirect', location.pathname);
+    // location = `/?${searchParams.toString()}`;
 }
 
 async function fetchWithError(url, options) {
