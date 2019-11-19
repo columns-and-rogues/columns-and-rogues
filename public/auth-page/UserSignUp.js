@@ -21,7 +21,7 @@ class UserSignUp extends Component {
 
     renderHTML() {
         return /*html*/`
-            <form>
+            <form id="sign-in-form">
                 <div>
                     <label for="name"><label>
                     <input class="user-input" id="name" name="name" placeholder="Your Name" />
@@ -37,7 +37,7 @@ class UserSignUp extends Component {
                     <input class="user-input" id="password" name="password" type="password" placeholder="Password"/>
                 </div>
 
-                <button>Create an Account</button>
+                <button class="auth-button">Create Account</button>
             </form>
         `;
     }

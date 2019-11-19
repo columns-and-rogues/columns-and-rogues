@@ -42,7 +42,7 @@ class AuthPageApp extends Component {
                 }
             }
         });
-        signUpSpot.appendChild(userSignUp.renderDOM());
+        signUpSpot.prepend(userSignUp.renderDOM());
 
         const userSignIn = new UserSignIn({
             onSignIn: async newUser => {
@@ -55,16 +55,16 @@ class AuthPageApp extends Component {
                 }
             }
         });
-        signInSpot.appendChild(userSignIn.renderDOM());
+        signInSpot.prepend(userSignIn.renderDOM());
 
-        const toggleToSignUp = dom.querySelector('#sign-up-button');
-        toggleToSignUp.addEventListener('click', () => {
+        const toggleToSignIn = dom.querySelector('#to-sign-in');
+        toggleToSignIn.addEventListener('click', () => {
             signInSpot.classList.remove('hidden');
             signUpSpot.classList.add('hidden');
         });
 
-        const toggleToSignIn = dom.querySelector('#sign-in-button');
-        toggleToSignIn.addEventListener('click', () => {
+        const toggleToSignUp = dom.querySelector('#to-sign-up');
+        toggleToSignUp.addEventListener('click', () => {
             signUpSpot.classList.remove('hidden');
             signInSpot.classList.add('hidden');
         });
@@ -75,29 +75,29 @@ class AuthPageApp extends Component {
 
         if (user){
             return /*html*/`
-            <div class="container">
-                <main>
+            <div>
+                <main class="container">
                     <section class="logout-section">
                         <p>Signed in as ${user}</p>
-                        <button class="logout">Logout</button>
+                        <button class="logout auth-button">Logout</button>
                     </section>
                 </main>
             </div>
             `;
         }
         return /*html*/`
-        <div class="container">
-            <main>
+        <div>
+            <main class="container">
                 <div class="error"></div>
                 <section class="hidden" id="sign-up-spot">
                     <div class="toggle">
-                        <button id="sign-up-button">Already have an account?</button>
+                        <button class="auth-button" id="to-sign-in">Already have an account?</button>
                     </div>
                 </section>
 
                 <section id="sign-in-spot">
                     <div class="toggle">
-                        <button id="sign-in-button">Create an account</button>
+                        <button class="auth-button" id="to-sign-up">New User?</button>
                     </div>
                 </section>
             </main>

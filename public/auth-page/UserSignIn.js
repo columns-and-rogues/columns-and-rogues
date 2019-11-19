@@ -21,17 +21,19 @@ class UserSignIn extends Component {
     renderHTML() {
         return /*html*/`
             <form class="auth-form-sign-in">
-                <p>
-                    <label for="signin-email">Email</label>
-                    <input id="signin-email" type="email" name="email" required placeholder="email@email.com">
-                </p>
-                <p>
-                    <label for="signin-password">Password</label>
-                    <input id="signin-password" type="password" name="password" required>
-                </p>
-                <p>
-                    <button>Sign In</button>
-                </p>
+                <div id="inputs">
+                    <p class="labels">
+                        <label for="signin-email">Email: </label>
+                        <label for="signin-password">Password: </label>
+                    </p>
+                    <p class="inputs">
+                        <input id="signin-email" type="email" name="email" required placeholder="email@email.com">
+                        <input id="signin-password" type="password" name="password" required>
+                    </p>
+                </div>
+                    <p>
+                        <button class="auth-button">Sign In</button>
+                    </p>
             </form>
         `;
     }
