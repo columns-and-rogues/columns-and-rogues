@@ -18,7 +18,8 @@ CREATE TABLE users (
                 item_four INTEGER NOT NULL, // empty, slot for picked up item
                 item_five INTEGER NOT NULL, // empty, slot for picked up item
                 image VARCHAR(512) NOT NULL, // image from MTG api for the character
-                explored_tiles VARCHAR(256) NOT NULL, // string representing the array of the current board state. Loaded and used to populate board items that have already been visited. On load, place character on static starting point board item
+                explored_tiles_string VARCHAR(256) NOT NULL, // string representing the array of the current board state. Loaded and used to populate board items that have already been visited. On load, place character on static starting point board item
+                unknown_tiles_remaining INTEGER NOT NULL, // number of ? tiles on the board
                 gold_tiles_remaining INTEGER NOT NULL, // number of undiscovered gold tiles. Decrement when one is found
                 item_tiles_remaining INTEGER NOT NULL, // number of undiscovered item tiles. Decrement when one is found
                 monster_tiles_remaining INTEGER NOT NULL, // number of undiscovered monster tiles. Decrement when one is found

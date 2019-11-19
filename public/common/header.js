@@ -3,7 +3,7 @@ import Component from '../Component.js';
 class Header extends Component {
     renderHTML() {
         const title = 
-        this.props.title || 'Columns and Rouges'; 
+        this.props.title || 'Columns and Rogues'; 
 
         return /*html*/`
         <header>
@@ -11,9 +11,10 @@ class Header extends Component {
             </div>
                 <h1>${title}</h1>
                     <nav>
-                        <a href="./">Login/out</a>
+                        <a href="./auth.html">Login/out</a>
                         <a href="./game-index.html">Game</a>
                         <a href="../about-us/index.html">About Us</a>
+                        <a href="./">Home</a>
                     </nav>
         </header>
     `;
