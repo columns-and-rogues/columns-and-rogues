@@ -2,7 +2,7 @@ import Component from '../Component.js';
 import UserSignIn from './UserSignIn.js';
 import UserSignUp from './UserSignUp.js';
 import Header from '../common/Header.js';
-import { signIn, signUp } from '../services/auth-api.js';
+import { signIn, signUp } from '../services/game-api.js';
 
 const success = user => {
     localStorage.setItem('TOKEN', user.token);
