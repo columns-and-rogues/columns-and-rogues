@@ -1,6 +1,6 @@
 import Component from '../Component.js';
 
-class SingCell extends Component {
+class SingleCell extends Component {
     renderHTML() {
         let cell = this.props.cell;
         let character = this.props.character; 
@@ -32,4 +32,4 @@ class SingCell extends Component {
     }
 }
 
-export default SingCell;
+export default SingleCell;
