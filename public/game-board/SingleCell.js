@@ -3,7 +3,7 @@ import Component from '../Component.js';
 class SingleCell extends Component {
     renderHTML() {
         let cell = this.props.cell;
-        let character = this.props.character; 
+        let character = this.props.character;
 
         let displayClass = ''; 
         let displayPlayer = ''; 

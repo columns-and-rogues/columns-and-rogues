@@ -3,6 +3,7 @@ import Header from '../common/header.js';
 import Stats from './Stats.js';
 import Info from './Info.js';
 import Board from './Board.js';
+import character from './character-obj.js';
 
 //Still need to make
 //import Modale from './Modale.js';
@@ -22,7 +23,7 @@ class GameApp extends Component {
         const info = new Info({ /*PROPS!!!!*/ });
         main.appendChild(info.renderDOM());
 
-        const board = new Board({ /*PROPS!!!!*/ });
+        const board = new Board({ character });
         main.appendChild(board.renderDOM());
 
         // const modale = new Modale({ /*PROPS!!!!*/ });

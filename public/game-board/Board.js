@@ -5,7 +5,7 @@ import boardCellArray from './boardCellArray.js';
 class Board extends Component {
     onRender(element) {
         boardCellArray.forEach(cell => {
-            const props = { cell };
+            const props = { cell: cell, character: this.props.character };
             const singleCell = new SingleCell(props);
             const singleCellDOM = singleCell.renderDOM();
             element.appendChild(singleCellDOM);
