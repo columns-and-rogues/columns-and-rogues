@@ -1,23 +1,35 @@
 import Component from '../Component.js';
-import Character from './Character.js';
 
-class SingCell extends Component {
-    onRender(span) {
-        if (this.props.character) {
-            const character = new Character();
-            span.appendChild(character);
-        }
-    }
-
+class SingleCell extends Component {
     renderHTML() {
-        const cell = this.props.cell;
-        const cellID = `x${cell.x}-y${cell.y}`;
+        let cell = this.props.cell;
+        let character = this.props.character;
 
+        let displayClass = ''; 
+        let displayPlayer = ''; 
+
+        switch (cell.contents) {
+            case 0: 
+                displayClass = 'empty'; 
+                break; 
+            case 1: 
+                displayClass = 'gold'; 
+                break; 
+            case 2:
+                displayClass = 'monster'; 
+                break;
+            case 3:
+                displayClass = 'item'; 
+                break;
+        }
+
+        displayPlayer = character.x === cell.x && character.y === cell.y ? 'displayPlayer' : ''; 
+        
         return /*html*/ `
-            <span class="cell column-${cell.x} row-${cell.y}" id="${cellID}">
+            <span class='cell column-${cell.x} row-${cell.y} ${displayClass} ${displayPlayer}' id='${cell.x}-${cell.y}'>
             </span>
         `;
     }
 }
 
-export default SingCell;
+export default SingleCell;

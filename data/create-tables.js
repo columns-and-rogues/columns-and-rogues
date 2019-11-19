@@ -30,6 +30,8 @@ async function run() {
                 item_four INTEGER NOT NULL,
                 item_five INTEGER NOT NULL,
                 image VARCHAR(512) NOT NULL,
+                x INTEGER NOT NULL,
+                y INTEGER NOT NULL,
                 explored_tiles_string VARCHAR(256) NOT NULL,
                 unknown_tiles_remaining INTEGER NOT NULL,
                 gold_tiles_remaining INTEGER NOT NULL,

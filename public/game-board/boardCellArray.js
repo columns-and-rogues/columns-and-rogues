@@ -2,7 +2,7 @@ const boardCellArray = [
     {
         x: 0,
         y: 0, 
-        contents: null
+        contents: 1
     },
     {
         x: 1,
