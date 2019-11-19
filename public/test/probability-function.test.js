@@ -1,4 +1,4 @@
-import { probabilityFunction } from '../util/probability-function.js';
+import probabilityFunction from '../util/probability-function.js';
 
 const test = QUnit.test;
 
