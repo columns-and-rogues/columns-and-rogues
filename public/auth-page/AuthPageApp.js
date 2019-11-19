@@ -57,14 +57,14 @@ class AuthPageApp extends Component {
         });
         signInSpot.appendChild(userSignIn.renderDOM());
 
-        const toggleToSignIn = dom.querySelector('#sign-up-button');
-        toggleToSignIn.addEventListener('click', () => {
+        const toggleToSignUp = dom.querySelector('#sign-up-button');
+        toggleToSignUp.addEventListener('click', () => {
             signInSpot.classList.remove('hidden');
             signUpSpot.classList.add('hidden');
         });
 
-        const toggleToSignUp = dom.querySelector('#sign-in-button');
-        toggleToSignUp.addEventListener('click', () => {
+        const toggleToSignIn = dom.querySelector('#sign-in-button');
+        toggleToSignIn.addEventListener('click', () => {
             signUpSpot.classList.remove('hidden');
             signInSpot.classList.add('hidden');
         });
