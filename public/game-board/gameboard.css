@@ -10,3 +10,8 @@
 .cell {
     border: solid 1px white;
 }
+
+#character {
+    width: 100%;
+    height: 100%
+}

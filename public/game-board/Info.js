@@ -26,7 +26,7 @@ class Info extends Component {
 
         return /*html*/`
         <div id="info">
-            <ul>Items:
+            <ul>Items
                 <li id="item-1">Item 1: ${item[0].name}</li>
                 <li id="item-2">Item 2: ${item[1].name}</li>
                 <li id="item-3">Item 3: ${item[2].name}</li>

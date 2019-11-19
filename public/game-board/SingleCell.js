@@ -5,7 +5,7 @@ class SingCell extends Component {
         const cell = this.props.cell;
 
         return /*html*/ `
-            <span class="cell column-${cell.x} row-${cell.y}" id="${cell.x}-${cell.y}"">
+            <span class="cell column-${cell.x} row-${cell.y}" id="${cell.x}-${cell.y}">
             </span>
         `;
     }
