@@ -1,16 +1,14 @@
-// Resolves the contents of a null / ? cell using the remaining items, gold, and monsters values from character and remaining ? cells from board state
+// Resolves the contents of a null / ? cell using the remaining items, gold, and monsters values from this.character and remaining ? cells from local board state. Returns an integer with a value of 0 for empty cell, 1 for gold, 2 for monster, 3 for item and decrements relevant value from this.character
 
-function probabilityFunction(character, remainingCells) {
-    const template = document.createElement('template');
-    template.innerHTML = html;
-    const content = template.content;
-
-    if (content.children.length > 1) {
-        throw new Error('html needs to have single parent element');
-    }
-    
-    const firstElementChild = content.firstElementChild;
-    return firstElementChild;
+function probabilityFunction(character) {
+    const totalRemainingEvents = (character.goldTilesRemaining + character.itemTilesRemaining + character.monsterTilesRemaining);
 }
 
-export default htmlToDOM;
+export default probabilityFunction;
+
+/*
+                explored_tiles VARCHAR(256) NOT NULL,
+                gold_tiles_remaining INTEGER NOT NULL,
+                item_tiles_remaining INTEGER NOT NULL,
+                monster_tiles_remaining INTEGER NOT NULL,
+*/
