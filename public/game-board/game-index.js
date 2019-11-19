@@ -1,4 +1,4 @@
-import GameApp from './game-app.js';
+import GameApp from './GameApp.js';
 
 const app = new GameApp();
 const el = app.renderDOM();
