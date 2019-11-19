@@ -26,7 +26,7 @@ class App extends Component {
                     You can move via the arrow keys
                     </li>
                     <li> 
-                        Once you explore a tile you will have a chance to either encounter danger, treasure or nothing at all, SEE THERE's YOUR RANDOM CHOICE STEPHEN!!!.
+                        Once you explore a tile you will have a chance to either encounter danger, treasure or nothing at all.
                     </li>
                     <li>
                         Your exit point is in a randomly generated location so explore away to find it.
