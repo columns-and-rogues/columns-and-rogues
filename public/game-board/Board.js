@@ -11,7 +11,7 @@ class Board extends Component {
             element.appendChild(singleCellDOM);
         });
         //This currently selects the first cell, if we want random placement will need to figure out why selecting id isn't working.
-        const charCell = element.querySelector('.cell');
+        const charCell = element.querySelector('#r0-y0');
         const charImage = document.createElement('img');
         charImage.src = './assets/temp-char.png';
         charImage.id = 'character';
