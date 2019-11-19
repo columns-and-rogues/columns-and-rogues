@@ -16,7 +16,7 @@ async function run() {
                 id SERIAL PRIMARY KEY,
                 email VARCHAR(256) NOT NULL,
                 hash VARCHAR(512) NOT NULL,
-                display_name VARCHAR(256) NOT NULL,
+                display_name VARCHAR(256) NOT NULL
             );
 
             CREATE TABLE characters (
