@@ -3,9 +3,10 @@ import Component from '../Component.js';
 class SingCell extends Component {
     renderHTML() {
         let cell = this.props.cell;
-    
-        let displayClass = ''; 
+        let character = this.props.character; 
 
+        let displayClass = ''; 
+        let displayPlayer = ''; 
 
         switch (cell.contents) {
             case 0: 
@@ -22,10 +23,10 @@ class SingCell extends Component {
                 break;
         }
 
-        console.log(cell);
+        displayPlayer = character.x === cell.x && character.y === cell.y ? 'displayPlayer' : ''; 
+        
         return /*html*/ `
-            <span class='cell column-${cell.x} row-${cell.y} ${displayClass}' id='${cell.x}-${cell.y}'>
-           
+            <span class='cell column-${cell.x} row-${cell.y} ${displayClass} ${displayPlayer}' id='${cell.x}-${cell.y}'>
             </span>
         `;
     }
