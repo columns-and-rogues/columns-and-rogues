@@ -7,8 +7,8 @@ import { signIn, signUp } from '../services/auth-api.js';
 const success = user => {
     localStorage.setItem('TOKEN', user.token);
     localStorage.setItem('USER', user.shownName);
-//     const searchParams = new URLSearchParams(location.search);
-//     location = searchParams.get('redirect') || './game-board.html';
+    const searchParams = new URLSearchParams(location.search);
+    location = searchParams.get('redirect') || './game-board.html';
 };
 
 class AuthPageApp extends Component {
@@ -57,13 +57,13 @@ class AuthPageApp extends Component {
         });
         signInSpot.appendChild(userSignIn.renderDOM());
 
-        const toggleToSignIn = dom.querySelector('#sign-in-button');
+        const toggleToSignIn = dom.querySelector('#sign-up-button');
         toggleToSignIn.addEventListener('click', () => {
             signInSpot.classList.remove('hidden');
             signUpSpot.classList.add('hidden');
         });
 
-        const toggleToSignUp = dom.querySelector('#sign-up-button');
+        const toggleToSignUp = dom.querySelector('#sign-in-button');
         toggleToSignUp.addEventListener('click', () => {
             signUpSpot.classList.remove('hidden');
             signInSpot.classList.add('hidden');
