@@ -2,10 +2,10 @@
 
 function probabilityFunction(character) {
     const totalRemainingEvents = (character.goldTilesRemaining + character.itemTilesRemaining + character.monsterTilesRemaining);
+    character.unknownTilesRemaining --;
     if (totalRemainingEvents === 0) return 0;
     
     const percentChanceOfEvent = (totalRemainingEvents / character.unknownTilesRemaining);
-    character.unknownTilesRemaining --;
 
     // if we have 8 gold/item/monsters remaining and 20 unexplored tiles, we have a 0.4 chance of hitting a g/i/m tile
     // if empty cell return 0
