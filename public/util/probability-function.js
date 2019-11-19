@@ -2,6 +2,8 @@
 
 function probabilityFunction(character) {
     const totalRemainingEvents = (character.goldTilesRemaining + character.itemTilesRemaining + character.monsterTilesRemaining);
+    if (totalRemainingEvents === 0) return 0;
+    
     const percentChanceOfEvent = (totalRemainingEvents / character.unknownTilesRemaining);
     character.unknownTilesRemaining --;
 
