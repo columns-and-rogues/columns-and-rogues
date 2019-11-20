@@ -8,9 +8,13 @@ class Board extends Component {
         let character = this.props.character;
         const boardSize = this.props.boardSize;
         const boardArrayObj = createBoard(boardSize);
+        const doorLocation = {
+            x: Math.floor(Math.random() * (boardSize))
+        }
+
 
         boardArrayObj.forEach(cell => {
-            const props = { cell: cell, character: this.props.character, boardSize: boardSize };
+            const props = { cell: cell, character: this.props.character, boardSize: boardSize, doorLocation: doorLocation };
             const singleCell = new SingleCell(props);
             const singleCellDOM = singleCell.renderDOM();
             element.appendChild(singleCellDOM);
