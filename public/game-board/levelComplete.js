@@ -1,5 +1,10 @@
 import character from './character-obj.js';
 
+// let backgroundImg = ['../assets/forest-background-image1.gif', '../assets/underwater-background-image1', '../assets/village-background-image1'
+// ];
+
+// let backgroundCount = 0; 
+
 function levelComplete() {
     //STRETCH - play animation of going through door.
     //STRETCH - play sound of door.
@@ -9,6 +14,15 @@ function levelComplete() {
     //save player progress to database
     alert(`You Won!
     Save and Continue?`);
+
+    // ('#board').css('background-image', 'url(' + backgroundImg[backgroundCount] + ')'); 
+    
+    // backgroundCount++;
+    
+    // if (backgroundCount > backgroundImg.length - 1) backgroundCount = 0;
+    // ('#board').css('background-image', 'url(' + backgroundImg[backgroundCount] + ')');
+
+
     //
     //if yes, setup next board
     console.log(character);

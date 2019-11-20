@@ -5,6 +5,7 @@ import levelComplete from './levelComplete.js';
 
 class Board extends Component {
     onRender(element) {
+        
         let character = this.props.character;
 
         boardCellArray.forEach(cell => {
