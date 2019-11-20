@@ -47,7 +47,7 @@ export function signIn(creds) {
 }
 
 export function updateCharcter(character) {
-    const url = `${URL}/characters/${character.id}`;
+    const url = `${URL}/character/:${character.id}`;
     return fetchWithError(url, {
         method:'PUT',
         headers: {
