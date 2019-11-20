@@ -3,5 +3,5 @@ export const acceptableKeys = [
     'ArrowDown',
     'ArrowRight',
     'ArrowLeft',
-    'Shift'
+    'Enter'
 ];

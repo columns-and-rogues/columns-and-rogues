@@ -4,7 +4,7 @@ body{
 
 #board {
     width: 600px;
-    height: 575px;
+    height: 600px;
     display: grid;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;

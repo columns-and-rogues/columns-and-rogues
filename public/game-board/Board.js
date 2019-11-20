@@ -1,7 +1,6 @@
 import Component from '../Component.js';
 import SingleCell from './SingleCell.js';
 import boardCellArray from './boardCellArray.js';
-import levelComplete from './levelComplete.js';
 
 class Board extends Component {
     onRender(element) {

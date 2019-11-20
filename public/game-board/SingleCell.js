@@ -1,6 +1,4 @@
 import Component from '../Component.js';
-import levelComplete from './levelComplete.js';
-import Character from './Character.js';
 
 class SingleCell extends Component {
     renderHTML() {
@@ -28,14 +26,20 @@ class SingleCell extends Component {
         displayPlayer = character.x === cell.x && character.y === cell.y ? 'displayPlayer' : ''; 
         
         if (cell.x === 4 && cell.y === 4) displayClass = 'door';
+
         if (displayPlayer === 'displayPlayer' && displayClass === 'door') {
-            const finalCell = document.getElementById('x4-y4');
-            const charImage = new Character();
-            const charImageDOM = charImage.renderDOM();
-            finalCell.appendChild(charImageDOM);
-            console.log(charImage);
             displayClass = 'door-open';
             displayPlayer = '';
+            return /*html*/ `
+            <span 
+                class='
+                    cell
+                    ${displayClass} 
+                    ${displayPlayer}' 
+                id='x${cell.x}-y${cell.y}'>
+                <img src='./assets/temp-char.png' id='character'> 
+            </span>
+        `; 
         }
 
         return /*html*/ `

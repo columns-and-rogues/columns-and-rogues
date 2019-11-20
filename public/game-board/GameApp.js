@@ -4,7 +4,7 @@ import Stats from './Stats.js';
 import Info from './Info.js';
 import Board from './Board.js';
 import character from './character-obj.js';
-import { acceptableKeys } from './acceptableKeys.js';
+import { acceptableKeys } from '../util/acceptableKeys.js';
 import levelComplete from './levelComplete.js';
 
 //Still need to make
@@ -35,10 +35,9 @@ class GameApp extends Component {
             if (keyname === 'ArrowUp' && character.y >= 1) character.y--;
             if (keyname === 'ArrowRight' && character.x <= 3) character.x++;
             if (keyname === 'ArrowLeft' && character.x >= 1) character.x--;
-            if (character.x === 4 && character.y === 4 && keyname === 'Shift') levelComplete();
+            if (character.x === 4 && character.y === 4 && keyname === 'Enter') levelComplete();
             board.update(character);
         });
-
         
         // const modale = new Modale({ /*PROPS!!!!*/ });
         // main.appendChild(modale.renderDOM());
