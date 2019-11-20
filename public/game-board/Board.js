@@ -4,13 +4,10 @@ import { createBoard } from './boardCellArray.js';
 
 class Board extends Component {
     onRender(element) {
-<<<<<<< HEAD
         
         let character = this.props.character;
-=======
         const boardSize = this.props.boardSize;
         const boardArrayObj = createBoard(boardSize);
->>>>>>> 83d1bcfb97c333f7b3c69a6fa8c74276ae33068f
 
         boardArrayObj.forEach(cell => {
             const props = { cell: cell, character: this.props.character, boardSize: boardSize };
