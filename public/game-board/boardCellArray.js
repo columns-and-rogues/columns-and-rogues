@@ -1,155 +1,24 @@
-const boardCellArray = [
-    {
-        x: 0,
-        y: 0, 
-        contents: 1
-    },
-    {
-        x: 1,
-        y: 0, 
-        contents: null
-    },
-    {
-        x: 2,
-        y: 0, 
-        contents: null
-    },
-    {
-        x: 3,
-        y: 0, 
-        contents: null
-    },
-    {
-        x: 4,
-        y: 0, 
-        contents: null
-    },
-    {
-        x: 0,
-        y: 1, 
-        contents: null
-    },
-    {
-        x: 1,
-        y: 1, 
-        contents: null
-    },
-    {
-        x: 2,
-        y: 1, 
-        contents: null
-    },
-    {
-        x: 3,
-        y: 1, 
-        contents: null
-    },
-    {
-        x: 4,
-        y: 1, 
-        contents: null
-    },
-    {
-        x: 0,
-        y: 2, 
-        contents: null
-    },
-    {
-        x: 1,
-        y: 2, 
-        contents: null
-    },
-    {
-        x: 2,
-        y: 2, 
-        contents: null
-    },
-    {
-        x: 3,
-        y: 2, 
-        contents: null
-    },
-    {
-        x: 4,
-        y: 2, 
-        contents: null
-    },
-    {
-        x: 0,
-        y: 3, 
-        contents: null
-    },
-    {
-        x: 1,
-        y: 3, 
-        contents: null
-    },
-    {
-        x: 2,
-        y: 3, 
-        contents: null
-    },
-    {
-        x: 3,
-        y: 3, 
-        contents: null
-    },
-    {
-        x: 4,
-        y: 3, 
-        contents: null
-    },
-    {
-        x: 0,
-        y: 4, 
-        contents: null
-    },
-    {
-        x: 1,
-        y: 4, 
-        contents: null
-    },
-    {
-        x: 2,
-        y: 4, 
-        contents: null
-    },
-    {
-        x: 3,
-        y: 4, 
-        contents: null
-    },
-    {
-        x: 4,
-        y: 4, 
-        contents: null
-    }
-];
-
-function createBoard(numberOfRowsAndCols) {
+export function createBoard(numberOfRowsAndCols) {
+    let yy = 0;
+    let xx = 0;
     let boardArray = new Array(numberOfRowsAndCols * numberOfRowsAndCols)
         .fill({
             x: 0,
             y: 0,
-            content: null
+            contents: null
         });
 
-    let y = 0;
-    let x = 0;
-
-    boardArray.forEach((object) => {
-        object.x = x;
-        object.y = y;
-
-        x++;
-        
-        if (x === numberOfRowsAndCols) {
-            y++;
-            x = 0;
+    return boardArray.map((object) => {
+        object = {
+            x: xx,
+            y: yy,
+            contents: null
+        };
+        xx++;
+        if (xx === numberOfRowsAndCols) {
+            yy++;
+            xx = 0;
         }
+        return object;
     });
-
-    return boardArray;
 }
-
-export default boardCellArray;

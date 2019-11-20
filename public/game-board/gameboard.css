@@ -3,10 +3,10 @@ body{
 }
 
 #board {
+    width: 600px;
+    height: 570px;
     display: grid;
-    grid-template-rows: 75px 75px 75px 75px 75px;
-    grid-template-columns: 75px 75px 75px 75px 75px;
-    background-image: url(https://www.biography.com/.image/t_share/MTE1ODA0OTcyMDA1Njg4ODQ1/tom-jones-21026065-1-sized.jpg);
+    background-image: url(https://66.media.tumblr.com/f3ed75dbaa538fa583ad99dde36b1408/tumblr_n4w85syp811s559q7o8_500.gifv);
     background-size: contain;
     background-repeat: no-repeat;
     background-position-y: center;
@@ -17,8 +17,6 @@ body{
     border: solid 1px white;
     background-size: contain;
     background-repeat: no-repeat;
-    z-index: 10;
-
 }
 
 .empty {
@@ -41,13 +39,27 @@ body{
 }
 
 .door {
-    background-image: url('../assets/door.png');
+    background-image: url('../assets/door.gif');
 }
 
 .displayPlayer {
     background-image: url('../assets/temp-char.png');
+    border: dashed 3px green;
 }
-/* 
+ 
 .door-open {
-    background-image: url('../assets/door-open.png')
-} */
+    background-image: url('../assets/door-open-empty.png');
+    display: flex;
+    justify-content: flex-start
+}
+
+#character {
+    width: 80%;
+    height: 80%;
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+}
+
+.fade {
+    opacity: 0;
+}
