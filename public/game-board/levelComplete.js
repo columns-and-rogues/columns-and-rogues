@@ -1,5 +1,5 @@
 import character from './character-obj.js';
-import { updateCharcter } from '../services/game-api.js';
+import { updateCharacter } from '../services/game-api.js';
 let boardSize = 5;
 
 // let backgroundImg = ['../assets/forest-background-image1.gif', '../assets/underwater-background-image1', '../assets/village-background-image1'
@@ -41,7 +41,7 @@ function levelComplete(gameApp) {
     //
     //if yes, setup next board
     console.log(character);
-    //updateCharcter(character);
+    //updateCharacter(character);
 
     //Reset Board
     // alert('Levele Complete');
