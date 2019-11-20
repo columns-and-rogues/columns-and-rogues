@@ -39,10 +39,107 @@ const authRoutes = createAuthRoutes({
         [user.email, hash, user.displayName]).then(result => result.rows[0]);
     }
 });
+
 // API Routes
 app.use('/api/auth', authRoutes);
 app.use('/api', ensureAuth);
 
+// database routes
+app.post('/api/character', async(req, res) => {
+    const character = req.body;
+
+    try {
+        const result = await client.query(`
+            INSERT INTO characters (id, user_id, hp, gold, item_one, item_two, item_three, item_four, item_five, image, x, y, board_state_string, unknown_tiles_remaining, gold_tiles_remaining, item_tiles_remaining, monster_tiles_remaining, boards_survived)
+            VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18)
+            RETURNING *;
+        `, 
+        [character.id, character.userId, character.hp, character.gold, character.itemOne, character.itemTwo, character.itemThree, character.itemFour, character.itemFive, character.image, character.x, character.y, character.boardStateString, character.unknownTilesRemaining, character.goldTilesRemaining, character.itemTilesRemaining, character.monsterTilesRemaining, character.boardsSurvived]);
+        res.json(result.rows[0]);
+    }
+    catch (err) {
+        console.log(err);
+        res.status(500).json({
+            error: err.message || err
+        });
+    }
+});
+
+app.get('/api/user/:id', async(req, res) => {
+    const id = req.params.id;
+
+    try {
+        const result = await client.query(`
+            SELECT
+                u.display_name as "displayName"
+                c.*,
+            FROM users u
+            JOIN characters c
+            ON    u.id = c.user_id
+            WHERE u.id = $1
+        `,
+        [id]);
+
+        const user = result.rows[0];
+        if (!user) {
+            res.status(404).json({
+                error: `User id ${id} does not exist`
+            });
+        } else {
+            res.json(result.rows[0]);
+        }
+
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({
+            error: err.message || err
+        });
+    }
+});
+
+app.put('/api/user/:id', async(req, res) => {
+    const id = req.params.id;
+    const character = req.body;
+
+    try {
+        const result = await client.query(`
+            UPDATE characters
+            SET     user_id = $2,
+                    hp = $3,
+                    gold = $4,
+                    item_one = $5, 
+                    item_two = $6, 
+                    item_three = $7, 
+                    item_four = $8, 
+                    item_five = $9, 
+                    image = $10, 
+                    x = $11, 
+                    y = $12, 
+                    board_state_string = $13, 
+                    unknown_tiles_remaining = $14, 
+                    gold_tiles_remaining = $15, 
+                    item_tiles_remaining = $16, 
+                    monster_tiles_remaining = $17, 
+                    boards_survived = $18
+            WHERE id = $1
+            RETURNING *;
+        `,
+        [id, character.userId, character.hp, character.gold, character.itemOne, character.itemTwo, character.itemThree, character.itemFour, character.itemFive, character.image, character.x, character.y, character.boardStateString, character.unknownTilesRemaining, character.goldTilesRemaining, character.itemTilesRemaining, character.monsterTilesRemaining, character.boardsSurvived]);
+
+        res.json(result.rows[0]);
+
+    } catch (err) {
+        if (err.code === '23505') {
+            res.status(400).json({
+                error: `Updating info failed`
+            });
+        } else {
+            res.status(500).json({
+                error: err.message || err
+            });
+        }
+    }
+});
 
 app.listen(PORT, () => {
     console.log('server running on PORT', PORT);

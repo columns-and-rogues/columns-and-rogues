@@ -14,6 +14,7 @@ class Header extends Component {
                         <a href="./auth.html">Login |</a>
                         <a href="./game-index.html">  Game |</a>
                         <a href="../about-us/index.html">About Us</a>
+                        <a href="./">Rules</a>
                     </nav>
         </header>
     `;
