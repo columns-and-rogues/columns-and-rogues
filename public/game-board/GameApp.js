@@ -28,16 +28,23 @@ class GameApp extends Component {
 
         document.addEventListener('keydown', (event) => {
             const keyname = event.key;
-            if (keyname === 'ArrowDown' && character.y <= 3) character.y++;
-            if (keyname === 'ArrowUp' && character.y >= 1) character.y--;
-            if (keyname === 'ArrowRight' && character.x <= 3) character.x++;
-            if (keyname === 'ArrowLeft' && character.x >= 1) character.x--;
+            if (keyname === 'ArrowDown' && character.y <= 3) {
+                character.y++;
+            } else if (keyname === 'ArrowUp' && character.y >= 1) {
+                character.y--;
+            } else if (keyname === 'ArrowRight' && character.x <= 3) {
+                character.x++;
+            } else if (keyname === 'ArrowLeft' && character.x >= 1) {
+                character.x--;
+            } else {
+                return;
+            }
             board.update(character);
         });
 
+        
         // const modale = new Modale({ /*PROPS!!!!*/ });
         // main.appendChild(modale.renderDOM());
-        
     }
 
     renderHTML() {

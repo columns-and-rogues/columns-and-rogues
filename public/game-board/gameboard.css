@@ -23,31 +23,31 @@ body{
 
 .empty {
     background-color: lightslategray; 
-    background-size: contain;
-    background-repeat: no-repeat;
 }
 
 .gold {
     background-color: lightslategray; 
     background-image: url(../assets/gold-star.gif);
-    background-size: contain;
-    background-repeat: no-repeat;
 }
 
 .monster {
     background-color: lightslategray; 
     background-image: url(../assets/monster-icon.png); 
-    background-size: contain;
-    background-repeat: no-repeat;
 }
 
 .item {
     background-color: lightslategray; 
     background-image: url(../assets/item-logo.gif);
-    background-size: contain;
-    background-repeat: no-repeat;
 }
 
-.displayPlayer{
+.door {
+    background-image: url('../assets/door.png');
+}
+
+.displayPlayer {
     background-image: url('../assets/temp-char.png');
 }
+/* 
+.door-open {
+    background-image: url('../assets/door-open.png')
+} */
