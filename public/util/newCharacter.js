@@ -7,23 +7,23 @@ function newCharacter() {
     const newBoard = createBoard(5);
     let newChar = {
         id: '', // need to get these from outside info / set in auth page before posting to DB
-        user_id: -1, // same here
+        userId: -1, // same here
         hp: 5,
         gold: 0,
-        item_one: 1,
-        item_two: 0,
-        item_three: 0,
-        item_four: 0,
-        item_five: 0,
-        image: 'https://media.giphy.com/media/cbzgUUz1HDF5e/200w_d.gif',
+        itemOne: 1,
+        itemTwo: 0,
+        itemThree: 0,
+        itemFour: 0,
+        itemFive: 0,
+        image: 'https://media.giphy.com/media/cbzgUUz1HDF5e/200w_d.gif', // placeholder
         x: 0,
         y: 0,
-        board_state_string: '',
-        unknown_tiles_remaining: newBoard.length, // might need to be -1 depending on how we handle first square, this is for null contents at 0,0
-        gold_tiles_remaining: 3,
-        item_tiles_remaining: 3,
-        monster_tiles_remaining: 4,
-        boards_survived: 0
+        boardStateString: '',
+        unknownTilesRemaining: newBoard.length, // might need to be -1 depending on how we handle first square, this is for null contents at 0,0
+        goldTilesRemaining: 3,
+        itemTilesRemaining: 3,
+        monsterTilesRemaining: 4,
+        boardsSurvived: 0
     };
 
     return saveBoard(newBoard, newChar);
