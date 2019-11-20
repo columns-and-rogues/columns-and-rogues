@@ -8,10 +8,11 @@ async function run() {
         await client.connect();
     
         await client.query(`
-            DROP TABLE IF EXISTS users;
-            DROP TABLE IF EXISTS characters;
-            DROP TABLE IF EXISTS items;
-            DROP TABLE IF EXISTS monsters;
+        DROP TABLE IF EXISTS users,
+                                characters,
+                                items,
+                                monsters;
+        
         `);
 
         console.log('drop tables complete');

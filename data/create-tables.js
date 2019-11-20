@@ -20,7 +20,7 @@ async function run() {
             );
 
             CREATE TABLE characters (
-                id VARCHAR(64) PRIMARY KEY,
+                id SERIAL PRIMARY KEY,
                 user_id INTEGER NOT NULL REFERENCES users(id),
                 hp INTEGER NOT NULL,
                 gold INTEGER NOT NULL,
@@ -41,7 +41,7 @@ async function run() {
             );
 
             CREATE TABLE items (
-                id VARCHAR(64) PRIMARY KEY,
+                id SERIAL PRIMARY KEY,
                 name VARCHAR(256) NOT NULL,
                 dice INTEGER NOT NULL,
                 effect VARCHAR(512) NOT NULL,
@@ -49,7 +49,7 @@ async function run() {
             );
 
             CREATE TABLE monsters (
-                id VARCHAR(64) PRIMARY KEY,
+                id SERIAL PRIMARY KEY,
                 name VARCHAR(256) NOT NULL,
                 hp INTEGER NOT NULL,
                 dice INTEGER NOT NULL,
