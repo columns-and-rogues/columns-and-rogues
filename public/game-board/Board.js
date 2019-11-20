@@ -4,6 +4,8 @@ import { createBoard } from './boardCellArray.js';
 
 class Board extends Component {
     onRender(element) {
+        
+        let character = this.props.character;
         const boardSize = this.props.boardSize;
         const boardArrayObj = createBoard(boardSize);
 

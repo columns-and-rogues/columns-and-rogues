@@ -1,15 +1,37 @@
 body{
     margin:0;
+ 
+}
+
+html{
+background-color: black;     /* background-image: url(../assets/volcano-background1.gif); */
+    background-repeat: repeat;
+    margin-bottom: 0; 
+    padding: 0; 
+    
+    
+}
+.board-container{
+    background-position-x: center;
 }
 
 #board {
     width: 600px;
     height: 570px;
     display: grid;
-    background-image: url(https://66.media.tumblr.com/f3ed75dbaa538fa583ad99dde36b1408/tumblr_n4w85syp811s559q7o8_500.gifv);
-    background-size: contain;
+    justify-content: center;
+    /* background-image: url(../assets/background1.gif); */
+    /* background-image: -webkit-cross-fade(url(../assets/background1.gif) 25%, url(../assets/forest-background-image1.gif) 25%, url(../assets/underwater-background-image1.gif) 25%, url(../assets/village-background-image1.gif) 25%); */
+    background-image:
+        url(../assets/background1.gif);
+        /* url(../assets/forest-background-image1.gif); */
+        /* url(../assets/underwater-background-image1.gif); */
+        /* url(../assets/village-background-image1.gif); */
+
+    background-size: 650px 650px; 
     background-repeat: no-repeat;
-    background-position-y: center;
+    background-position: center;
+    padding: 60px; 
 }
 
 
@@ -20,7 +42,7 @@ body{
 }
 
 .empty {
-    background-color: lightslategray; 
+    background-color: lightslategray;
 }
 
 .gold {

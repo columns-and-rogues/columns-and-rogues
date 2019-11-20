@@ -2,6 +2,11 @@ import character from './character-obj.js';
 import { updateCharcter } from '../services/game-api.js';
 let boardSize = 5;
 
+// let backgroundImg = ['../assets/forest-background-image1.gif', '../assets/underwater-background-image1', '../assets/village-background-image1'
+// ];
+
+// let backgroundCount = 0; 
+
 function levelComplete(gameApp) {
     //STRETCH - play animation of going through door.
     //STRETCH - play sound of door.
@@ -22,6 +27,20 @@ function levelComplete(gameApp) {
     //module
 
     //save player progress to database
+    alert(`You Won!
+    Save and Continue?`);
+
+    // ('#board').css('background-image', 'url(' + backgroundImg[backgroundCount] + ')'); 
+    
+    // backgroundCount++;
+    
+    // if (backgroundCount > backgroundImg.length - 1) backgroundCount = 0;
+    // ('#board').css('background-image', 'url(' + backgroundImg[backgroundCount] + ')');
+
+
+    //
+    //if yes, setup next board
+    console.log(character);
     //updateCharcter(character);
 
     //Reset Board
