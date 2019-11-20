@@ -80,11 +80,11 @@ app.post('/api/character', async(req, res) => {
 
     try {
         const result = await client.query(`
-            INSERT INTO characters (id, user_id, hp, gold, item_one, item_two, item_three, item_four, item_five, image, x, y, board_state_string, unknown_tiles_remaining, gold_tiles_remaining, item_tiles_remaining, monster_tiles_remaining, boards_survived)
-            VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18)
+            INSERT INTO characters (user_id, hp, gold, item_one, item_two, item_three, item_four, item_five, image, x, y, board_state_string, unknown_tiles_remaining, gold_tiles_remaining, item_tiles_remaining, monster_tiles_remaining, boards_survived)
+            VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17)
             RETURNING *;
         `, 
-        [character.id, character.userId, character.hp, character.gold, character.itemOne, character.itemTwo, character.itemThree, character.itemFour, character.itemFive, character.image, character.x, character.y, character.boardStateString, character.unknownTilesRemaining, character.goldTilesRemaining, character.itemTilesRemaining, character.monsterTilesRemaining, character.boardsSurvived]);
+        [character.userId, character.hp, character.gold, character.itemOne, character.itemTwo, character.itemThree, character.itemFour, character.itemFive, character.image, character.x, character.y, character.boardStateString, character.unknownTilesRemaining, character.goldTilesRemaining, character.itemTilesRemaining, character.monsterTilesRemaining, character.boardsSurvived]);
         res.json(result.rows[0]);
     }
     catch (err) {
