@@ -77,6 +77,15 @@ label {
     margin: 10px;
 }
 
+#signed-in-as {
+    color: #D2D1CD;
+    background: rgba(11, 25, 13, 0.8);
+    border-radius: 25px;
+    border: 1px solid #D2D1CD;
+    box-shadow: 0 0 10px black;
+    padding: 10px;
+}
+
 .hidden {
     display: none !important;
 }

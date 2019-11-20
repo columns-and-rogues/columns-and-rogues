@@ -11,7 +11,7 @@ class UserSignUp extends Component {
             const formData = new FormData(form);
 
             const user = {
-                shownName: formData.get('name'),
+                displayName: formData.get('name'),
                 email: formData.get('email'),
                 password: formData.get('password')
             };

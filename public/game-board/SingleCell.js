@@ -4,6 +4,7 @@ class SingleCell extends Component {
     renderHTML() {
         let cell = this.props.cell;
         let character = this.props.character;
+        let boardSize = this.props.boardSize - 1;
 
         let displayClass = ''; 
         let displayPlayer = ''; 
@@ -23,12 +24,32 @@ class SingleCell extends Component {
                 break;
         }
 
-        if (cell.x === 4 && cell.y === 4) displayClass = 'door';
-
         displayPlayer = character.x === cell.x && character.y === cell.y ? 'displayPlayer' : ''; 
         
+        if (cell.x === boardSize && cell.y === boardSize) displayClass = 'door';
+
+        if (displayPlayer === 'displayPlayer' && displayClass === 'door') {
+            displayClass = 'door-open';
+            displayPlayer = '';
+            return /*html*/ `
+            <span 
+                class='
+                    cell
+                    ${displayClass} 
+                    ${displayPlayer}' 
+                id='x${cell.x}-y${cell.y}'>
+                <img src='./assets/temp-char.png' id='character'> 
+            </span>
+        `; 
+        }
+
         return /*html*/ `
-            <span class='cell column-${cell.x} row-${cell.y} ${displayClass} ${displayPlayer}' id='${cell.x}-${cell.y}'>
+            <span 
+                class='
+                    cell
+                    ${displayClass} 
+                    ${displayPlayer}' 
+                id='x${cell.x}-y${cell.y}'>
             </span>
         `;
     }
