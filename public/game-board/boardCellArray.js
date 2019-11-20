@@ -126,7 +126,9 @@ const boardCellArray = [
     }
 ];
 
-function createBoard(numberOfRowsAndCols) {
+export function createBoard(numberOfRowsAndCols) {
+    let y = 0;
+    let x = 0;
     let boardArray = new Array(numberOfRowsAndCols * numberOfRowsAndCols)
         .fill({
             x: 0,
@@ -134,21 +136,16 @@ function createBoard(numberOfRowsAndCols) {
             content: null
         });
 
-    let y = 0;
-    let x = 0;
-
     boardArray.forEach((object) => {
         object.x = x;
         object.y = y;
-
         x++;
-        
         if (x === numberOfRowsAndCols) {
             y++;
             x = 0;
         }
     });
-
+    
     return boardArray;
 }
 

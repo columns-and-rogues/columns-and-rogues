@@ -3,8 +3,8 @@ body{
 }
 
 #board {
-    width: 375px;
-    height: 358px;
+    width: 600px;
+    height: 575px;
     display: grid;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;

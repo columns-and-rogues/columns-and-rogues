@@ -1,4 +1,5 @@
 import Component from '../Component.js';
+import levelComplete from './levelComplete.js';
 
 class SingleCell extends Component {
     renderHTML() {
@@ -23,10 +24,15 @@ class SingleCell extends Component {
                 break;
         }
 
-        if (cell.x === 4 && cell.y === 4) displayClass = 'door';
-
         displayPlayer = character.x === cell.x && character.y === cell.y ? 'displayPlayer' : ''; 
         
+        if (cell.x === 4 && cell.y === 4) displayClass = 'door';
+        if (displayPlayer === 'displayPlayer' && displayClass === 'door') {
+            displayClass = 'door-open';
+            displayPlayer = '';
+            levelComplete();
+        }
+
         return /*html*/ `
             <span 
                 class='

@@ -13,7 +13,7 @@ class Board extends Component {
             const singleCellDOM = singleCell.renderDOM();
             element.appendChild(singleCellDOM);
         });
-        if (character.x === 4 && character.y === 4) levelComplete();
+        //if (character.x === 4 && character.y === 4) levelComplete();
     }
 
     renderHTML() {
