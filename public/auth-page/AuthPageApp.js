@@ -3,17 +3,12 @@ import UserSignIn from './UserSignIn.js';
 import UserSignUp from './UserSignUp.js';
 import Header from '../common/Header.js';
 import newChar from '../util/newCharacter.js';
-import { signIn, signUp, getUser } from '../services/game-api.js';
+import { signIn, signUp, getUser, addCharacter } from '../services/game-api.js';
 
-const success = user => {
+const success = async(user) => {
     localStorage.setItem('TOKEN', user.token);
     localStorage.setItem('USER', user.displayName);
     const searchParams = new URLSearchParams(location.search);
-    
-    let newCharacter = newChar(); 
-    //Get user object using services.
-    newCharacter.userId = user.id;
-    //Post this character to the database using services
 
 
     const waitLocation = () => location = searchParams.get('redirect') || './game-index.html';
@@ -45,6 +40,9 @@ class AuthPageApp extends Component {
             onSignUp: async newUser => {
                 try {
                     const user = await signUp(newUser);
+                    let newCharacter = newChar();
+                    newCharacter.userId = user.id;
+                    await addCharacter(newCharacter);
                     success(user);
                 }
                 catch (err) {
