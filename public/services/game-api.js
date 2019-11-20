@@ -1,11 +1,6 @@
 const URL = '/api';
 
 const token = localStorage.getItem('TOKEN');
-if (!token && !(location.pathname === '/' || location.pathname === 'index.html')) {
-    // const searchParams = new URLSearchParams();
-    // searchParams.set('redirect', location.pathname);
-    // location = `/?${searchParams.toString()}`;
-}
 
 async function fetchWithError(url, options) {
     if (token) {
@@ -46,7 +41,7 @@ export function signIn(creds) {
     });
 }
 
-export function updateCharcter(character) {
+export function updateCharacter(character) {
     const url = `${URL}/character/:${character.id}`;
     return fetchWithError(url, {
         method:'PUT',
@@ -56,4 +51,25 @@ export function updateCharcter(character) {
         },
         body: JSON.stringify(character)
     });
+}
+
+export function getUser(email){
+    const url = `${URL}/users/${email}`;
+    return fetchWithError(url);
+}
+
+export function addCharacter(character){
+    const url = `${URL}/character`;
+    return fetchWithError(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(character)
+    });
+}
+
+export function getCharacterById(id){
+    const url = `${URL}/character/${id}`;
+    return fetchWithError(url);
 }
