@@ -2,7 +2,7 @@ import Component from '../Component.js';
 import UserSignIn from './UserSignIn.js';
 import UserSignUp from './UserSignUp.js';
 import Header from '../common/Header.js';
-import { signIn, signUp } from '../services/game-api.js';
+import { signIn, signUp, getUser } from '../services/game-api.js';
 
 const success = user => {
     localStorage.setItem('TOKEN', user.token);
@@ -13,6 +13,8 @@ const success = user => {
 
 class AuthPageApp extends Component {
     onRender(dom){
+        console.log(getUser());
+
         const header = new Header();
         dom.prepend(header.renderDOM());
 
