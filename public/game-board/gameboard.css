@@ -19,10 +19,7 @@ background-color: black;     /* background-image: url(../assets/volcano-backgrou
     width: 600px;
     height: 570px;
     display: grid;
-<<<<<<< HEAD
     justify-content: center;
-    grid-template-rows: 100px 100px 100px 100px 100px;
-    grid-template-columns: 100px 100px 100px 100px 100px;
     /* background-image: url(../assets/background1.gif); */
     /* background-image: -webkit-cross-fade(url(../assets/background1.gif) 25%, url(../assets/forest-background-image1.gif) 25%, url(../assets/underwater-background-image1.gif) 25%, url(../assets/village-background-image1.gif) 25%); */
     background-image:
@@ -32,10 +29,6 @@ background-color: black;     /* background-image: url(../assets/volcano-backgrou
         /* url(../assets/village-background-image1.gif); */
 
     background-size: 650px 650px; 
-=======
-    background-image: url(https://66.media.tumblr.com/f3ed75dbaa538fa583ad99dde36b1408/tumblr_n4w85syp811s559q7o8_500.gifv);
-    background-size: contain;
->>>>>>> 83d1bcfb97c333f7b3c69a6fa8c74276ae33068f
     background-repeat: no-repeat;
     background-position: center;
     padding: 60px; 
