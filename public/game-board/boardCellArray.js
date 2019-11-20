@@ -8,7 +8,7 @@ export function createBoard(numberOfRowsAndCols) {
             contents: null
         });
 
-    return boardArray.map((object) => {
+    let returnedArray = boardArray.map((object) => {
         object = {
             x: xx,
             y: yy,
@@ -21,4 +21,6 @@ export function createBoard(numberOfRowsAndCols) {
         }
         return object;
     });
+    returnedArray[0].contents = 'safe';
+    return returnedArray;
 }
