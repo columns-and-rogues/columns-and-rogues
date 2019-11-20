@@ -3,7 +3,7 @@ import UserSignIn from './UserSignIn.js';
 import UserSignUp from './UserSignUp.js';
 import Header from '../common/Header.js';
 import newChar from '../util/newCharacter.js';
-import { signIn, signUp, getUser, addCharacter } from '../services/game-api.js';
+import { signIn, signUp, addCharacter } from '../services/game-api.js';
 
 const success = async(user) => {
     localStorage.setItem('TOKEN', user.token);
