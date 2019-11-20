@@ -6,11 +6,16 @@ class Component {
         this.props = props || {};
         this.state = {};
         // uncomment to log props passed to components:
-        // console.log(`Component "${this.constructor.name}" got props:` + '\n' + JSON.stringify(this.props, true, 2));
+        // console.log(`Component "${this.constructor.name}" got props:` + '\n' + JSON.stringify(this.props, true, 2));\
+        this.mounted = false;
     }
 
     onRender(/*dom*/) {
         // no-op
+    }
+
+    onMount() {
+        
     }
 
     renderDOM() {
@@ -27,6 +32,8 @@ class Component {
         this.onRender(dom);
 
         // return to the caller
+        if (!this.mounted) this.onMount(); 
+        this.mounted = true;
         return dom;
     }
 

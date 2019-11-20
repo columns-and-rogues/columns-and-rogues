@@ -45,3 +45,15 @@ export function signIn(creds) {
         body: JSON.stringify(creds)
     });
 }
+
+export function updateCharcter(character) {
+    const url = `${URL}/characters/${character.id}`;
+    return fetchWithError(url, {
+        method:'PUT',
+        headers: {
+            'Content-Type': 'application.json',
+            'Authorization': token
+        },
+        body: JSON.stringify(character)
+    });
+}

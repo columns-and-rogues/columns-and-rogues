@@ -4,6 +4,7 @@ class SingleCell extends Component {
     renderHTML() {
         let cell = this.props.cell;
         let character = this.props.character;
+        let boardSize = this.props.boardSize - 1;
 
         let displayClass = ''; 
         let displayPlayer = ''; 
@@ -25,7 +26,7 @@ class SingleCell extends Component {
 
         displayPlayer = character.x === cell.x && character.y === cell.y ? 'displayPlayer' : ''; 
         
-        if (cell.x === 4 && cell.y === 4) displayClass = 'door';
+        if (cell.x === boardSize && cell.y === boardSize) displayClass = 'door';
 
         if (displayPlayer === 'displayPlayer' && displayClass === 'door') {
             displayClass = 'door-open';
