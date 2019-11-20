@@ -1,20 +1,14 @@
 import Component from '../Component.js';
 import SingleCell from './SingleCell.js';
-import { createBoard } from './boardCellArray.js';
 
 class Board extends Component {
     onRender(element) {
-        
-        let character = this.props.character;
+        let boardArrayObj = this.props.boardArrayObj;
+        //let character = this.props.character;
         const boardSize = this.props.boardSize;
-        const boardArrayObj = createBoard(boardSize);
-        const doorLocation = {
-            x: Math.floor(Math.random() * (boardSize))
-        }
-
 
         boardArrayObj.forEach(cell => {
-            const props = { cell: cell, character: this.props.character, boardSize: boardSize, doorLocation: doorLocation };
+            const props = { cell: cell, character: this.props.character, boardSize: boardSize, doorLocation: this.props.doorLocation };
             const singleCell = new SingleCell(props);
             const singleCellDOM = singleCell.renderDOM();
             element.appendChild(singleCellDOM);
