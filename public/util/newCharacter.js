@@ -1,12 +1,11 @@
 // Generates a new character that can be saved to the database and returns that character. If we want control over character creation down the road, add parameters that influence the stats / random numbers / board size
 
 import { createBoard } from '../game-board/boardCellArray.js';
-import saveBoard from '../util/saveBoard.js';
+import saveBoard from './saveBoard.js';
 
 function newCharacter() {
     const newBoard = createBoard(5);
     let newChar = {
-        id: '', // need to get these from outside info / set in auth page before posting to DB
         userId: -1, // same here
         hp: 5,
         gold: 0,
@@ -26,7 +25,8 @@ function newCharacter() {
         boardsSurvived: 0
     };
 
-    return saveBoard(newBoard, newChar);
+    saveBoard(newBoard, newChar);
+    return newChar;
 }
 
 export default newCharacter;

@@ -3,12 +3,21 @@ import UserSignIn from './UserSignIn.js';
 import UserSignUp from './UserSignUp.js';
 import Header from '../common/Header.js';
 import { signIn, signUp } from '../services/game-api.js';
+import newChar from '../util/newCharacter.js';
 
 const success = user => {
     localStorage.setItem('TOKEN', user.token);
     localStorage.setItem('USER', user.displayName);
     const searchParams = new URLSearchParams(location.search);
-    location = searchParams.get('redirect') || './game-index.html';
+    
+    let newCharacter = newChar(); 
+    //Get user object using services.
+    newCharacter.userId = user.id;
+    //Post this character to the database using services
+
+
+    const waitLocation = () => location = searchParams.get('redirect') || './game-index.html';
+    setTimeout(waitLocation, 3000);
 };
 
 class AuthPageApp extends Component {
