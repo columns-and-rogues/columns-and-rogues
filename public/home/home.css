@@ -1,0 +1,21 @@
+.background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    background-image: url('../assets/original.gif');
+    background-position: center;
+    background-size: cover;
+}
+.rules {
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: rgba(11, 25, 13, 0.8);
+    width: 50%;
+    font-size: 16pt;
+    color: white;
+    border: black 2px;
+}
