@@ -38,6 +38,10 @@ html{
     margin: 16px; 
     list-style: none;
 }
+<<<<<<< HEAD
+.board-container{
+    background-position: contain;
+=======
 
 #gold{
     color: gold;
@@ -57,6 +61,7 @@ background-repeat: no-repeat;
 
 
 
+>>>>>>> 59399dc98b65b043eacbfbeef4e693bba65fe834
 }
 
 #stats{
@@ -122,7 +127,7 @@ background-repeat: no-repeat;
 }
 
 .door-open {
-    background-image: url('../assets/door-open-empty.png');
+    background-image: url('../assets/door-open.gif');
     display: flex;
     justify-content: flex-start
 }
