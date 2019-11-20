@@ -126,4 +126,30 @@ const boardCellArray = [
     }
 ];
 
+function createBoard(numberOfRowsAndCols) {
+    let boardArray = new Array(numberOfRowsAndCols * numberOfRowsAndCols)
+        .fill({
+            x: 0,
+            y: 0,
+            content: null
+        });
+
+    let y = 0;
+    let x = 0;
+
+    boardArray.forEach((object) => {
+        object.x = x;
+        object.y = y;
+
+        x++;
+        
+        if (x === numberOfRowsAndCols) {
+            y++;
+            x = 0;
+        }
+    });
+
+    return boardArray;
+}
+
 export default boardCellArray;
