@@ -6,9 +6,9 @@ import { signIn, signUp } from '../services/game-api.js';
 
 const success = user => {
     localStorage.setItem('TOKEN', user.token);
-    localStorage.setItem('USER', user.shownName);
+    localStorage.setItem('USER', user.displayName);
     const searchParams = new URLSearchParams(location.search);
-    location = searchParams.get('redirect') || './game-board.html';
+    location = searchParams.get('redirect') || './game-index.html';
 };
 
 class AuthPageApp extends Component {
