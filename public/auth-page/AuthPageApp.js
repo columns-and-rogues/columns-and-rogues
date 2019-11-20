@@ -10,6 +10,11 @@ const success = async(user) => {
     localStorage.setItem('USER', user.displayName);
     const searchParams = new URLSearchParams(location.search);
 
+    let newCharacter = newChar();
+    newCharacter.userId = user.id;
+    console.log(newCharacter);
+    await addCharacter(newCharacter);
+
 
     const waitLocation = () => location = searchParams.get('redirect') || './game-index.html';
     setTimeout(waitLocation, 3000);
@@ -17,7 +22,6 @@ const success = async(user) => {
 
 class AuthPageApp extends Component {
     onRender(dom){
-        console.log(getUser());
 
         const header = new Header();
         dom.prepend(header.renderDOM());
@@ -40,9 +44,6 @@ class AuthPageApp extends Component {
             onSignUp: async newUser => {
                 try {
                     const user = await signUp(newUser);
-                    let newCharacter = newChar();
-                    newCharacter.userId = user.id;
-                    await addCharacter(newCharacter);
                     success(user);
                 }
                 catch (err) {
