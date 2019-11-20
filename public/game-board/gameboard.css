@@ -38,10 +38,6 @@ html{
     margin: 16px; 
     list-style: none;
 }
-<<<<<<< HEAD
-.board-container{
-    background-position: contain;
-=======
 
 #gold{
     color: gold;
@@ -61,7 +57,6 @@ background-repeat: no-repeat;
 
 
 
->>>>>>> 59399dc98b65b043eacbfbeef4e693bba65fe834
 }
 
 #stats{
