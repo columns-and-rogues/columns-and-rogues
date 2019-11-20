@@ -1,6 +1,6 @@
 const character = {
-    x: 2,
-    y: 4
+    x: 0,
+    y: 0
 };
 
 export default character;
