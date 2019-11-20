@@ -36,6 +36,7 @@ html{
     font-family: cursive;
     font-size: 18px;
     margin: 16px; 
+    list-style: none;
 }
 
 #gold{
@@ -45,10 +46,15 @@ html{
 #info{
 margin-top: 2.45%;
 margin-left: 1%;
-background-color:rgb(119, 89, 138); 
+color: white; 
 border-style: outset;
 border-width: 5px;
 padding: 8px; 
+background-image: url(../assets/itemCandle.gif);
+background-size: 170%;
+background-position: bottom;
+background-repeat: no-repeat;
+
 
 
 }
