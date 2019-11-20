@@ -17,7 +17,7 @@ const boardCellArray = [
     {
         x: 3,
         y: 0, 
-        contents: null
+        contents: 2
     },
     {
         x: 4,
@@ -42,12 +42,12 @@ const boardCellArray = [
     {
         x: 3,
         y: 1, 
-        contents: null
+        contents: 3
     },
     {
         x: 4,
         y: 1, 
-        contents: null
+        contents: 0
     },
     {
         x: 0,

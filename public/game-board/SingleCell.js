@@ -28,7 +28,12 @@ class SingleCell extends Component {
         displayPlayer = character.x === cell.x && character.y === cell.y ? 'displayPlayer' : ''; 
         
         return /*html*/ `
-            <span class='cell column-${cell.x} row-${cell.y} ${displayClass} ${displayPlayer}' id='${cell.x}-${cell.y}'>
+            <span 
+                class='
+                    cell
+                    ${displayClass} 
+                    ${displayPlayer}' 
+                id='x${cell.x}-y${cell.y}'>
             </span>
         `;
     }
