@@ -78,7 +78,7 @@ class AuthPageApp extends Component {
             <div>
                 <main class="container">
                     <section class="logout-section">
-                        <p>Signed in as ${user}</p>
+                        <p id="signed-in-as">Signed in as ${user}</p>
                         <button class="logout auth-button">Logout</button>
                     </section>
                 </main>
