@@ -57,15 +57,16 @@ class GameApp extends Component {
         element.prepend(header.renderDOM());
 
         const main = element.querySelector('.main');
+        const boardSpot = element.querySelector('.board-location'); 
 
         const stats = new Stats({ /*PROPS!!!!*/ });
-        main.appendChild(stats.renderDOM());
+        boardSpot.appendChild(stats.renderDOM());
 
         const info = new Info({ /*PROPS!!!!*/ });
         main.appendChild(info.renderDOM());
 
         const board = new Board({ character: character, boardArrayObj: boardArrayObj, boardSize: boardSize, doorLocation: doorLoc });
-        main.appendChild(board.renderDOM());
+        boardSpot.appendChild(board.renderDOM());
 
         
         // const modale = new Modale({ /*PROPS!!!!*/ });
@@ -74,8 +75,10 @@ class GameApp extends Component {
 
     renderHTML() {
         return /*html*/`
-        <div>
+        <div class="stats-here">
             <div class="main">
+                <div class="board-location">
+                </div>
             </div>
         </div>
         `;
