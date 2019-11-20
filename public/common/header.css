@@ -1,3 +1,52 @@
-.logo {
+@font-face {
+    font-family: 'Soul Calibur';
+    src: url(../assets/Soul_Calibur.ttf); 
+}
+
+nav{
+    margin-top: 60px; 
+    margin-right: 20px;
+    text-decoration: none;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 20px
+}
+
+a{
     
+    text-decoration: none;
+    color:rgb(223, 54, 54); 
+    letter-spacing: 3px;
+}
+
+header{
+    font-family: 'Soul Calibur';
+    display: flex; 
+    justify-content: space-between;
+    background-image: url(../assets/green-fog.gif);
+    background-repeat: none;
+    background-position-y: bottom;
+    background-size:cover;
+    color: white;
+    opacity: 80%;
+    position: fixed;
+    width: 100%;
+}
+
+h1{ 
+    font-size: 70px;
+    margin: 5px;
+    margin-left: 75px;
+    margin-top: 10px;
+    letter-spacing: 10px;
+}
+
+.logo{
+    margin: 0; 
+}
+
+img {
+    margin-left:20px; 
+    padding: 0;
+    height: 90px;
+    width: auto; 
 }

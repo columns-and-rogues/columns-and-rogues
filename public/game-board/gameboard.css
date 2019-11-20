@@ -1,3 +1,7 @@
+body{
+    margin:0;
+}
+
 #board {
     display: grid;
     grid-template-rows: 75px 75px 75px 75px 75px;
@@ -5,7 +9,9 @@
     background-image: url(https://www.biography.com/.image/t_share/MTE1ODA0OTcyMDA1Njg4ODQ1/tom-jones-21026065-1-sized.jpg);
     background-size: contain;
     background-repeat: no-repeat;
+    background-position-y: center;
 }
+
 
 .cell {
     border: solid 1px white;

@@ -7,12 +7,12 @@ class Header extends Component {
 
         return /*html*/`
         <header>
-            <div class = 'logo'><img src="../assets/logo.gif">
+            <div class = 'logo'><img src="./assets/rogue-logo.png">
             </div>
                 <h1>${title}</h1>
                     <nav>
-                        <a href="./auth.html">Login/out</a>
-                        <a href="./game-index.html">Game</a>
+                        <a href="./auth.html">Login |</a>
+                        <a href="./game-index.html">  Game |</a>
                         <a href="../about-us/index.html">About Us</a>
                         <a href="./">Rules</a>
                     </nav>

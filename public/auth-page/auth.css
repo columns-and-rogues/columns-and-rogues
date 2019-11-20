@@ -2,10 +2,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 90vh;
+    height: 100vh;
     background-image: url('../assets/backgroundImg.gif');
     background-position: center;
     background-size: cover;
+    
 }
 
 .auth-button {
