@@ -23,6 +23,8 @@ class SingleCell extends Component {
                 break;
         }
 
+        if (cell.x === 4 && cell.y === 4) displayClass = 'door';
+
         displayPlayer = character.x === cell.x && character.y === cell.y ? 'displayPlayer' : ''; 
         
         return /*html*/ `
