@@ -1,3 +1,5 @@
+// Changed our old get user by id to get character by id, then added a get user function. Old get user by id may be broken by this change
+
 // Load Environment Variables from the .env file
 require('dotenv').config();
 
@@ -45,6 +47,34 @@ app.use('/api/auth', authRoutes);
 app.use('/api', ensureAuth);
 
 // database routes
+app.get('/api/user/:id', async(req, res) => {
+    const email = req.params.id;
+
+    try {
+        const result = await client.query(`
+            SELECT id, email, hash, display_name as "displayName"
+            FROM users
+            WHERE email = $1;
+        `,
+        [email]);
+
+        const user = result.rows[0];
+        if (!user) {
+            res.status(404).json({
+                error: `User for email ${email} does not exist`
+            });
+        } else {
+            res.json(result.rows[0]);
+        }
+
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({
+            error: err.message || err
+        });
+    }
+});
+
 app.post('/api/character', async(req, res) => {
     const character = req.body;
 
@@ -65,7 +95,7 @@ app.post('/api/character', async(req, res) => {
     }
 });
 
-app.get('/api/user/:id', async(req, res) => {
+app.get('/api/character/:id', async(req, res) => {
     const id = req.params.id;
 
     try {
@@ -80,10 +110,10 @@ app.get('/api/user/:id', async(req, res) => {
         `,
         [id]);
 
-        const user = result.rows[0];
-        if (!user) {
+        const character = result.rows[0];
+        if (!character) {
             res.status(404).json({
-                error: `User id ${id} does not exist`
+                error: `Character for User id ${id} does not exist`
             });
         } else {
             res.json(result.rows[0]);
@@ -97,7 +127,7 @@ app.get('/api/user/:id', async(req, res) => {
     }
 });
 
-app.put('/api/user/:id', async(req, res) => {
+app.put('/api/character/:id', async(req, res) => {
     const id = req.params.id;
     const character = req.body;
 
@@ -131,7 +161,7 @@ app.put('/api/user/:id', async(req, res) => {
     } catch (err) {
         if (err.code === '23505') {
             res.status(400).json({
-                error: `Updating info failed`
+                error: `Updating character failed`
             });
         } else {
             res.status(500).json({
