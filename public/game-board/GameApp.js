@@ -5,7 +5,10 @@ import Info from './Info.js';
 import Board from './Board.js';
 import character from './character-obj.js';
 import { acceptableKeys } from '../util/acceptableKeys.js';
-import levelComplete from './levelComplete.js';
+import levelComplete from '../util/levelComplete.js';
+import { doorLocation } from '../util/doorLocation.js';
+import probabilityFunction from '../util/probability-function.js';
+import { createBoard } from './boardCellArray.js';
 
 //Still need to make
 //import Modale from './Modale.js';
@@ -14,27 +17,38 @@ let boardSize = 2;
 class GameApp extends Component {
 
     onRender(element) {
-        let boardLimit = boardSize - 1;
+        const doorLoc = doorLocation(boardSize);
+        const boardArrayObj = createBoard(boardSize);
+        //let boardLimit = boardSize - 1;
         let limit = boardSize - 2;
+
+        console.log(boardArrayObj);
 
         if (this.handler) document.removeEventListener('keydown', this.handler);
 
         this.handler = (event) => {
             const keyname = event.key;
             if (!acceptableKeys.includes(keyname)) return;
+
             if (keyname === 'ArrowLeft' && character.x >= 1) character.x--;
             if (keyname === 'ArrowUp' && character.y >= 1) character.y--;
             if (keyname === 'ArrowRight' && character.x <= limit) character.x++;
             if (keyname === 'ArrowDown' && character.y <= limit) character.y++;
             
-            if (character.x === boardLimit && 
-                character.y === boardLimit && 
+            let currentCell = boardArrayObj.find(object => (object.x === character.x && object.y === character.y));
+        
+
+            if (currentCell.contents === null) currentCell.contents = probabilityFunction(character);
+            
+            if (character.x === doorLoc.x && 
+                character.y === doorLoc.y && 
                 keyname === 'Enter'){
                 levelComplete();
                 boardSize = boardSize + 1;
                 this.update(boardSize);
+                return;
             }
-            board.update(boardSize);
+            board.update();
         };
 
         document.addEventListener('keydown', this.handler);
@@ -51,7 +65,7 @@ class GameApp extends Component {
         const info = new Info({ /*PROPS!!!!*/ });
         main.appendChild(info.renderDOM());
 
-        const board = new Board({ character: character, boardSize: boardSize });
+        const board = new Board({ character: character, boardArrayObj: boardArrayObj, boardSize: boardSize, doorLocation: doorLoc });
         boardSpot.appendChild(board.renderDOM());
 
         
