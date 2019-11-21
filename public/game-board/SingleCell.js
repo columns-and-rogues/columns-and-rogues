@@ -44,6 +44,7 @@ class SingleCell extends Component {
         }
 
         return /*html*/ `
+        
             <span 
                 class='
                     cell

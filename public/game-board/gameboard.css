@@ -115,8 +115,18 @@ background-repeat: no-repeat;
 
 .displayPlayer {
     background-image: url('../assets/temp-char.png');
-    border: dashed 3px green;
+    border: dashed 3px darkblue;
+    animation: myAnimation .5s linear 0s 1 forwards;
+
 }
+
+@keyframes myAnimation {
+    50% {
+    border: 10px dashed rgb(255, 0, 0);
+    }	
+}
+
+
 
 .door-open {
     background-image: url('../assets/door-open.gif');
