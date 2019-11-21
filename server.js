@@ -47,6 +47,54 @@ app.use('/api/auth', authRoutes);
 app.use('/api', ensureAuth);
 
 // database routes
+app.get('/api/cats', async (req, res) => {
+
+    try {
+        const result = await client.query(`
+            SELECT
+                id,
+                name,
+                type,
+                url,
+                year,
+                is_sidekick as "isSidekick"
+            FROM CATS;
+        `);
+
+        res.json(result.rows);
+    }
+    catch (err) {
+        res.status(500).json({
+            error: err.message || err
+        });
+    }
+
+});
+
+app.get('/api/cats', async (req, res) => {
+
+    try {
+        const result = await client.query(`
+            SELECT
+                id,
+                name,
+                type,
+                url,
+                year,
+                is_sidekick as "isSidekick"
+            FROM CATS;
+        `);
+
+        res.json(result.rows);
+    }
+    catch (err) {
+        res.status(500).json({
+            error: err.message || err
+        });
+    }
+
+});
+
 app.get('/api/user/:id', async(req, res) => {
     const email = req.params.id;
 
