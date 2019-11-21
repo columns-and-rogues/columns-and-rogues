@@ -42,14 +42,14 @@ export function signIn(creds) {
 }
 
 export function updateCharacter(character) {
-    const url = `${URL}/character/:${character.id}`;
+    const url = `${URL}/character/:${character.userId}`;
     return fetchWithError(url, {
         method:'PUT',
         headers: {
-            'Content-Type': 'application.json',
+            'Content-Type': 'application/json',
             'Authorization': token
         },
-        body: JSON.stringify(character)
+        body: JSON.stringify(character),
     });
 }
 

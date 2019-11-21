@@ -32,6 +32,7 @@ class Info extends Component {
                 <li id="item-3">Item 3: ${item[2].name}</li>
                 <li id="item-4">Item 4: ${item[3].name}</li>
                 <li id="item-5">Item 5: ${item[4].name}</li>
+                <button id="save-button">Save Game</button>
         </div>
         `;
     }
