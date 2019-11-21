@@ -4,7 +4,6 @@ import SingleCell from './SingleCell.js';
 class Board extends Component {
     onRender(element) {
         let boardArrayObj = this.props.boardArrayObj;
-        //let character = this.props.character;
         const boardSize = this.props.boardSize;
 
         boardArrayObj.forEach(cell => {
