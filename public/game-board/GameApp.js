@@ -8,6 +8,7 @@ import { acceptableKeys } from '../util/acceptableKeys.js';
 import levelComplete from '../util/levelComplete.js';
 import { doorLocation } from '../util/doorLocation.js';
 import probabilityFunction from '../util/probability-function.js';
+import Modal from './Modal.js';
 //import { createBoard } from './boardCellArray.js';
 import { getCharacterById } from '../services/game-api.js';
 import retrieveBoard from '../util/retrieveBoard.js';
@@ -46,6 +47,12 @@ class GameApp extends Component {
         
 
             if (currentCell.contents === null) currentCell.contents = probabilityFunction(character);
+
+            //MODAL HERE 
+            
+            const myModal = new Modal({ cell: currentCell, character: character, doorLocation: doorLoc });
+            element.prepend(myModal.renderDOM());
+            console.log(character);
             
             if (character.x === doorLoc.x && 
                 character.y === doorLoc.y && 

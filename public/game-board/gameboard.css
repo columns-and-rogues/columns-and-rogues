@@ -149,3 +149,8 @@ background-repeat: no-repeat;
 .fade {
     opacity: 0;
 }
+
+.modal {
+    z-index: 5;
+    border: solid brown;
+}
