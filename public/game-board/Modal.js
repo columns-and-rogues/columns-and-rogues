@@ -6,42 +6,39 @@ class Modal extends Component {
     renderHTML(){
         const cell = this.props.cell;
         const character = this.props.character;
-        console.log(cell, 'XXXXXXX');
-        if (cell.contents === 1) {
-            character.gold++;
-            return /*html*/`
-            <section class="modal">
-                <div class="modal-content">
-                <img src='./assets/gold-star.gif'>
-                <button>Collect Gold</button>
-                </div>
-            </section>
-        `;
-        }
-        else if (cell.contents === 2) {
-            character.hp--;
-            return /*html*/`
-            <section class="modal">
-                <div class="modal-content">
-                <img src='./assets/monster-icon.png'>
-                </div>
-            </section>
-        `;            
-        }
-        else if (cell.contents === 3) {
-            character.hp++;
-            return /*html*/`
-            <section class="modal">
-                <div class="modal-content">
-                <img src='./assets/item-logo.gif'>
-                </div>
-            </section>
-        `;
-        }
+        let modalImage;
 
+        switch (cell.contents){
+            case 1:
+                modalImage = 'gold-star.gif';
+                character.gold++;
+                break;
+            case 2:
+                modalImage = 'monster-icon.png';
+                character.hp--;
+                break;
+            case 3:
+                modalImage = 'item-logo.gif';
+                character.hp++;
+                break;
+            case 4:
+                modalImage = 'temp-char.png';
+                //adjust stats and whatever else
+                break;
+            case 5:
+                modalImage = '';
+                //endgame
+                break;
+        }
+        
+        return /*html*/`
+            <section class="modal">
+                <div class="modal-content">
+                <img src='./assets/${modalImage}'>
+                </div>
+            </section>
+        `;
     }
-
-    
 }
 
 export default Modal;
