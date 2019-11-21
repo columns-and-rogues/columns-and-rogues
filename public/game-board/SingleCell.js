@@ -4,7 +4,6 @@ class SingleCell extends Component {
     renderHTML() {
         let cell = this.props.cell;
         let character = this.props.character;
-        //let boardSize = this.props.boardSize - 1;
         const doorLoaction = this.props.doorLocation;
 
         let displayClass = ''; 
@@ -45,6 +44,7 @@ class SingleCell extends Component {
         }
 
         return /*html*/ `
+        
             <span 
                 class='
                     cell

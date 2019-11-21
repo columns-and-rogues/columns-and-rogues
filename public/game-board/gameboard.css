@@ -54,9 +54,6 @@ background-image: url(../assets/itemCandle.gif);
 background-size: 170%;
 background-position: bottom;
 background-repeat: no-repeat;
-
-
-
 }
 
 #stats{
@@ -118,8 +115,18 @@ background-repeat: no-repeat;
 
 .displayPlayer {
     background-image: url('../assets/temp-char.png');
-    border: dashed 3px green;
+    border: dashed 3px darkblue;
+    animation: myAnimation .5s linear 0s 1 forwards;
+
 }
+
+@keyframes myAnimation {
+    50% {
+    border: 10px dashed rgb(255, 0, 0);
+    }	
+}
+
+
 
 .door-open {
     background-image: url('../assets/door-open.gif');
@@ -130,8 +137,13 @@ background-repeat: no-repeat;
 #character {
     width: 80%;
     height: 80%;
-    opacity: 1;
-    transition: opacity 1s ease-in-out;
+    animation: anotherAnimation 1s linear .3s 1 forwards;
+}
+
+@keyframes anotherAnimation {
+    100% {
+        opacity: 0;
+    }
 }
 
 .fade {
