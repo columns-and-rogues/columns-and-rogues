@@ -47,18 +47,17 @@ app.use('/api/auth', authRoutes);
 app.use('/api', ensureAuth);
 
 // database routes
-app.get('/api/cats', async (req, res) => {
+app.get('/api/items', async(req, res) => {
 
     try {
         const result = await client.query(`
             SELECT
                 id,
                 name,
-                type,
-                url,
-                year,
-                is_sidekick as "isSidekick"
-            FROM CATS;
+                dice,
+                effect,
+                image
+            FROM items;
         `);
 
         res.json(result.rows);
@@ -71,18 +70,18 @@ app.get('/api/cats', async (req, res) => {
 
 });
 
-app.get('/api/cats', async (req, res) => {
+app.get('/api/monsters', async(req, res) => {
 
     try {
         const result = await client.query(`
             SELECT
                 id,
                 name,
-                type,
-                url,
-                year,
-                is_sidekick as "isSidekick"
-            FROM CATS;
+                hp,
+                dice,
+                effect,
+                image
+            FROM monsters;
         `);
 
         res.json(result.rows);
