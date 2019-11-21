@@ -5,18 +5,21 @@ import Info from './Info.js';
 import Board from './Board.js';
 import Modal from './Modal.js';
 import Footer from '../common/Footer.js';
-
 import levelComplete from '../util/levelComplete.js';
 import probabilityFunction from '../util/probability-function.js';
 import retrieveBoard from '../util/retrieveBoard.js';
 import { acceptableKeys } from '../util/acceptableKeys.js';
 import { doorLocation } from '../util/doorLocation.js';
-import { getCharacterById } from '../services/game-api.js';
+import { getCharacterById, getItems, getMonsters } from '../services/game-api.js';
 
 class GameApp extends Component {
     async onRender(element) {
         const character = await getCharacterById(localStorage.getItem('USERID')
         );
+        const itemArray = await getItems();
+        const monsterArray = await getMonsters();
+        console.log(itemArray);
+        console.log(monsterArray);
 
         const main = element.querySelector('.main');
         const boardSpot = element.querySelector('.board-location'); 
