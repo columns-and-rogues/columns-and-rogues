@@ -54,6 +54,14 @@ class GameApp extends Component {
             if (character.x === doorLoc.x && 
                 character.y === doorLoc.y && 
                 keyname === 'Enter'){
+                    
+                currentCell.contents = 4;
+                const endGameModal = new Modal({
+                    cell: currentCell, 
+                    character: character,
+                    doorLocation: doorLoc });
+                element.prepend(endGameModal.renderDOM());
+
                 levelComplete();
                 //boardSize = boardSize + 1;
                 this.update(boardSize);
