@@ -45,7 +45,7 @@ class GameApp extends Component {
             
             let currentCell = pulledBoard.find(object => (object.x === character.x && object.y === character.y));
         
-            if (!currentCell.contents) {
+            if (currentCell.contents === null) {
                 currentCell.contents = probabilityFunction(character);
                 if (currentCell.contents !== 0) {
                     const myModal = new Modal({ cell: currentCell, character: character, doorLocation: doorLoc });
