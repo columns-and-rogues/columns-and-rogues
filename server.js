@@ -47,6 +47,53 @@ app.use('/api/auth', authRoutes);
 app.use('/api', ensureAuth);
 
 // database routes
+app.get('/api/items', async(req, res) => {
+
+    try {
+        const result = await client.query(`
+            SELECT
+                id,
+                name,
+                dice,
+                effect,
+                image
+            FROM items;
+        `);
+
+        res.json(result.rows);
+    }
+    catch (err) {
+        res.status(500).json({
+            error: err.message || err
+        });
+    }
+
+});
+
+app.get('/api/monsters', async(req, res) => {
+
+    try {
+        const result = await client.query(`
+            SELECT
+                id,
+                name,
+                hp,
+                dice,
+                effect,
+                image
+            FROM monsters;
+        `);
+
+        res.json(result.rows);
+    }
+    catch (err) {
+        res.status(500).json({
+            error: err.message || err
+        });
+    }
+
+});
+
 app.get('/api/user/:id', async(req, res) => {
     const email = req.params.id;
 
