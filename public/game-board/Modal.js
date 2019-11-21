@@ -20,8 +20,9 @@ class Modal extends Component {
         let modalImage;
         let dynamicImage;
         let modalText;
-        let hideGetItem = 'hidden';
+        let modalButtonText;
         let disableInput = '';
+        let hideDynamicImage = 'hidden';
 
         switch (cell.contents){
             case 1:
@@ -32,6 +33,7 @@ class Modal extends Component {
             case 2:
                 randomMonster = monstersList[Math.floor(Math.random() * monstersList.length)];
                 dynamicImage = randomMonster.image;
+                hideDynamicImage = '';
 
                 modalImage = 'monster-icon.png';
                 modalText = `Argh! Attacked by a wild ${randomMonster.name}! It has ${randomMonster.hp} HP, rolls a 1d${randomMonster.dice} for attack, and is ${randomMonster.effect}. What item will you use to attack it?`;
@@ -40,12 +42,17 @@ class Modal extends Component {
             case 3:
                 randomItem = itemsList[Math.floor(Math.random() * itemsList.length)];
                 dynamicImage = randomItem.image;
-
+                hideDynamicImage = '';
                 modalImage = 'item-logo.gif';
                 modalText = `You found a ${randomItem.name}! It has a 1d${randomItem.dice} for attack and applies a ${randomItem.effect} effect on use.`;
-                disableInput = 'disabled=true';
-                hideGetItem = '';
-                character.hp++;
+                modalButtonText = `Pick up the ${randomItem.name}.`;
+
+                if (!character.itemTwo) character.itemTwo = randomItem.id;
+                else if (!character.itemThree) character.itemThree = randomItem.id;
+                else if (!character.itemFour) character.itemFour = randomItem.id;
+                else if (!character.itemFive) character.itemFive = randomItem.id;
+                else modalButtonText = 'You have no more room in your inventory!';
+                console.log(character);
                 break;
             case 4:
                 modalImage = 'temp-char.png';
@@ -61,10 +68,9 @@ class Modal extends Component {
             <section class='modal'>
                 <div class='modal-content'>
                     <img src='./assets/${modalImage}'>
-                    <img class=${hideGetItem} src=${dynamicImage}>
+                    <img class=${hideDynamicImage} src=${dynamicImage}>
                     <div>${modalText}</div>
-                    <button id="getItem" class='${hideGetItem}'>Claim the ${randomItem.name}!</button>
-                    <button id="submit" ${disableInput}>Change Me!</button>
+                    <button id="submit" ${disableInput}>${modalButtonText}</button>
                 </div>
             </section>
         `;

@@ -44,7 +44,6 @@ class GameApp extends Component {
             if (keyname === 'ArrowDown' && character.y <= limit) character.y++;
             
             let currentCell = pulledBoard.find(object => (object.x === character.x && object.y === character.y));
-        
             
             if (currentCell.contents === null) {
                 currentCell.contents = probabilityFunction(character);
@@ -58,9 +57,12 @@ class GameApp extends Component {
                     element.prepend(myModal.renderDOM());
                     stats.update();
                     const modalButton = document.getElementById('submit');
-                    modalButton.addEventListener('click', () => myModal.update({ modalDisplay: false })
-                   
-                    );}
+                    modalButton.addEventListener('click', () => {
+                        info.update();
+                        myModal.update({ modalDisplay: false });
+                    }
+                    );
+                }
             }
             if (character.x === doorLoc.x && 
                 character.y === doorLoc.y && 
