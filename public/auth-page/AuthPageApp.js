@@ -2,18 +2,26 @@ import Component from '../Component.js';
 import UserSignIn from './UserSignIn.js';
 import UserSignUp from './UserSignUp.js';
 import Header from '../common/Header.js';
-import { signIn, signUp, getUser } from '../services/game-api.js';
+import newChar from '../util/newCharacter.js';
+import { signIn, signUp, addCharacter } from '../services/game-api.js';
 
-const success = user => {
+const success = async(user) => {
     localStorage.setItem('TOKEN', user.token);
     localStorage.setItem('USER', user.displayName);
     const searchParams = new URLSearchParams(location.search);
-    location = searchParams.get('redirect') || './game-index.html';
+
+    let newCharacter = newChar();
+    newCharacter.userId = user.id;
+    console.log(newCharacter);
+    await addCharacter(newCharacter);
+
+
+    const waitLocation = () => location = searchParams.get('redirect') || './game-index.html';
+    setTimeout(waitLocation, 3000);
 };
 
 class AuthPageApp extends Component {
     onRender(dom){
-        console.log(getUser());
 
         const header = new Header();
         dom.prepend(header.renderDOM());
