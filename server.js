@@ -47,6 +47,53 @@ app.use('/api/auth', authRoutes);
 app.use('/api', ensureAuth);
 
 // database routes
+app.get('/api/items', async(req, res) => {
+
+    try {
+        const result = await client.query(`
+            SELECT
+                id,
+                name,
+                dice,
+                effect,
+                image
+            FROM items;
+        `);
+
+        res.json(result.rows);
+    }
+    catch (err) {
+        res.status(500).json({
+            error: err.message || err
+        });
+    }
+
+});
+
+app.get('/api/monsters', async(req, res) => {
+
+    try {
+        const result = await client.query(`
+            SELECT
+                id,
+                name,
+                hp,
+                dice,
+                effect,
+                image
+            FROM monsters;
+        `);
+
+        res.json(result.rows);
+    }
+    catch (err) {
+        res.status(500).json({
+            error: err.message || err
+        });
+    }
+
+});
+
 app.get('/api/user/:id', async(req, res) => {
     const email = req.params.id;
 
@@ -144,8 +191,9 @@ app.get('/api/character/:id', async(req, res) => {
 });
 
 app.put('/api/character/:id', async(req, res) => {
-    const user_id = req.params.id;
+    const user_id = req.params.id.slice(1);
     const character = req.body;
+    console.log(character);
 
     try {
         const result = await client.query(`
