@@ -151,6 +151,20 @@ background-repeat: no-repeat;
 }
 
 .modal {
-    z-index: 5;
-    border: solid brown;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid #b7b163;
+    border-radius: 10px;
+    background: #fffaef;
+    padding: 1rem 1.5rem;
+    width: 24rem;
+    text-align: center;
+    font-family: 'Pompiere', cursive;
 }
+
+.hidden {
+    display: none;
+}
+

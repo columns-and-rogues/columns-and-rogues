@@ -4,6 +4,13 @@ import Component from '../Component.js';
 class Modal extends Component {
     
     renderHTML(){
+        const modalDisplay = this.props.modalDisplay;
+        if (!modalDisplay) {
+            return /*html*/`
+            <div id="remove-modal" class="modal hidden"></div>
+        `;
+        }
+        if (document.getElementById('remove-modal')) document.getElementById('remove-modal').remove();
         const cell = this.props.cell;
         const character = this.props.character;
         let modalImage;
