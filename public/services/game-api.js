@@ -1,6 +1,10 @@
 const URL = '/api';
 
 const token = localStorage.getItem('TOKEN');
+if (!token && !(location.pathname === '/' || location.pathname === '/auth.html')) {
+    
+    window.location = '/auth.html';
+}
 
 async function fetchWithError(url, options) {
     if (token) {
