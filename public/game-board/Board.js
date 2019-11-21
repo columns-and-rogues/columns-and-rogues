@@ -1,11 +1,12 @@
 import Component from '../Component.js';
 import SingleCell from './SingleCell.js';
+import newCharacter from '../util/newCharacter.js';
 
 class Board extends Component {
     onRender(element) {
         let boardArr = this.props.boardArr;
         const boardSize = this.props.boardSize;
-        const character = this.props.character;
+        let character = this.props.character;
 
         boardArr.forEach(cell => {
             const props = { 
@@ -17,6 +18,14 @@ class Board extends Component {
             const singleCell = new SingleCell(props);
             const singleCellDOM = singleCell.renderDOM();
             element.appendChild(singleCellDOM);
+        });
+
+        const gameOver = element.querySelector('#game-over');
+        const restartButton = element.querySelector('#restart-button');
+        restartButton.addEventListener('click', () => {
+            newCharacter();
+            gameOver.classList.add('hidden');
+            window.location.reload(true);
         });
     }
 
@@ -39,6 +48,7 @@ class Board extends Component {
                         <li class="dead">Levels Complete: ${character.boardSurvived}</li>
                         <li class="dead">Gold: ${character.gold}</li>
                     </ul>
+                    <button id="restart-button">Start New Game</button>
                 </div>
             </div>
             `;

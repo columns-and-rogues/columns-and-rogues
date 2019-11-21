@@ -186,6 +186,21 @@ ul {
     font-size: 30px;
 }
 
+#restart-button {
+    width: 242px;
+    height: 70px;
+    border-radius: 22px;
+    border: 2px solid red;
+    font-size: 25px;
+    background: rgb(136, 12, 12);
+    box-shadow: inset -4px -4px 5px black;
+    outline: none;
+    color: white;
+}
+#restart-button:active {
+    box-shadow: inset 4px 4px 5px black;
+}
+
 .dead {
     list-style: none;
     font-family: 'Impact', 'Haettenschweiler', 'Arial Narrow Bold', sans-serif;

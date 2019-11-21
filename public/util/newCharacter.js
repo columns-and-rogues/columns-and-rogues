@@ -7,7 +7,7 @@ function newCharacter() {
     const newBoard = createBoard(5);
     let newChar = {
         userId: -1, // same here
-        hp: 5,
+        hp: 1,
         gold: 0,
         itemOne: 1,
         itemTwo: 0,

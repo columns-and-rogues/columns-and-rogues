@@ -5,7 +5,7 @@ import Info from './Info.js';
 import Board from './Board.js';
 import Modal from './Modal.js';
 import runDeath from './death.js';
-// add footer
+import Footer from '../common/Footer.js';
 
 import levelComplete from '../util/levelComplete.js';
 import probabilityFunction from '../util/probability-function.js';
@@ -16,7 +16,7 @@ import { getCharacterById } from '../services/game-api.js';
 
 class GameApp extends Component {
     async onRender(element) {
-        const character = await getCharacterById(localStorage.getItem('USERID')
+        let character = await getCharacterById(localStorage.getItem('USERID')
         );
 
         const main = element.querySelector('.main');
@@ -51,6 +51,7 @@ class GameApp extends Component {
                     stats.update();
                     if (character.hp < 1){
                         runDeath(character);
+                        document.removeEventListener('keydown', this.handler);
                         // something happens
                         return;
                     }
@@ -85,6 +86,9 @@ class GameApp extends Component {
             boardSize: boardSize, 
             doorLocation: doorLoc });
         boardSpot.appendChild(board.renderDOM());
+
+        const footer = new Footer();
+        element.appendChild(footer.renderDOM());
     }
 
     renderHTML() {
