@@ -26,6 +26,8 @@ class GameApp extends Component {
         const doorLoc = doorLocation(boardSize);
         //const modalBool = false;
         //const pulledBoard = createBoard(boardSize);
+
+        console.log(character);
         
         //KEY CONTROLS
         let limit = boardSize - 2;
@@ -64,10 +66,10 @@ class GameApp extends Component {
         const main = element.querySelector('.main');
         const boardSpot = element.querySelector('.board-location'); 
 
-        const stats = new Stats({ /*PROPS!!!!*/ });
+        const stats = new Stats({ character: character });
         boardSpot.appendChild(stats.renderDOM());
 
-        const info = new Info({ /*PROPS!!!!*/ });
+        const info = new Info({ character: character });
         main.appendChild(info.renderDOM());
 
         const board = new Board({ character: character, boardArrayObj: pulledBoard, boardSize: boardSize, doorLocation: doorLoc });
