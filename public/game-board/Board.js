@@ -3,11 +3,16 @@ import SingleCell from './SingleCell.js';
 
 class Board extends Component {
     onRender(element) {
-        let boardArrayObj = this.props.boardArrayObj;
+        let boardArr = this.props.boardArr;
         const boardSize = this.props.boardSize;
 
-        boardArrayObj.forEach(cell => {
-            const props = { cell: cell, character: this.props.character, boardSize: boardSize, doorLocation: this.props.doorLocation };
+        boardArr.forEach(cell => {
+            const props = { 
+                cell: cell, 
+                character: this.props.character, 
+                boardSize: boardSize, 
+                doorLocation: this.props.doorLocation };
+                
             const singleCell = new SingleCell(props);
             const singleCellDOM = singleCell.renderDOM();
             element.appendChild(singleCellDOM);

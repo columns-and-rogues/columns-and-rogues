@@ -3,37 +3,32 @@ import Header from '../common/header.js';
 import Stats from './Stats.js';
 import Info from './Info.js';
 import Board from './Board.js';
-//import character from './character-obj.js';
-import { acceptableKeys } from '../util/acceptableKeys.js';
-import levelComplete from '../util/levelComplete.js';
-import { doorLocation } from '../util/doorLocation.js';
-import probabilityFunction from '../util/probability-function.js';
 import Modal from './Modal.js';
-//import { createBoard } from './boardCellArray.js';
-import { getCharacterById } from '../services/game-api.js';
+
+import levelComplete from '../util/levelComplete.js';
+import probabilityFunction from '../util/probability-function.js';
 import retrieveBoard from '../util/retrieveBoard.js';
-
-//Still need to make
-//import Modale from './Modale.js';
-
+import { acceptableKeys } from '../util/acceptableKeys.js';
+import { doorLocation } from '../util/doorLocation.js';
+import { getCharacterById } from '../services/game-api.js';
 
 class GameApp extends Component {
-
     async onRender(element) {
         const character = await getCharacterById(localStorage.getItem('USERID')
         );
+
+        const main = element.querySelector('.main');
+        const boardSpot = element.querySelector('.board-location'); 
+
         const pulledBoard = retrieveBoard(character);
         const boardSize = Math.sqrt(pulledBoard.length);
         const doorLoc = doorLocation(boardSize);
         //const modalBool = false;
         //const pulledBoard = createBoard(boardSize);
-
-        console.log(character);
-        
-        //KEY CONTROLS
         let limit = boardSize - 2;
+        
+        //KEY CONTROLS//
         if (this.handler) document.removeEventListener('keydown', this.handler);
-
         this.handler = (event) => {
             const keyname = event.key;
             if (!acceptableKeys.includes(keyname)) return;
@@ -69,21 +64,18 @@ class GameApp extends Component {
         const header = new Header();
         element.prepend(header.renderDOM());
 
-        const main = element.querySelector('.main');
-        const boardSpot = element.querySelector('.board-location'); 
-
         const stats = new Stats({ character: character });
         boardSpot.appendChild(stats.renderDOM());
 
         const info = new Info({ character: character });
         main.appendChild(info.renderDOM());
 
-        const board = new Board({ character: character, boardArrayObj: pulledBoard, boardSize: boardSize, doorLocation: doorLoc });
+        const board = new Board({ 
+            character: character, 
+            boardArr: pulledBoard, 
+            boardSize: boardSize, 
+            doorLocation: doorLoc });
         boardSpot.appendChild(board.renderDOM());
-
-        
-        // const modale = new Modale({ /*PROPS!!!!*/ });
-        // main.appendChild(modale.renderDOM());
     }
 
     renderHTML() {

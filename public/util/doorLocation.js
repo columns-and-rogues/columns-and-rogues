@@ -1,6 +1,7 @@
 export function doorLocation(boardSize) {
     const boardArrayLimit = boardSize - 1;
     let magicNum = Math.floor(boardSize / 2);
+    
     let doorLocation = {
         x: boardArrayLimit,
         y: boardArrayLimit,
