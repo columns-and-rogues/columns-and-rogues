@@ -35,6 +35,7 @@ class Modal extends Component {
             <section class="modal">
                 <div class="modal-content">
                 <img src='./assets/${modalImage}'>
+                <button id="submit">Change Me!</button>
                 </div>
             </section>
         `;
