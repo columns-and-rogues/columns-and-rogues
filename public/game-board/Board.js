@@ -5,6 +5,7 @@ class Board extends Component {
     onRender(element) {
         let boardArr = this.props.boardArr;
         const boardSize = this.props.boardSize;
+        const character = this.props.character;
 
         boardArr.forEach(cell => {
             const props = { 
@@ -20,6 +21,7 @@ class Board extends Component {
     }
 
     renderHTML() {
+        const character = this.props.character;
         const boardSize = this.props.boardSize;
         let gridString = '';
         for (let i = 0; i < boardSize; i++) {
@@ -31,6 +33,13 @@ class Board extends Component {
             <div id="board" 
                 style="grid-template-rows: ${gridString};
                 grid-template-columns: ${gridString};">
+                <div id="game-over" class="hidden">
+                    <h2>Game Over</h2>
+                    <ul>
+                        <li class="dead">Levels Complete: ${character.boardSurvived}</li>
+                        <li class="dead">Gold: ${character.gold}</li>
+                    </ul>
+                </div>
             </div>
             `;
     }
