@@ -38,10 +38,6 @@ html{
     margin: 16px; 
     list-style: none;
 }
-<<<<<<< HEAD
-.board-container{
-    background-position: contain;
-=======
 
 #gold{
     color: gold;
@@ -58,10 +54,6 @@ background-image: url(../assets/itemCandle.gif);
 background-size: 170%;
 background-position: bottom;
 background-repeat: no-repeat;
-
-
-
->>>>>>> 59399dc98b65b043eacbfbeef4e693bba65fe834
 }
 
 #stats{
@@ -135,8 +127,13 @@ background-repeat: no-repeat;
 #character {
     width: 80%;
     height: 80%;
-    opacity: 1;
-    transition: opacity 1s ease-in-out;
+    animation: anotherAnimation 1s linear .3s 1 forwards;
+}
+
+@keyframes anotherAnimation {
+    100% {
+        opacity: 0;
+    }
 }
 
 .fade {
