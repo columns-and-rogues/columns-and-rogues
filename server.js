@@ -144,8 +144,9 @@ app.get('/api/character/:id', async(req, res) => {
 });
 
 app.put('/api/character/:id', async(req, res) => {
-    const user_id = req.params.id;
+    const user_id = req.params.id.slice(1);
     const character = req.body;
+    console.log(character);
 
     try {
         const result = await client.query(`

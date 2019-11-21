@@ -8,10 +8,11 @@ import Footer from '../common/Footer.js';
 
 import levelComplete from '../util/levelComplete.js';
 import probabilityFunction from '../util/probability-function.js';
+import saveBoard from '../util/saveBoard.js';
 import retrieveBoard from '../util/retrieveBoard.js';
 import { acceptableKeys } from '../util/acceptableKeys.js';
 import { doorLocation } from '../util/doorLocation.js';
-import { getCharacterById } from '../services/game-api.js';
+import { getCharacterById, updateCharacter } from '../services/game-api.js';
 
 class GameApp extends Component {
     async onRender(element) {
@@ -80,6 +81,13 @@ class GameApp extends Component {
 
         const info = new Info({ character: character });
         main.appendChild(info.renderDOM());
+        // adding save button event listener
+        const saveEvent = async() => {
+            saveBoard(pulledBoard, character);
+            await updateCharacter(character);
+        };
+
+        document.getElementById('save-button').addEventListener('click', saveEvent);
 
         const board = new Board({ 
             character: character, 
