@@ -52,7 +52,6 @@ class Modal extends Component {
                 else if (!character.itemFour) character.itemFour = randomItem.id;
                 else if (!character.itemFive) character.itemFive = randomItem.id;
                 else modalButtonText = 'You have no more room in your inventory!';
-                console.log(character);
                 break;
             case 4:
                 modalImage = 'temp-char.png';
