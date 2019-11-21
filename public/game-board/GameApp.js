@@ -4,6 +4,7 @@ import Stats from './Stats.js';
 import Info from './Info.js';
 import Board from './Board.js';
 import Modal from './Modal.js';
+import Footer from '../common/Footer.js';
 
 import levelComplete from '../util/levelComplete.js';
 import probabilityFunction from '../util/probability-function.js';
@@ -76,6 +77,9 @@ class GameApp extends Component {
             boardSize: boardSize, 
             doorLocation: doorLoc });
         boardSpot.appendChild(board.renderDOM());
+
+        const footer = new Footer();
+        document.body.appendChild(footer.renderDOM());
     }
 
     renderHTML() {
