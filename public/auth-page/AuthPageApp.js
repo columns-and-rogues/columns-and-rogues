@@ -5,6 +5,7 @@ import Header from '../common/Header.js';
 import newChar from '../util/newCharacter.js';
 import { signIn, signUp, addCharacter } from '../services/game-api.js';
 import Footer from '../common/Footer.js';
+import Loading from '../common/loading.js'; 
 
 const success = async(user) => {
     localStorage.setItem('TOKEN', user.token);
@@ -14,12 +15,17 @@ const success = async(user) => {
 
     let newCharacter = newChar();
     newCharacter.userId = user.id;
+
     console.log(newCharacter);
     await addCharacter(newCharacter);
 
-
+    let main = document.querySelector('main'); 
+    
+    const loading = new Loading({ loading: false });
+    main.appendChild(loading.renderDOM());
+    
     const waitLocation = () => location = searchParams.get('redirect') || './game-index.html';
-    setTimeout(waitLocation, 3000);
+    setTimeout(waitLocation, 3000, loading.update({ loading: true })); 
 };
 
 class AuthPageApp extends Component {
