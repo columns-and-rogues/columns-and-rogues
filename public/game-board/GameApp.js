@@ -4,6 +4,8 @@ import Stats from './Stats.js';
 import Info from './Info.js';
 import Board from './Board.js';
 import Modal from './Modal.js';
+import Footer from '../common/Footer.js';
+
 import levelComplete from '../util/levelComplete.js';
 import probabilityFunction from '../util/probability-function.js';
 import saveBoard from '../util/saveBoard.js';
@@ -43,7 +45,9 @@ class GameApp extends Component {
             if (currentCell.contents === null) {
                 currentCell.contents = probabilityFunction(character);
                 if (currentCell.contents !== 0) {
-                    const myModal = new Modal({ cell: currentCell, character: character, doorLocation: doorLoc });
+                    const myModal = new Modal({ 
+                        cell: currentCell, 
+                        character: character });
                     element.prepend(myModal.renderDOM());
                 }
             }
@@ -51,6 +55,14 @@ class GameApp extends Component {
             if (character.x === doorLoc.x && 
                 character.y === doorLoc.y && 
                 keyname === 'Enter'){
+                    
+                currentCell.contents = 4;
+                const endGameModal = new Modal({
+                    cell: currentCell, 
+                    character: character,
+                    doorLocation: doorLoc });
+                element.prepend(endGameModal.renderDOM());
+
                 levelComplete();
                 //boardSize = boardSize + 1;
                 this.update(boardSize);
@@ -83,6 +95,9 @@ class GameApp extends Component {
             boardSize: boardSize, 
             doorLocation: doorLoc });
         boardSpot.appendChild(board.renderDOM());
+
+        const footer = new Footer();
+        document.body.appendChild(footer.renderDOM());
     }
 
     renderHTML() {

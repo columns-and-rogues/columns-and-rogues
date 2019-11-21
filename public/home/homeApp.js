@@ -1,5 +1,6 @@
 import Component from '../Component.js';
 import Header from '../common/header.js';
+import Footer from '../common/Footer.js';
 
 
 class App extends Component {
@@ -7,6 +8,9 @@ class App extends Component {
     onRender(dom) {
         const header = new Header();
         dom.prepend(header.renderDOM());
+
+        const footer = new Footer();
+        document.body.appendChild(footer.renderDOM());
     }
     renderHTML() {
 
