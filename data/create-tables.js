@@ -16,11 +16,11 @@ async function run() {
                 id SERIAL PRIMARY KEY,
                 email VARCHAR(256) NOT NULL,
                 hash VARCHAR(512) NOT NULL,
-                display_name VARCHAR(256) NOT NULL,
+                display_name VARCHAR(256) NOT NULL
             );
 
             CREATE TABLE characters (
-                id VARCHAR(64) PRIMARY KEY,
+                id SERIAL PRIMARY KEY,
                 user_id INTEGER NOT NULL REFERENCES users(id),
                 hp INTEGER NOT NULL,
                 gold INTEGER NOT NULL,
@@ -30,7 +30,10 @@ async function run() {
                 item_four INTEGER NOT NULL,
                 item_five INTEGER NOT NULL,
                 image VARCHAR(512) NOT NULL,
-                explored_tiles VARCHAR(256) NOT NULL,
+                x INTEGER NOT NULL,
+                y INTEGER NOT NULL,
+                board_state_string VARCHAR(1028) NOT NULL,
+                unknown_tiles_remaining INTEGER NOT NULL,
                 gold_tiles_remaining INTEGER NOT NULL,
                 item_tiles_remaining INTEGER NOT NULL,
                 monster_tiles_remaining INTEGER NOT NULL,
@@ -38,7 +41,7 @@ async function run() {
             );
 
             CREATE TABLE items (
-                id VARCHAR(64) PRIMARY KEY,
+                id SERIAL PRIMARY KEY,
                 name VARCHAR(256) NOT NULL,
                 dice INTEGER NOT NULL,
                 effect VARCHAR(512) NOT NULL,
@@ -46,7 +49,7 @@ async function run() {
             );
 
             CREATE TABLE monsters (
-                id VARCHAR(64) PRIMARY KEY,
+                id SERIAL PRIMARY KEY,
                 name VARCHAR(256) NOT NULL,
                 hp INTEGER NOT NULL,
                 dice INTEGER NOT NULL,

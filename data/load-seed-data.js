@@ -13,11 +13,11 @@ async function run() {
         await Promise.all(
             monsters.map(async monster => {
                 const result = await client.query(`
-            INSERT INTO monsters (id, name, hp, dice, effect, image)
-            VALUES ($1, $2, $3, $4, $5, $6)
+            INSERT INTO monsters (name, hp, dice, effect, image)
+            VALUES ($1, $2, $3, $4, $5)
             RETURNING *;
             `,
-                [monster.id, monster.name, monster.hp, monster.dice, monster.effect, monster.image]);
+                [monster.name, monster.hp, monster.dice, monster.effect, monster.image]);
                 return result.rows[0];
             })
         );
@@ -25,11 +25,11 @@ async function run() {
         await Promise.all(
             items.map(async item => {
                 const result = await client.query(`
-            INSERT INTO items (id, name, dice, effect, image)
-            VALUES ($1, $2, $3, $4, $5)
+            INSERT INTO items (name, dice, effect, image)
+            VALUES ($1, $2, $3, $4)
             RETURNING *;
             `,
-                [item.id, item.name, item.dice, item.effect, item.image]);
+                [item.name, item.dice, item.effect, item.image]);
                 return result.rows[0];
             })
         );
