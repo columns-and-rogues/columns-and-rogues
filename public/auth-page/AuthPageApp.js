@@ -4,6 +4,7 @@ import UserSignUp from './UserSignUp.js';
 import Header from '../common/Header.js';
 import newChar from '../util/newCharacter.js';
 import { signIn, signUp, addCharacter } from '../services/game-api.js';
+import Footer from '../common/Footer.js';
 
 const success = async(user) => {
     localStorage.setItem('TOKEN', user.token);
@@ -79,6 +80,9 @@ class AuthPageApp extends Component {
             signUpSpot.classList.remove('hidden');
             signInSpot.classList.add('hidden');
         });
+
+        const footer = new Footer();
+        document.body.appendChild(footer.renderDOM());
     }
 
     renderHTML(){
