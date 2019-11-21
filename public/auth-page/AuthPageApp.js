@@ -8,6 +8,7 @@ import { signIn, signUp, addCharacter } from '../services/game-api.js';
 const success = async(user) => {
     localStorage.setItem('TOKEN', user.token);
     localStorage.setItem('USER', user.displayName);
+    localStorage.setItem('USERID', user.id);
     const searchParams = new URLSearchParams(location.search);
 
     let newCharacter = newChar();

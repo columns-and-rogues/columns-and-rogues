@@ -101,8 +101,24 @@ app.get('/api/character/:id', async(req, res) => {
     try {
         const result = await client.query(`
             SELECT
-                u.display_name as "displayName"
-                c.*,
+                u.display_name as "displayName",
+                board_state_string as "boardStateString",
+                boards_survived as "boardsSurvived",
+                gold,
+                gold_tiles_remaining as "goldTilesRemaining",
+                hp,
+                image,
+                item_five as "itemFive",
+                item_four as "itemFour",
+                item_one as "itemOne",
+                item_three as "itemThree",
+                item_tiles_remaining as "itemTilesRemaining",
+                item_two as "itemTwo",
+                monster_tiles_remaining as "monsterTilesRemaining",
+                unknown_tiles_remaining as "unknownTilesRemaining",
+                user_id as "userId",
+                x,
+                y
             FROM users u
             JOIN characters c
             ON    u.id = c.user_id
@@ -128,33 +144,32 @@ app.get('/api/character/:id', async(req, res) => {
 });
 
 app.put('/api/character/:id', async(req, res) => {
-    const id = req.params.id;
+    const user_id = req.params.id;
     const character = req.body;
 
     try {
         const result = await client.query(`
             UPDATE characters
-            SET     user_id = $2,
-                    hp = $3,
-                    gold = $4,
-                    item_one = $5, 
-                    item_two = $6, 
-                    item_three = $7, 
-                    item_four = $8, 
-                    item_five = $9, 
-                    image = $10, 
-                    x = $11, 
-                    y = $12, 
-                    board_state_string = $13, 
-                    unknown_tiles_remaining = $14, 
-                    gold_tiles_remaining = $15, 
-                    item_tiles_remaining = $16, 
-                    monster_tiles_remaining = $17, 
-                    boards_survived = $18
-            WHERE id = $1
+            SET     hp = $2,
+                    gold = $3,
+                    item_one = $4, 
+                    item_two = $5, 
+                    item_three = $6, 
+                    item_four = $7, 
+                    item_five = $8, 
+                    image = $9, 
+                    x = $10, 
+                    y = $11, 
+                    board_state_string = $12, 
+                    unknown_tiles_remaining = $13, 
+                    gold_tiles_remaining = $14, 
+                    item_tiles_remaining = $15, 
+                    monster_tiles_remaining = $16, 
+                    boards_survived = $17
+            WHERE user_id = $1
             RETURNING *;
         `,
-        [id, character.userId, character.hp, character.gold, character.itemOne, character.itemTwo, character.itemThree, character.itemFour, character.itemFive, character.image, character.x, character.y, character.boardStateString, character.unknownTilesRemaining, character.goldTilesRemaining, character.itemTilesRemaining, character.monsterTilesRemaining, character.boardsSurvived]);
+        [user_id, character.hp, character.gold, character.itemOne, character.itemTwo, character.itemThree, character.itemFour, character.itemFive, character.image, character.x, character.y, character.boardStateString, character.unknownTilesRemaining, character.goldTilesRemaining, character.itemTilesRemaining, character.monsterTilesRemaining, character.boardsSurvived]);
 
         res.json(result.rows[0]);
 
