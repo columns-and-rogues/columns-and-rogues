@@ -73,3 +73,13 @@ export function getCharacterById(id){
     const url = `${URL}/character/${id}`;
     return fetchWithError(url);
 }
+
+export function getItems() {  
+    const url = `${URL}/items`;
+    return fetchWithError(url);
+}
+
+export function getMonsters() {  
+    const url = `${URL}/monsters`;
+    return fetchWithError(url);
+}
