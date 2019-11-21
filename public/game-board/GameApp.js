@@ -50,7 +50,9 @@ class GameApp extends Component {
                 currentCell.contents = probabilityFunction(character);
                 if (currentCell.contents !== 0) {
                     const myModal = new Modal({ 
-                        cell: currentCell, 
+                        cell: currentCell,
+                        itemArray: itemArray,
+                        monsterArray: monsterArray, 
                         character: character,
                         modalDisplay: true, });
                     element.prepend(myModal.renderDOM());
@@ -87,7 +89,7 @@ class GameApp extends Component {
         const stats = new Stats({ character: character });
         boardSpot.appendChild(stats.renderDOM());
 
-        const info = new Info({ character: character });
+        const info = new Info({ character: character, itemArray: itemArray });
         main.appendChild(info.renderDOM());
         // adding save button event listener
         const saveEvent = async() => {
