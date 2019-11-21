@@ -43,8 +43,14 @@ class GameApp extends Component {
             if (currentCell.contents === null) {
                 currentCell.contents = probabilityFunction(character);
                 if (currentCell.contents !== 0) {
-                    const myModal = new Modal({ cell: currentCell, character: character, doorLocation: doorLoc });
-                    element.prepend(myModal.renderDOM());
+                    const myModal = new Modal({
+                        modalDisplay: true,
+                        cell: currentCell,
+                        character: character,
+                        doorLocation: doorLoc 
+                    });
+                    main.appendChild(myModal.renderDOM());
+                    stats.update();
                 }
             }
             
