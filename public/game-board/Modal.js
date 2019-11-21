@@ -7,9 +7,10 @@ class Modal extends Component {
         const modalDisplay = this.props.modalDisplay;
         if (!modalDisplay) {
             return /*html*/`
-            <div class="modal hidden"><div>
+            <div id="remove-modal" class="modal hidden"></div>
         `;
         }
+        if (document.getElementById('remove-modal')) document.getElementById('remove-modal').remove();
         const cell = this.props.cell;
         const character = this.props.character;
         let modalImage;

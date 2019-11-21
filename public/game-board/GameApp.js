@@ -41,6 +41,7 @@ class GameApp extends Component {
             
             let currentCell = pulledBoard.find(object => (object.x === character.x && object.y === character.y));
         
+            
             if (currentCell.contents === null) {
                 currentCell.contents = probabilityFunction(character);
                 if (currentCell.contents !== 0) {
@@ -49,9 +50,12 @@ class GameApp extends Component {
                         character: character,
                         modalDisplay: true, });
                     element.prepend(myModal.renderDOM());
-                }
+                    stats.update();
+                    const modalButton = document.getElementById('submit');
+                    modalButton.addEventListener('click', () => myModal.update({ modalDisplay: false })
+                   
+                    );}
             }
-            
             if (character.x === doorLoc.x && 
                 character.y === doorLoc.y && 
                 keyname === 'Enter'){
