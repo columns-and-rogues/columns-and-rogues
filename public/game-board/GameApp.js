@@ -13,6 +13,9 @@ import { acceptableKeys } from '../util/acceptableKeys.js';
 import { doorLocation } from '../util/doorLocation.js';
 import { getCharacterById, getItems, getMonsters, updateCharacter } from '../services/game-api.js';
 
+
+let disableMovement = false; 
+
 class GameApp extends Component {
     async onRender(element) {
         const character = await getCharacterById(localStorage.getItem('USERID')
@@ -33,10 +36,11 @@ class GameApp extends Component {
         let limit = boardSize - 2;
         
         //KEY CONTROLS//
+
         if (this.handler) document.removeEventListener('keydown', this.handler);
         this.handler = (event) => {
             const keyname = event.key;
-            if (!acceptableKeys.includes(keyname)) return;
+            if (!acceptableKeys.includes(keyname) || disableMovement === true) return;
 
             if (keyname === 'ArrowLeft' && character.x >= 1) character.x--;
             if (keyname === 'ArrowUp' && character.y >= 1) character.y--;
@@ -44,7 +48,7 @@ class GameApp extends Component {
             if (keyname === 'ArrowDown' && character.y <= limit) character.y++;
             
             let currentCell = pulledBoard.find(object => (object.x === character.x && object.y === character.y));
-        
+           
             
             if (currentCell.contents === null) {
                 currentCell.contents = probabilityFunction(character);
@@ -56,10 +60,15 @@ class GameApp extends Component {
                     element.prepend(myModal.renderDOM());
                     stats.update();
                     const modalButton = document.getElementById('submit');
-                    modalButton.addEventListener('click', () => myModal.update({ modalDisplay: false })
+                    disableMovement = true; 
+                    console.log(disableMovement); 
+                    modalButton.addEventListener('click', () => myModal.update({ modalDisplay: false }, disableMovement = false)
                    
                     );}
             }
+
+          
+            
             if (character.x === doorLoc.x && 
                 character.y === doorLoc.y && 
                 keyname === 'Enter'){
@@ -78,7 +87,7 @@ class GameApp extends Component {
             }
             board.update();
         };
-
+        
         document.addEventListener('keydown', this.handler);
 
         const header = new Header();
