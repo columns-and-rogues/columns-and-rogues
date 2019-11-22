@@ -20,8 +20,8 @@ class GameApp extends Component {
     async onRender(element) {
         const character = await getCharacterById(localStorage.getItem('USERID')
         );
-        //const itemArray = await getItems();
-        //const monsterArray = await getMonsters();
+        const itemArray = await getItems();
+        const monsterArray = await getMonsters();
 
 
         const main = element.querySelector('.main');
@@ -52,12 +52,8 @@ class GameApp extends Component {
             if (keyname === 'ArrowDown' && character.y <= limit) character.y++;
             
             let currentCell = pulledBoard.find(object => (object.x === character.x && object.y === character.y));
-<<<<<<< HEAD
         
             //NEW TILE AND EVENT
-=======
-            
->>>>>>> e9a8170a90be0419e346c25f98a73de8cdca1a9a
             if (currentCell.contents === null) {
                 currentCell.contents = probabilityFunction(character);
                 if (currentCell.contents !== 0) {
@@ -72,20 +68,12 @@ class GameApp extends Component {
                     const modalButton = document.getElementById('submit');
 
                     disableMovement = true; 
-<<<<<<< HEAD
                     modalButton.addEventListener('click', () => myModal.update({ modalDisplay: false }, disableMovement = false));
                     stats.update();
                 }
             }
 
           
-=======
-                    console.log(disableMovement); 
-                    modalButton.addEventListener('click', () => myModal.update({ modalDisplay: false }, disableMovement = false)
-                    );
-                }
-            }    
->>>>>>> e9a8170a90be0419e346c25f98a73de8cdca1a9a
             
             if (character.x === doorLoc.x && 
                 character.y === doorLoc.y){
