@@ -51,7 +51,7 @@ border-style: outset;
 border-width: 5px;
 padding: 8px; 
 background-image: url(../assets/itemCandle.gif);
-background-size: 170%;
+background-size: contain;
 background-position: bottom;
 background-repeat: no-repeat;
 }
