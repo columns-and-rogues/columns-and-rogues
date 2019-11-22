@@ -49,7 +49,6 @@ class GameApp extends Component {
             }
             if (event.keyCode === 13) {
                 document.getElementById('submit').click();
-                console.log('test');
             }
             if (!acceptableKeys.includes(event.key) || disableMovement === true) return;
 
