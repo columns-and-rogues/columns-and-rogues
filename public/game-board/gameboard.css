@@ -13,34 +13,52 @@ html{
     padding: 0;   
 }
 
-/* .board-location{
-
-} */
-
 #user{
     justify-content: center;
     color: white;
     display: flex;
     text-align: justify;
+    font-size: 22px;
+
 }
 
 #hp{
     display: inline-flex;
     color: orangered;
-    flex-direction: row;
     margin-right: 6px; 
 }
 
+#level {
+    display: inline-flex;
+    color: blue;
+}
+
 .items{
-    display: inline;
+    display: flex;
+    padding: 0;
     font-family: cursive;
     font-size: 18px;
     margin: 16px; 
     list-style: none;
 }
 
+.items-buttons, #save-button {
+    background: rgba(11, 25, 13, 0.8);
+    width: 110px;
+    height: 25px;
+    border-radius: 10px;
+    color: #D2D1CD;
+}
+
+#save-button {
+    margin: 20px;
+    width: 130px;
+    height: 35px;
+}
+
 #gold{
     color: gold;
+    margin-right: 6px; 
 }
 
 #info{
@@ -70,18 +88,43 @@ background-repeat: no-repeat;
     height: 600px;
     display: grid;
     justify-content: center;
-    /* background-image: url(../assets/background1.gif); */
-    /* background-image: -webkit-cross-fade(url(../assets/background1.gif) 25%, url(../assets/forest-background-image1.gif) 25%, url(../assets/underwater-background-image1.gif) 25%, url(../assets/village-background-image1.gif) 25%); */
-    background-image:
-        url(../assets/village-background-image1.gif);
-        /* url(../assets/forest-background-image1.gif); */
-        /* url(../assets/underwater-background-image1.gif); */
-        /* url(../assets/village-background-image1.gif); */
-
     background-size: cover; 
     background-repeat: no-repeat;
     background-position: center;
     padding: 60px; 
+}
+
+.backgroundImage-0{
+    background-image:
+        url(../assets/village-background-image1.gif);
+}
+.backgroundImage-1{
+    background-image:
+    url(../assets/background-castle-sky.png);
+}
+.backgroundImage-2{
+    background-image: url(../assets/background1.gif);
+}
+.backgroundImage-3{
+    background-image: url(../assets/underwater-background-image1.gif);
+}
+.backgroundImage-4{
+    background-image: url(../assets/forest-background-image1.gif);
+}
+.backgroundImage-5{
+    background-image: url(../assets/desert-background-image.gif);
+}
+.backgroundImage-6{
+    background-image: url(../assets/original.gif);
+}
+.backgroundImage-7{
+    background-image: url(../assets/space-background-image-1.gif);
+}
+.backgroundImage-8{
+    background-image: url(../assets/burning-sword-background-image-1.gif);
+}
+.backgroundImage-9{
+    background-image: url(../assets/volcano-background1.gif);
 }
 
 .cell {
@@ -149,7 +192,7 @@ background-repeat: no-repeat;
     width: 80%;
     height: 80%;
     margin-left: 0px;
-    animation: anotherAnimation 1s linear 1s 1 forwards;
+    animation: anotherAnimation 1s linear 1.5s 1 forwards;
 }
 
 @keyframes anotherAnimation {

@@ -1,11 +1,11 @@
-import Component from '../Component.js'; 
+import Component from '../Component.js';
 
 class Header extends Component {
     renderHTML() {
-        const title = 
-        this.props.title || 'Columns and Rogues'; 
+        const title =
+            this.props.title || 'Columns and Rogues';
 
-        return /*html*/`
+        return /*html*/ `
         <header>
             <div class = 'logo'><img src="./assets/rogue-logo.png">
             </div>
@@ -21,4 +21,4 @@ class Header extends Component {
     }
 }
 
-export default Header; 
+export default Header;

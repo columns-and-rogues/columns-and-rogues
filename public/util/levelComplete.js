@@ -10,12 +10,13 @@ function levelComplete(boardSize, character) {
     //Redward Player
     character.boardsSurvived++;
     character.hp = character.hp + 2;
+    boardSize = 2 + character.boardsSurvived;
 
     //Reset states
     character.goldTilesRemaining = 3;
     character.itemTilesRemaining = 3;
-    character.monsterTilesRemaining = 5;
-    character.unknownTilesRemaining = 24;
+    character.monsterTilesRemaining = 5 + boardSize;
+    character.unknownTilesRemaining = (boardSize * boardSize) - 1;
     let nextBoard = createBoard(boardSize);
 
     //Save Character

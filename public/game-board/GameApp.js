@@ -1,5 +1,5 @@
 import Component from '../Component.js';
-import Header from '../common/header.js';
+import Header from '../common/Header.js';
 import Stats from './Stats.js';
 import Info from './Info.js';
 import Board from './Board.js';
@@ -14,6 +14,7 @@ import retrieveBoard from '../util/retrieveBoard.js';
 import { acceptableKeys, translateKeys } from '../util/acceptableKeys.js';
 import { doorLocation } from '../util/doorLocation.js';
 import { getCharacterById, getItems, getMonsters, updateCharacter } from '../services/game-api.js';
+import { backgroundImageNumber } from '../util/backgroundImageNumber.js';
 
 let disableMovement = false;
 let musicNotPlaying = true;
@@ -27,10 +28,12 @@ class GameApp extends Component {
         const pulledBoard = retrieveBoard(character);
         let boardSize = Math.sqrt(pulledBoard.length);
         const doorLoc = doorLocation(boardSize);
+        const backgroundNum = backgroundImageNumber(character.boardsSurvived);
 
         let limit = boardSize - 2;
 
-        let gameMusic = new Audio('../assets/game-music.mp3');
+        const gameMusic = new Audio('../assets/game-music.mp3');
+        const bloop = new Audio('../assets/bloop.flac');
         const main = element.querySelector('.main');
         const boardSpot = element.querySelector('.board-location');
 
@@ -43,11 +46,15 @@ class GameApp extends Component {
         this.handler = (event) => {
             const key = translateKeys(event.key);
 
+            bloop.play();
+
             if (musicNotPlaying) {
                 gameMusic.play();
                 musicNotPlaying = false;
             }
-
+            if (event.keyCode === 13) {
+                document.getElementById('submit').click();
+            }
             if (!acceptableKeys.includes(event.key) || disableMovement === true) return;
 
             if (key === 'left' && character.x >= 1) character.x--;
@@ -76,9 +83,8 @@ class GameApp extends Component {
                         document.removeEventListener('keydown', this.handler);
                         return;
                     }
-
                     const modalButton = document.getElementById('submit');
-                    disableMovement = true; 
+                    disableMovement = true;
                     modalButton.addEventListener('click', () => myModal.update({ modalDisplay: false }, disableMovement = false));
                     stats.update();
                 }
@@ -90,8 +96,11 @@ class GameApp extends Component {
                 
                 gameMusic.pause();
                 musicNotPlaying = true;
-                let doorSound = new Audio('../assets/door-open.mp3');
-                doorSound.play();
+
+                setTimeout(function(){
+                    let doorSound = new Audio('../assets/door-open.mp3');
+                    doorSound.play();
+                }, 250);
                 
                 //#! JOELS FAVORITE LINE OF CODE HE'S EVER WRITTEN !#//
                 const that = this;
@@ -99,7 +108,7 @@ class GameApp extends Component {
                 setTimeout(function(){
                     let winSound = new Audio('../assets/win-sound.mp3');
                     winSound.play();
-                }, 1000);
+                }, 1500);
                 
                 setTimeout(function(){
                     levelComplete(boardSize, character);
@@ -114,7 +123,7 @@ class GameApp extends Component {
                         that.update();
                         return;
                     }, 7000);
-                }, 1500);
+                }, 4000);
             }
             board.update();
         };
@@ -158,7 +167,8 @@ class GameApp extends Component {
             character: character, 
             boardArr: pulledBoard, 
             boardSize: boardSize, 
-            doorLocation: doorLoc });
+            doorLocation: doorLoc,
+            backgroundNum: backgroundNum });
         boardSpot.appendChild(board.renderDOM());
         const footer = new Footer();
         document.body.appendChild(footer.renderDOM());

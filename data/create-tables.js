@@ -32,7 +32,7 @@ async function run() {
                 image VARCHAR(512) NOT NULL,
                 x INTEGER NOT NULL,
                 y INTEGER NOT NULL,
-                board_state_string VARCHAR(1028) NOT NULL,
+                board_state_string VARCHAR(8000) NOT NULL,
                 unknown_tiles_remaining INTEGER NOT NULL,
                 gold_tiles_remaining INTEGER NOT NULL,
                 item_tiles_remaining INTEGER NOT NULL,
