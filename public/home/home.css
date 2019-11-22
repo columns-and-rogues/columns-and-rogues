@@ -14,23 +14,25 @@
     background-size: cover;
 }
 .rules {
-    
+    margin-top: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     background: rgba(11, 25, 13, 0.8);
-    width: 50%;
+    width: 85vw;
     font-size: 16pt;
-    color: white;
-    border: black 2px;
+    color: #D2D1CD;
+    border: 2px solid #D2D1CD;
+    border-radius: 25px;
+    box-shadow: 3px 3px 30px black;
 }
 
 h2 {
     text-align: center;
     font-size: 50px;
     letter-spacing: 10px;
-    margin-bottom: 20px;
+    margin: 10px 0 20px 0;
     font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
@@ -49,4 +51,8 @@ br {
 
 li {
     font-family: 'Press Start 2P', cursive;
+}
+
+.rules-list {
+    width: 80vw;
 }

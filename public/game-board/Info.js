@@ -27,13 +27,13 @@ class Info extends Component {
             <ul class = 'items'>Items
                 <li id="item-1">Item 1: ${itemsToDisplay[0].name}</li>
                 <li id="item-2">Item 2: ${itemsToDisplay[1].name}</li>
-                <button id="delete-item-2">Throw Away!</button>
+                <button class="items-buttons" id="delete-item-2">Throw Away!</button>
                 <li id="item-3">Item 3: ${itemsToDisplay[2].name}</li>
-                <button id="delete-item-3">Throw Away!</button>
+                <button class="items-buttons" id="delete-item-3">Throw Away!</button>
                 <li id="item-4">Item 4: ${itemsToDisplay[3].name}</li>
-                <button id="delete-item-4">Throw Away!</button>
+                <button class="items-buttons" id="delete-item-4">Throw Away!</button>
                 <li id="item-5">Item 5: ${itemsToDisplay[4].name}</li>
-                <button id="delete-item-5">Throw Away!</button>
+                <button class="items-buttons" id="delete-item-5">Throw Away!</button>
                 <li></li>
                 <button id="save-button">Save Game</button>
         </div>
