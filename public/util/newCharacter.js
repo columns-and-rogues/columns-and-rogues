@@ -2,7 +2,7 @@ import { createBoard } from '../game-board/boardCellArray.js';
 import saveBoard from './saveBoard.js';
 
 function newCharacter() {
-    const newBoard = createBoard(5);
+    const newBoard = createBoard(2);
     let newChar = {
         userId: -1,
         hp: 5,
