@@ -14,16 +14,12 @@ import { doorLocation } from '../util/doorLocation.js';
 import runDeath from './death.js';
 import { getCharacterById, getItems, getMonsters, updateCharacter } from '../services/game-api.js';
 let disableMovement = false;
-let musicNotPlaying = true;
-
-
 class GameApp extends Component {
     async onRender(element) {
         const character = await getCharacterById(localStorage.getItem('USERID'));
         console.log(character);
         const itemArray = await getItems();
         const monsterArray = await getMonsters();
-        let gameMusic = new Audio('../assets/game-music.mp3');
 
         const main = element.querySelector('.main');
         const boardSpot = element.querySelector('.board-location');
@@ -40,11 +36,6 @@ class GameApp extends Component {
         let limit = boardSize - 2;
         //KEY CONTROLS//
         this.handler = (event) => {
-            if (musicNotPlaying) {
-                gameMusic.play();
-                musicNotPlaying = false;
-            }
-
             const keyname = event.key;
             if (!acceptableKeys.includes(keyname) || disableMovement === true) return;
             if (keyname === 'ArrowLeft' && character.x >= 1) character.x--;
@@ -83,10 +74,9 @@ class GameApp extends Component {
             
             if (character.x === doorLoc.x && character.y === doorLoc.y){
                 document.removeEventListener('keydown', this.handler);
-                gameMusic.pause();
-                musicNotPlaying = true;
-                let winSound = new Audio('../assets/win-sound.mp3');
-                winSound.play();
+                board.update();
+                let audio = new Audio('../assets/win-sound.wav');
+                audio.play();
                 const that = this;
                 
                 setTimeout(function(){
@@ -101,7 +91,7 @@ class GameApp extends Component {
                     setTimeout(function() {
                         that.update();
                         return;
-                    }, 6000);
+                    }, 5000);
                 }, 1500);
 
 
