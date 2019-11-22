@@ -52,25 +52,40 @@ class GameApp extends Component {
             if (keyname === 'ArrowDown' && character.y <= limit) character.y++;
             
             let currentCell = pulledBoard.find(object => (object.x === character.x && object.y === character.y));
+<<<<<<< HEAD
         
             //NEW TILE AND EVENT
+=======
+            
+>>>>>>> e9a8170a90be0419e346c25f98a73de8cdca1a9a
             if (currentCell.contents === null) {
                 currentCell.contents = probabilityFunction(character);
                 if (currentCell.contents !== 0) {
                     const myModal = new Modal({ 
-                        cell: currentCell, 
+                        cell: currentCell,
+                        itemArray: itemArray,
+                        monsterArray: monsterArray, 
                         character: character,
                         modalDisplay: true, });
                     element.prepend(myModal.renderDOM());
 
                     const modalButton = document.getElementById('submit');
+
                     disableMovement = true; 
+<<<<<<< HEAD
                     modalButton.addEventListener('click', () => myModal.update({ modalDisplay: false }, disableMovement = false));
                     stats.update();
                 }
             }
 
           
+=======
+                    console.log(disableMovement); 
+                    modalButton.addEventListener('click', () => myModal.update({ modalDisplay: false }, disableMovement = false)
+                    );
+                }
+            }    
+>>>>>>> e9a8170a90be0419e346c25f98a73de8cdca1a9a
             
             if (character.x === doorLoc.x && 
                 character.y === doorLoc.y){
@@ -107,11 +122,34 @@ class GameApp extends Component {
         const stats = new Stats({ character: character });
         boardSpot.appendChild(stats.renderDOM());
 
-        const info = new Info({ character: character });
+        const info = new Info({ character: character, itemArray: itemArray });
         main.appendChild(info.renderDOM());
         // adding save button event listener
 
         document.getElementById('save-button').addEventListener('click', saveEvent);
+        // add delete function to info pane for discarding items
+        const deleteItemTwo = () => {
+            console.log(character.itemTwo);
+            character.itemTwo = 0;
+            console.log(character.itemTwo);
+        };
+        const deleteItemThree = () => {
+            character.itemThree = 0;
+            info.update();
+        };
+        const deleteItemFour = () => {
+            character.itemFour = 0;
+            info.update();
+        };
+        const deleteItemFive = () => {
+            character.itemFive = 0;
+            info.update();
+        };
+
+        document.getElementById('delete-item-2').addEventListener('click', () => deleteItemTwo());
+        document.getElementById('delete-item-3').addEventListener('click', deleteItemThree);
+        document.getElementById('delete-item-4').addEventListener('click', deleteItemFour);
+        document.getElementById('delete-item-5').addEventListener('click', deleteItemFive);
 
         const board = new Board({ 
             character: character, 
