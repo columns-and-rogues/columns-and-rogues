@@ -11,7 +11,7 @@ const profiles = [
         image: '../assets/seth.png',
         linkedIn: 'https://www.linkedin.com/in/seth-ripman-32201215b/',
         github: 'https://github.com/sethripman',
-        about: 'In the Age of Ancients the world was unformed, shrouded by fog. A land of gray crags, archtrees and everlasting dragons. But then there was Fire.... and with fire came disparity. Heat and cold, life and death, and of course, Seth and Not-Seth. Boston -> Baltimore -> Portland. Thai Kickboxer, professional gamer (mountain dew tattoo), master strategist, full-time puppy snuggler, took Charisma as a dump stat and has been paying for it ever since. Talk to me about Sumo technique and my Hooked-On-Phonics speedruns. I hold the record!'
+        about: 'Boston -> Baltimore -> Portland. Thai Kickboxer, professional gamer (mountain dew tattoo), master strategist, full-time puppy snuggler, took Charisma as a dump stat and has been paying for it ever since. Talk to me about Sumo technique and my Hooked-On-Phonics speedruns. I hold the record!'
     },
     {
         name: 'Mike Grace',
