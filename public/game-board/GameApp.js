@@ -30,8 +30,6 @@ class GameApp extends Component {
         const pulledBoard = retrieveBoard(character);
         let boardSize = Math.sqrt(pulledBoard.length);
         const doorLoc = doorLocation(boardSize);
-        //const modalBool = false;
-        //const pulledBoard = createBoard(boardSize);
 
         //SAVE EVENT MOVED HERE
         const saveEvent = async() => {
