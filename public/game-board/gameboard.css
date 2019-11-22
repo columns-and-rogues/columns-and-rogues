@@ -100,7 +100,7 @@ background-repeat: no-repeat;
 }
 .backgroundImage-1{
     background-image:
-    url(../assets/village-background-image1.gif);
+    url(../assets/background-castle-sky.png);
 }
 .backgroundImage-2{
     background-image: url(../assets/background1.gif);
@@ -112,7 +112,7 @@ background-repeat: no-repeat;
     background-image: url(../assets/forest-background-image1.gif);
 }
 .backgroundImage-5{
-    background-image: url(../assets/backgroundImg.gif);
+    background-image: url(../assets/desert-background-image.gif);
 }
 .backgroundImage-6{
     background-image: url(../assets/original.gif);
@@ -192,7 +192,7 @@ background-repeat: no-repeat;
     width: 80%;
     height: 80%;
     margin-left: 0px;
-    animation: anotherAnimation 1s linear 1s 1 forwards;
+    animation: anotherAnimation 1s linear 1.5s 1 forwards;
 }
 
 @keyframes anotherAnimation {

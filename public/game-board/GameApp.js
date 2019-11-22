@@ -29,11 +29,11 @@ class GameApp extends Component {
         let boardSize = Math.sqrt(pulledBoard.length);
         const doorLoc = doorLocation(boardSize);
         const backgroundNum = backgroundImageNumber(character.boardsSurvived);
-        console.log(backgroundNum);
 
         let limit = boardSize - 2;
 
-        let gameMusic = new Audio('../assets/game-music.mp3');
+        const gameMusic = new Audio('../assets/game-music.mp3');
+        const bloop = new Audio('../assets/bloop.flac');
         const main = element.querySelector('.main');
         const boardSpot = element.querySelector('.board-location');
 
@@ -45,6 +45,8 @@ class GameApp extends Component {
         //#! CONTROLS - EVENTS !#//
         this.handler = (event) => {
             const key = translateKeys(event.key);
+
+            bloop.play();
 
             if (musicNotPlaying) {
                 gameMusic.play();
@@ -93,8 +95,11 @@ class GameApp extends Component {
                 
                 gameMusic.pause();
                 musicNotPlaying = true;
-                let doorSound = new Audio('../assets/door-open.mp3');
-                doorSound.play();
+
+                setTimeout(function(){
+                    let doorSound = new Audio('../assets/door-open.mp3');
+                    doorSound.play();
+                }, 250);
                 
                 //#! JOELS FAVORITE LINE OF CODE HE'S EVER WRITTEN !#//
                 const that = this;
@@ -102,7 +107,7 @@ class GameApp extends Component {
                 setTimeout(function(){
                     let winSound = new Audio('../assets/win-sound.mp3');
                     winSound.play();
-                }, 1000);
+                }, 1500);
                 
                 setTimeout(function(){
                     levelComplete(boardSize, character);
@@ -117,7 +122,7 @@ class GameApp extends Component {
                         that.update();
                         return;
                     }, 7000);
-                }, 1500);
+                }, 4000);
             }
             board.update();
         };
