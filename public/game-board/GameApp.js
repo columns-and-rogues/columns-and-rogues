@@ -18,12 +18,11 @@ let disableMovement = false;
 
 class GameApp extends Component {
     async onRender(element) {
-        const character = await getCharacterById(localStorage.getItem('USERID')
+        let character = await getCharacterById(localStorage.getItem('USERID')
         );
+        character.itemTilesRemaining = 15;
         const itemArray = await getItems();
         const monsterArray = await getMonsters();
-        console.log(itemArray);
-        console.log(monsterArray);
 
         const main = element.querySelector('.main');
         const boardSpot = element.querySelector('.board-location'); 
@@ -63,7 +62,6 @@ class GameApp extends Component {
                     const modalButton = document.getElementById('submit');
 
                     disableMovement = true; 
-                    console.log(disableMovement); 
                     modalButton.addEventListener('click', () => myModal.update({ modalDisplay: false }, disableMovement = false)
                     );
                 }
@@ -96,7 +94,19 @@ class GameApp extends Component {
         const stats = new Stats({ character: character });
         boardSpot.appendChild(stats.renderDOM());
 
-        const info = new Info({ character: character, itemArray: itemArray });
+
+
+
+
+
+        
+        const info = new Info({ itemsToDisplay: [
+            { name: 'Empty Item Slot' },
+            { name: 'Empty Item Slot' },
+            { name: 'Empty Item Slot' },
+            { name: 'Empty Item Slot' },
+            { name: 'Empty Item Slot' }
+        ] });
         main.appendChild(info.renderDOM());
         // adding save button event listener
         const saveEvent = async() => {
@@ -107,9 +117,12 @@ class GameApp extends Component {
         document.getElementById('save-button').addEventListener('click', saveEvent);
         // add delete function to info pane for discarding items
         const deleteItemTwo = () => {
+
+            
+
+            console.log(Date.now());
             console.log(character.itemTwo);
-            character.itemTwo = 0;
-            console.log(character.itemTwo);
+            info.update({ itemsToDisplay,  });
         };
         const deleteItemThree = () => {
             character.itemThree = 0;
@@ -124,7 +137,6 @@ class GameApp extends Component {
             info.update();
         };
 
-        document.getElementById('delete-item-2').addEventListener('click', () => deleteItemTwo());
         document.getElementById('delete-item-3').addEventListener('click', deleteItemThree);
         document.getElementById('delete-item-4').addEventListener('click', deleteItemFour);
         document.getElementById('delete-item-5').addEventListener('click', deleteItemFive);
@@ -153,3 +165,10 @@ class GameApp extends Component {
 }
 
 export default GameApp;
+
+
+const eventListenerFunction = (args) => do ByteLengthQueuingStrategy;
+
+const thisClass = new ThisClass(eventListenerFunction);
+element.prepend(thisClass.renderDOM());
+
