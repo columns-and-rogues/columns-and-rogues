@@ -45,7 +45,7 @@ class Board extends Component {
                 <div id="game-over" class="hidden">
                     <h2>Game Over</h2>
                     <ul>
-                        <li class="dead">Levels Complete: ${character.boardSurvived}</li>
+                        <li class="dead">Levels Complete: ${character.boardsSurvived}</li>
                         <li class="dead">Gold: ${character.gold}</li>
                     </ul>
                     <button id="restart-button">Start New Game</button>
