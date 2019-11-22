@@ -14,6 +14,7 @@ import retrieveBoard from '../util/retrieveBoard.js';
 import { acceptableKeys, translateKeys } from '../util/acceptableKeys.js';
 import { doorLocation } from '../util/doorLocation.js';
 import { getCharacterById, getItems, getMonsters, updateCharacter } from '../services/game-api.js';
+import { backgroundImageNumber } from '../util/backgroundImageNumber.js';
 
 let disableMovement = false;
 let musicNotPlaying = true;
@@ -27,6 +28,8 @@ class GameApp extends Component {
         const pulledBoard = retrieveBoard(character);
         let boardSize = Math.sqrt(pulledBoard.length);
         const doorLoc = doorLocation(boardSize);
+        const backgroundNum = backgroundImageNumber(character.boardsSurvived);
+        console.log(backgroundNum);
 
         let limit = boardSize - 2;
 
@@ -158,7 +161,8 @@ class GameApp extends Component {
             character: character, 
             boardArr: pulledBoard, 
             boardSize: boardSize, 
-            doorLocation: doorLoc });
+            doorLocation: doorLoc,
+            backgroundNum: backgroundNum });
         boardSpot.appendChild(board.renderDOM());
         const footer = new Footer();
         document.body.appendChild(footer.renderDOM());
