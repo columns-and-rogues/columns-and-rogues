@@ -20,6 +20,7 @@ let musicNotPlaying = true;
 class GameApp extends Component {
     async onRender(element) {
         const character = await getCharacterById(localStorage.getItem('USERID'));
+        console.log(character);
         const itemArray = await getItems();
         const monsterArray = await getMonsters();
         let gameMusic = new Audio('../assets/game-music.mp3');

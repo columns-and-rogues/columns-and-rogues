@@ -13,9 +13,9 @@ html{
     padding: 0;   
 }
 
-.board-location{
+/* .board-location{
 
-}
+} */
 
 #user{
     justify-content: center;
@@ -90,28 +90,38 @@ background-repeat: no-repeat;
     background-repeat: no-repeat;
 }
 
+.unexplored {
+    background-color: #000000ed;
+}
+
 .empty {
-    background-color: lightslategray;
+    background-color: #00000078; ;
 }
 
 .gold {
-    background-color: lightslategray; 
+    background-color: #00000078; ; 
     background-image: url(../assets/gold-star.gif);
+    background-position-y: bottom;
 }
 
 .monster {
-    background-color: lightslategray; 
-    background-image: url(../assets/monster-icon.png); 
+    background-color: #00000078; 
+    background-image: url(../assets/monster-icon.gif);
+    background-size: cover;
+    background-position-x: center;
 }
 
 .item {
-    background-color: lightslategray; 
-    background-image: url(../assets/item-logo.gif);
+    background-color: #00000078; ; 
+    background-image: url(../assets/item-logo.png);
+    background-size: 50%;
+    background-position-y: center;
+    background-position-x: center;
 }
 
-.door {
+/* .door {
     background-image: url('../assets/door.gif');
-}
+} */
 
 .displayPlayer {
     background-image: url('../assets/temp-char.png');

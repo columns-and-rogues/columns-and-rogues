@@ -39,7 +39,7 @@ class Modal extends Component {
                 dynamicImage = randomMonster.image;
                 hideDynamicImage = '';
 
-                modalImage = 'monster-icon.png';
+                modalImage = 'monster-icon.gif';
                 modalText = `Argh! Attacked by a wild ${randomMonster.name}! It has ${randomMonster.hp} HP, rolls a 1d${randomMonster.dice} for attack, and is ${randomMonster.effect}. What item will you use to attack it?`;
                 character.hp--;
                 modalButtonText = 'Fight Monster';
@@ -48,7 +48,7 @@ class Modal extends Component {
                 randomItem = itemsList[Math.floor(Math.random() * itemsList.length)];
                 dynamicImage = randomItem.image;
                 hideDynamicImage = '';
-                modalImage = 'item-logo.gif';
+                modalImage = 'item-logo.png';
                 modalText = `You found a ${randomItem.name}! It has a 1d${randomItem.dice} for attack and applies a ${randomItem.effect} effect on use.`;
                 modalButtonText = `Pick up the ${randomItem.name}.`;
 
