@@ -1,5 +1,5 @@
 import Component from '../Component.js';
-import Header from '../common/header.js';
+import Header from '../common/Header.js';
 import Stats from './Stats.js';
 import Info from './Info.js';
 import Board from './Board.js';
