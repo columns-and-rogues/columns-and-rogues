@@ -58,11 +58,17 @@ class Modal extends Component {
                 break;
             case 4:
                 modalImage = 'temp-char.png';
-                modalText = character;
+                modalText = /*html*/`
+                    <div id="win-modal-display">
+                        <h3>Levels Survived: ${character.boardsSurvived}</h3>
+                        <h4>HP: ${character.hp}</h4>
+                        <h4>Gold: ${character.gold}</h4>
+                    <div>
+                    `;
                 break;
             case 5:
                 modalImage = '';
-                //endgame
+                //Death
                 break;
         }
         
