@@ -18,6 +18,7 @@ class Modal extends Component {
         const character = this.props.character;
         const itemsList = this.props.itemArray;
         const monstersList = this.props.monsterArray;
+        let goldFound = 0;
         let randomMonster = {};
         let randomItem = {};
         let modalImage;
@@ -30,9 +31,10 @@ class Modal extends Component {
         switch (cell.contents){
             case 1:
                 modalImage = 'gold-star.gif';
-                modalText = 'This is the text for finding gold!';
-                character.gold++;
-                modalButtonText = 'Pick up gold';
+                goldFound = Math.floor(Math.random() * 2) + 1;
+                character.gold = character.gold + goldFound;
+                modalText = `You found ${goldFound} piece(s) of gold`;
+                modalButtonText = `Pick up gold`;
                 break;
             case 2:
                 randomMonster = monstersList[Math.floor(Math.random() * monstersList.length)];
@@ -68,10 +70,6 @@ class Modal extends Component {
                     <div>
                     `;
                 modalButtonText = 'Next Level';
-                break;
-            case 5:
-                modalImage = '';
-                //Death
                 break;
         }
         

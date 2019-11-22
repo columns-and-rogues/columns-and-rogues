@@ -5,8 +5,6 @@ class Component {
     constructor(props) {
         this.props = props || {};
         this.state = {};
-        // uncomment to log props passed to components:
-        // console.log(`Component "${this.constructor.name}" got props:` + '\n' + JSON.stringify(this.props, true, 2));\
         this.mounted = false;
     }
 
@@ -15,7 +13,7 @@ class Component {
     }
 
     onMount() {
-        
+        //Yep. We have an on mount!
     }
 
     renderDOM() {
