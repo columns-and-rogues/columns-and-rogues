@@ -32,6 +32,7 @@ class Modal extends Component {
                 modalImage = 'gold-star.gif';
                 modalText = 'This is the text for finding gold!';
                 character.gold++;
+                modalButtonText = 'Pick up gold';
                 break;
             case 2:
                 randomMonster = monstersList[Math.floor(Math.random() * monstersList.length)];
@@ -41,6 +42,7 @@ class Modal extends Component {
                 modalImage = 'monster-icon.png';
                 modalText = `Argh! Attacked by a wild ${randomMonster.name}! It has ${randomMonster.hp} HP, rolls a 1d${randomMonster.dice} for attack, and is ${randomMonster.effect}. What item will you use to attack it?`;
                 character.hp--;
+                modalButtonText = 'Fight Monster';
                 break;
             case 3:
                 randomItem = itemsList[Math.floor(Math.random() * itemsList.length)];
@@ -65,6 +67,7 @@ class Modal extends Component {
                         <h4>Gold: ${character.gold}</h4>
                     <div>
                     `;
+                modalButtonText = 'Next Level';
                 break;
             case 5:
                 modalImage = '';
