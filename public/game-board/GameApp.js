@@ -80,9 +80,7 @@ class GameApp extends Component {
                     }
                     const modalButton = document.getElementById('submit');
                     disableMovement = true;
-                    
-                    modalButton.addEventListener('click', () => myModal.update(
-                        { modalDisplay: false }, disableMovement = false));
+                    modalButton.addEventListener('click', () => myModal.update({ modalDisplay: false }, disableMovement = false));
                     stats.update();
                 }
             }
