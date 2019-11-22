@@ -18,7 +18,7 @@ const profiles = [
         image: '../assets/mike.png',
         linkedIn: 'https://www.linkedin.com/in/mikeegrace',
         github: 'https://github.com/TravelFiend',
-        about: 'placeholder'
+        about: 'Mike Grace is an avid developer and traveller. He is most at home in unfamiliar places with unfamiliar people.'
     },
     {
         name: 'Travis Molter',
