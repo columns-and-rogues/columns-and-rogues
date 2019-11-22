@@ -25,8 +25,54 @@ class Modal extends Component {
         let dynamicImage;
         let modalText;
         let modalButtonText;
+        let itemUsedToAttack;
+        let thisMonsterHp;
+        let myRoll;
+        let monsterRoll;
+        //let ourItem = 1;
+        //let tempArr = [];
         let disableInput = '';
         let hideDynamicImage = 'hidden';
+
+        const fightFunction = () => {
+            itemUsedToAttack = prompt(`Which Item will you use to attack the ${randomMonster.name}? Input a number 1-5.`, 1);
+            
+            do {
+                /*switch (itemUsedToAttack){
+                    case 1:
+                        console.log(ourItem);
+                        ourItem = character.itemOne;
+                        tempArr = itemsList.filter((item) => ourItem = item.id);
+                        ourItem = tempArr[0].dice;
+                        break;
+                    case 2:
+                        ourItem = character.itemTwo;
+                        break;
+                    case 3:
+                        ourItem = character.itemThree;
+                        break;
+                    case 4:
+                        ourItem = character.itemFour;
+                        break;
+                    case 5:
+                        ourItem = character.itemFive;
+                        break;
+                }*/
+
+                myRoll = Math.floor(Math.random() * 6) + 2;
+                monsterRoll = (Math.floor(Math.random() * randomMonster.dice) + 1);
+
+                if (myRoll >= monsterRoll){
+                    thisMonsterHp--;
+                    alert(`You rolled a ${myRoll} and ${randomMonster.name} rolled a ${monsterRoll}! ${randomMonster.name} took 1 hp of damage! ${randomMonster.name} has ${thisMonsterHp} hp left.`);
+                } else {
+                    character.hp--;
+                    alert(`You rolled a ${myRoll} and ${randomMonster.name} rolled a ${monsterRoll}! ${character.displayName} took 1 hp of damage! ${randomMonster.name} has ${thisMonsterHp} hp left and you have ${character.hp} hp left.`);
+                }
+            } while (thisMonsterHp > 0 && character.hp > 0);
+
+            alert(`${character.displayName} defeated the ${randomMonster.name}!`);
+        };
 
         switch (cell.contents){
             case 1:
@@ -38,14 +84,19 @@ class Modal extends Component {
                 break;
             case 2:
                 randomMonster = monstersList[Math.floor(Math.random() * monstersList.length)];
+                thisMonsterHp = randomMonster.hp;
                 dynamicImage = randomMonster.image;
                 hideDynamicImage = '';
 
                 modalImage = 'monster-icon.gif';
                 modalText = `Argh! Attacked by a wild ${randomMonster.name}! It has ${randomMonster.hp} HP, rolls a 1d${randomMonster.dice} for attack, and is ${randomMonster.effect}. What item will you use to attack it?`;
-                character.hp--;
-                modalButtonText = 'Fight Monster';
+                modalButtonText = 'Prepare for Battle!';
+                
+
+                setTimeout(fightFunction, 2000);
+
                 break;
+                // itemUsedToAttack !== null && itemUsedToAttack !== 0 && typeof(itemUsedToAttack) === 'number' && itemUsedToAttack <= 5
             case 3:
                 randomItem = itemsList[Math.floor(Math.random() * itemsList.length)];
                 dynamicImage = randomItem.image;
