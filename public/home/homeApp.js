@@ -21,7 +21,7 @@ class App extends Component {
                 <main class="background">
                 <section class="rules">
                     <h2>
-                    Welcome to the world of Columns and Rogues
+                    Welcome to the world of <br><span class="c-a-r">Columns and Rogues</span>
                 </h2>
                 <ul>
                     <li>
@@ -29,11 +29,11 @@ class App extends Component {
                     </li>
                     <br >
                     <li>
-                    You can move your character buy pressing the arrow keys.
+                    You can move your character buy pressing the arrow keys, using W,A,S,D or I,J,K,L. 
                     </li>
                     <br >
                     <li> 
-                        Once you explore a tile you will have a chance to either encounter a monster, treasure or nothing at all.
+                        Once you explore a tile you will have a chance to either encounter a monster, an item, gold, nothing at all, or maybe even the door to futher into the dungeon.
                     </li>
                     <br >
                     <li>
