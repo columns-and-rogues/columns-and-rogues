@@ -31,6 +31,7 @@ class Board extends Component {
     renderHTML() {
         const character = this.props.character;
         const boardSize = this.props.boardSize;
+        const backgroundNum = this.props.backgroundNum;
         let gridString = '';
         for (let i = 0; i < boardSize; i++) {
             gridString = gridString.concat(`1fr `);
@@ -38,7 +39,8 @@ class Board extends Component {
         gridString = gridString.substring(0, gridString.length - 1);
 
         return /*html*/`
-            <div id="board" 
+            <div id="board"
+                class="backgroundImage-${backgroundNum}"
                 style="grid-template-rows: ${gridString};
                 grid-template-columns: ${gridString};">
                 <div id="game-over" class="hidden">
