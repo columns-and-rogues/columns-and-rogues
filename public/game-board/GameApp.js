@@ -52,7 +52,9 @@ class GameApp extends Component {
                 gameMusic.play();
                 musicNotPlaying = false;
             }
-
+            if (event.keyCode === 13) {
+                document.getElementById('submit').click();
+            }
             if (!acceptableKeys.includes(event.key) || disableMovement === true) return;
 
             if (key === 'left' && character.x >= 1) character.x--;
@@ -81,9 +83,8 @@ class GameApp extends Component {
                         document.removeEventListener('keydown', this.handler);
                         return;
                     }
-
                     const modalButton = document.getElementById('submit');
-                    disableMovement = true; 
+                    disableMovement = true;
                     modalButton.addEventListener('click', () => myModal.update({ modalDisplay: false }, disableMovement = false));
                     stats.update();
                 }
