@@ -25,6 +25,8 @@ class Modal extends Component {
         let dynamicImage;
         let modalText;
         let modalButtonText;
+        let thisMonsterHp;
+        let ourItem;
         let disableInput = '';
         let hideDynamicImage = 'hidden';
 
@@ -38,6 +40,7 @@ class Modal extends Component {
                 break;
             case 2:
                 randomMonster = monstersList[Math.floor(Math.random() * monstersList.length)];
+                thisMonsterHp = randomMonster.hp;
                 dynamicImage = randomMonster.image;
                 hideDynamicImage = '';
 
@@ -45,6 +48,38 @@ class Modal extends Component {
                 modalText = `Argh! Attacked by a wild ${randomMonster.name}! It has ${randomMonster.hp} HP, rolls a 1d${randomMonster.dice} for attack, and is ${randomMonster.effect}. What item will you use to attack it?`;
                 character.hp--;
                 modalButtonText = 'Fight Monster';
+                
+                while (thisMonsterHp > 0) {
+                    let itemUsedToAttack = prompt(`Which Item will you use to attack the ${randomMonster.name}? Input a number 1-5.`, 'Slot One');
+
+                    if (itemUsedToAttack !== null && itemUsedToAttack !== 0){
+                        switch (itemUsedToAttack){
+                            case 1:
+                                ourItem = character.itemOne.dice;
+                                break;
+                            case 2:
+                                ourItem = character.itemTwo.dice;
+                                break;
+                            case 3:
+                                ourItem = character.itemThree.dice;
+                                break;
+                            case 4:
+                                ourItem = character.itemFour.dice;
+                                break;
+                            case 5:
+                                ourItem = character.itemFive.dice;
+                                break;
+                        }
+                        if ((Math.floor(Math.random() * ourItem)) >= (Math.floor(Math.random() * randomMonster.dice))){
+                            thisMonsterHp--;
+                            alert(`${randomMonster.name} took 1 hp of damage! ${randomMonster.name} has ${thisMonsterHp} hp left.`);
+                        } else {
+                            character.hp--;
+                            alert(`${character.name} took 1 hp of damage! ${randomMonster.name} has ${thisMonsterHp} hp left.`);
+                        }
+                    }
+                }
+
                 break;
             case 3:
                 randomItem = itemsList[Math.floor(Math.random() * itemsList.length)];
