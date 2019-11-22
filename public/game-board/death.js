@@ -7,7 +7,7 @@ const runDeath = (character) => {
     gameOver.classList.remove('hidden');
     
     character.boardsSurvived = 0;
-    character.hp = 5;
+    character.hp = 10;
     character.gold = 0;
     character.itemOne = 1;
     character.itemTwo = 0;

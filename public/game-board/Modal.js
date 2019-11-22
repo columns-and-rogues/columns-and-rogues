@@ -104,6 +104,7 @@ class Modal extends Component {
                 modalImage = 'item-logo.png';
                 modalText = `You found a ${randomItem.name}! It has a 1d${randomItem.dice} for attack and applies a ${randomItem.effect} effect on use.`;
                 modalButtonText = `Pick up the ${randomItem.name}.`;
+                character.hp += 2;
 
                 if (!character.itemTwo) character.itemTwo = randomItem.id;
                 else if (!character.itemThree) character.itemThree = randomItem.id;
