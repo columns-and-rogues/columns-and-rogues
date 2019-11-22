@@ -30,7 +30,8 @@ class GameApp extends Component {
 
         let limit = boardSize - 2;
 
-        let gameMusic = new Audio('../assets/game-music.mp3');
+        const gameMusic = new Audio('../assets/game-music.mp3');
+        const bloop = new Audio('../assets/bloop.flac');
         const main = element.querySelector('.main');
         const boardSpot = element.querySelector('.board-location');
 
@@ -42,6 +43,8 @@ class GameApp extends Component {
         //#! CONTROLS - EVENTS !#//
         this.handler = (event) => {
             const key = translateKeys(event.key);
+
+            bloop.play();
 
             if (musicNotPlaying) {
                 gameMusic.play();
