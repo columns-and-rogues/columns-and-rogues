@@ -13,6 +13,9 @@ import { acceptableKeys } from '../util/acceptableKeys.js';
 import { doorLocation } from '../util/doorLocation.js';
 import { getCharacterById, /*getItems, getMonsters, */updateCharacter } from '../services/game-api.js';
 
+
+let disableMovement = false; 
+
 class GameApp extends Component {
     async onRender(element) {
         const character = await getCharacterById(localStorage.getItem('USERID')
@@ -41,7 +44,7 @@ class GameApp extends Component {
         //KEY CONTROLS//
         this.handler = (event) => {
             const keyname = event.key;
-            if (!acceptableKeys.includes(keyname)) return;
+            if (!acceptableKeys.includes(keyname) || disableMovement === true) return;
 
             if (keyname === 'ArrowLeft' && character.x >= 1) character.x--;
             if (keyname === 'ArrowUp' && character.y >= 1) character.y--;
@@ -61,13 +64,14 @@ class GameApp extends Component {
                     element.prepend(myModal.renderDOM());
 
                     const modalButton = document.getElementById('submit');
-                    modalButton.addEventListener('click', () => myModal.update({ modalDisplay: false }));
-
+                    disableMovement = true; 
+                    modalButton.addEventListener('click', () => myModal.update({ modalDisplay: false }, disableMovement = false));
                     stats.update();
                 }
             }
 
-            //WIN CONDITION
+          
+            
             if (character.x === doorLoc.x && 
                 character.y === doorLoc.y){
                 document.removeEventListener('keydown', this.handler);
@@ -94,7 +98,7 @@ class GameApp extends Component {
             }
             board.update();
         };
-
+        
         document.addEventListener('keydown', this.handler);
 
         const header = new Header();
