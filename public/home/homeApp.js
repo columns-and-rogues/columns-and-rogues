@@ -21,7 +21,7 @@ class App extends Component {
                 <main class="background">
                 <section class="rules">
                     <h2>
-                    Welcome to the world of Columns and Rogues
+                    Welcome to the world of <br><span class="c-a-r">Columns and Rogues</span>
                 </h2>
                 <ul>
                     <li>

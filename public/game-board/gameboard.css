@@ -119,35 +119,37 @@ background-repeat: no-repeat;
     background-position-x: center;
 }
 
-/* .door {
-    background-image: url('../assets/door.gif');
-} */
-
 .displayPlayer {
     background-image: url('../assets/temp-char.png');
     border: dashed 3px darkblue;
     animation: myAnimation .5s linear 0s 1 forwards;
-
+    
 }
 
 @keyframes myAnimation {
     50% {
-    border: 10px dashed rgb(255, 0, 0);
+        border: 10px dashed rgb(255, 0, 0);
     }	
 }
 
-
-
 .door-open {
-    background-image: url('../assets/door-open.gif');
+    background-image: url('../assets/door.gif');
     display: flex;
-    justify-content: flex-start
+    align-items: flex-end;
+    animation: doorOpen .25s linear .5s 1 forwards;
+}
+
+@keyframes doorOpen {
+    100% {
+        background-image: url('../assets/door-open.gif');
+    }
 }
 
 #character {
     width: 80%;
     height: 80%;
-    animation: anotherAnimation 1s linear .3s 1 forwards;
+    margin-left: 0px;
+    animation: anotherAnimation 1s linear 1s 1 forwards;
 }
 
 @keyframes anotherAnimation {

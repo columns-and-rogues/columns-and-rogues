@@ -1,1 +1,0 @@
-everything for landing page

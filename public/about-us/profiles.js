@@ -39,7 +39,7 @@ const profiles = [
         image: '../assets/joel.png',
         linkedIn: 'https://github.com/joelpdurham',
         github: 'https://www.linkedin.com/in/joel-patrick-durham-16a8bab6/',
-        about: 'Joel is a lifelong video game nerd, coming fresh off a Mario Kart Victory Tour. Currently he is trying to "Catch \'em all" in Pokemon Sword.' 
+        about: 'Joel is a lifelong video game nerd. He is a world famous Mario Kart Racer. Usually when he\'s not throwing red shells and dropping bananas, you can find saving Hyrule. Currently he is trying to "Catch \'em all" in Pokemon Sword. Hit him up if you cathhc a Galarian Ponyta in Sheild. ✌🏻' 
     }
 ];
 

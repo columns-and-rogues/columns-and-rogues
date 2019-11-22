@@ -1,5 +1,3 @@
-// Resolves the contents of a null / ? cell using the remaining items, gold, and monsters values from this.character and remaining ? cells from local board state. Returns an integer with a value of 0 for empty cell, 1 for gold, 2 for monster, 3 for item and decrements relevant value from this.character
-
 function probabilityFunction(character) {
     const totalRemainingEvents = 
         (character.goldTilesRemaining + 
@@ -12,11 +10,8 @@ function probabilityFunction(character) {
     
     const percentChanceOfEvent = (totalRemainingEvents / character.unknownTilesRemaining);
 
-    // if we have 8 gold/item/monsters remaining and 20 unexplored tiles, we have a 0.4 chance of hitting a g/i/m tile
-    // if empty cell return 0
     if (Math.random() > percentChanceOfEvent) return 0;
     
-    // resolve which type of tile this is
     const choiceArray = [];
     for (let i = 0; i < character.goldTilesRemaining; i++) {
         choiceArray.push('g');
@@ -39,7 +34,6 @@ function probabilityFunction(character) {
         : randomChoice === 'm' ? 2
             : randomChoice === 'i' ? 3
                 : console.log('error! seth messed up his function');
-
 }
 
 export default probabilityFunction;
