@@ -9,6 +9,7 @@ class Stats extends Component {
             <span id="user">Name ${character.displayName}</span>
             <span id="hp">HP: ${character.hp} </span>
             <span id="gold">Gold: ${character.gold}</span>
+            <span id="level">Level: ${character.boardsSurvived}</span>
         </div>
         `;
     }
