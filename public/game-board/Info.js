@@ -2,8 +2,7 @@ import Component from '../Component.js';
 
 class Info extends Component {
     renderHTML() {
-        const character = this.props.character;
-        console.log(character);
+        //const character = this.props.character;
         //REPLACE ME
         //Not sure what info will go here, and when and how it will populate. So here's a place holder
         const item = [

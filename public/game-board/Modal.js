@@ -14,6 +14,7 @@ class Modal extends Component {
         const cell = this.props.cell;
         const character = this.props.character;
         let modalImage;
+        let displayContents;
 
         switch (cell.contents){
             case 1:
@@ -30,7 +31,7 @@ class Modal extends Component {
                 break;
             case 4:
                 modalImage = 'temp-char.png';
-                //adjust stats and whatever else
+                displayContents = character;
                 break;
             case 5:
                 modalImage = '';
@@ -42,6 +43,7 @@ class Modal extends Component {
             <section class="modal">
                 <div class="modal-content">
                 <img src='./assets/${modalImage}'>
+                <span>${displayContents}</span>
                 <button id="submit">Change Me!</button>
                 </div>
             </section>

@@ -18,7 +18,7 @@ function newCharacter() {
         x: 0,
         y: 0,
         boardStateString: '',
-        unknownTilesRemaining: newBoard.length, // might need to be -1 depending on how we handle first square, this is for null contents at 0,0
+        unknownTilesRemaining: newBoard.length - 1,
         goldTilesRemaining: 3,
         itemTilesRemaining: 3,
         monsterTilesRemaining: 4,
