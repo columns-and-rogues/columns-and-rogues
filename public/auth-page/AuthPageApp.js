@@ -15,6 +15,11 @@ const success = async(user) => {
 
     let newCharacter = newChar();
     newCharacter.userId = user.id;
+<<<<<<< HEAD
+
+    await addCharacter(newCharacter);
+
+=======
     
     try {
         await getCharacterById(localStorage.getItem('USERID'));
@@ -22,6 +27,7 @@ const success = async(user) => {
     catch (err) {
         await addCharacter(newCharacter);
     }
+>>>>>>> d3c55192166982045d1018a744b7568a70ffa64f
     let main = document.querySelector('main'); 
     
     const loading = new Loading({ loading: false });

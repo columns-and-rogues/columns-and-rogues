@@ -6,7 +6,6 @@ class Board extends Component {
     onRender(element) {
         let boardArr = this.props.boardArr;
         const boardSize = this.props.boardSize;
-        let character = this.props.character;
 
         boardArr.forEach(cell => {
             const props = { 

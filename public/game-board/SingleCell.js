@@ -10,32 +10,30 @@ class SingleCell extends Component {
         let displayPlayer = ''; 
         let explored = 'unexplored';
 
+        if (cell.x === 0 && cell.y === 0) explored = 'explored';
+        
         switch (cell.contents) {
             case 0: 
                 displayClass = 'empty';
-                // explored = 'explored';
                 break; 
             case 1: 
-                displayClass = 'gold';
-                explored = 'explored'; 
+                displayClass = 'gold'; 
                 break; 
             case 2:
                 displayClass = 'monster';
-                explored = 'explored';
                 break;
             case 3:
                 displayClass = 'item'; 
-                explored = 'explored';
                 break;
         }
 
-        displayPlayer = character.x === cell.x && character.y === cell.y ? 'displayPlayer' : '';
-        
-        if (cell.x === 0 && cell.y === 0) explored = 'explored';
+        if (character.x === cell.x && character.y === cell.y) {
+            displayPlayer = 'displayPlayer';
+            explored = 'explored';
+        }
         
         if (cell.x === doorLoaction.x && cell.y === doorLoaction.y) {
             displayClass = 'door';
-            // explored = 'explored';
             cell.contents = 4;
         }
 
