@@ -58,7 +58,7 @@ class Modal extends Component {
                 break;
             case 4:
                 modalImage = 'temp-char.png';
-                //adjust stats and whatever else
+                modalText = character;
                 break;
             case 5:
                 modalImage = '';

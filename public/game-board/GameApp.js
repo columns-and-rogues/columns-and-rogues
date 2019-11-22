@@ -11,7 +11,7 @@ import saveBoard from '../util/saveBoard.js';
 import retrieveBoard from '../util/retrieveBoard.js';
 import { acceptableKeys } from '../util/acceptableKeys.js';
 import { doorLocation } from '../util/doorLocation.js';
-import { getCharacterById, getItems, getMonsters, updateCharacter } from '../services/game-api.js';
+import { getCharacterById, /*getItems, getMonsters, */updateCharacter } from '../services/game-api.js';
 
 
 let disableMovement = false; 
@@ -22,22 +22,24 @@ class GameApp extends Component {
         );
         const itemArray = await getItems();
         const monsterArray = await getMonsters();
-        console.log(itemArray);
-        console.log(monsterArray);
+
 
         const main = element.querySelector('.main');
         const boardSpot = element.querySelector('.board-location'); 
 
         const pulledBoard = retrieveBoard(character);
-        const boardSize = Math.sqrt(pulledBoard.length);
+        let boardSize = Math.sqrt(pulledBoard.length);
         const doorLoc = doorLocation(boardSize);
-        //const modalBool = false;
-        //const pulledBoard = createBoard(boardSize);
+
+        //SAVE EVENT MOVED HERE
+        const saveEvent = async() => {
+            saveBoard(pulledBoard, character);
+            await updateCharacter(character);
+        };
+
         let limit = boardSize - 2;
         
         //KEY CONTROLS//
-
-        if (this.handler) document.removeEventListener('keydown', this.handler);
         this.handler = (event) => {
             const keyname = event.key;
             if (!acceptableKeys.includes(keyname) || disableMovement === true) return;
@@ -48,7 +50,8 @@ class GameApp extends Component {
             if (keyname === 'ArrowDown' && character.y <= limit) character.y++;
             
             let currentCell = pulledBoard.find(object => (object.x === character.x && object.y === character.y));
-            
+        
+            //NEW TILE AND EVENT
             if (currentCell.contents === null) {
                 currentCell.contents = probabilityFunction(character);
                 if (currentCell.contents !== 0) {
@@ -59,31 +62,40 @@ class GameApp extends Component {
                         character: character,
                         modalDisplay: true, });
                     element.prepend(myModal.renderDOM());
-                    stats.update();
+
                     const modalButton = document.getElementById('submit');
 
                     disableMovement = true; 
-                    console.log(disableMovement); 
-                    modalButton.addEventListener('click', () => myModal.update({ modalDisplay: false }, disableMovement = false)
-                    );
+                    modalButton.addEventListener('click', () => myModal.update({ modalDisplay: false }, disableMovement = false));
+                    stats.update();
                 }
-            }    
+            }
+
+          
             
             if (character.x === doorLoc.x && 
-                character.y === doorLoc.y && 
-                keyname === 'Enter'){
-                    
-                currentCell.contents = 4;
-                const endGameModal = new Modal({
-                    cell: currentCell, 
-                    character: character,
-                    doorLocation: doorLoc });
-                element.prepend(endGameModal.renderDOM());
+                character.y === doorLoc.y){
+                document.removeEventListener('keydown', this.handler);
+                let audio = new Audio('../assets/win-sound.wav');
+                audio.play();
+                const that = this;
+                
+                setTimeout(function(){
+                    levelComplete(boardSize, character);
+                    const endGameModal = new Modal({
+                        cell: currentCell, 
+                        character: character,
+                        modalDisplay: true });
+                    element.prepend(endGameModal.renderDOM());
 
-                levelComplete();
-                //boardSize = boardSize + 1;
-                this.update(boardSize);
-                return;
+                    //below should run on click on modal
+                    setTimeout(function() {
+                        that.update();
+                        return;
+                    }, 5000);
+                }, 1500);
+
+
             }
             board.update();
         };
@@ -99,10 +111,6 @@ class GameApp extends Component {
         const info = new Info({ character: character, itemArray: itemArray });
         main.appendChild(info.renderDOM());
         // adding save button event listener
-        const saveEvent = async() => {
-            saveBoard(pulledBoard, character);
-            await updateCharacter(character);
-        };
 
         document.getElementById('save-button').addEventListener('click', saveEvent);
         // add delete function to info pane for discarding items
