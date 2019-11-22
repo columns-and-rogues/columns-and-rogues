@@ -17,6 +17,7 @@ let disableMovement = false;
 class GameApp extends Component {
     async onRender(element) {
         const character = await getCharacterById(localStorage.getItem('USERID'));
+        console.log(character);
         const itemArray = await getItems();
         const monsterArray = await getMonsters();
 
@@ -73,6 +74,7 @@ class GameApp extends Component {
             
             if (character.x === doorLoc.x && character.y === doorLoc.y){
                 document.removeEventListener('keydown', this.handler);
+                board.update();
                 let audio = new Audio('../assets/win-sound.wav');
                 audio.play();
                 const that = this;
@@ -87,7 +89,7 @@ class GameApp extends Component {
 
                     //below should run on click on modal
                     setTimeout(function() {
-                        that.update();
+                        //that.update();
                         return;
                     }, 5000);
                 }, 1500);
