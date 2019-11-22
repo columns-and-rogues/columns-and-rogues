@@ -20,11 +20,9 @@ let musicNotPlaying = true;
 class GameApp extends Component {
     async onRender(element) {
         const character = await getCharacterById(localStorage.getItem('USERID'));
-        console.log(character);
         const itemArray = await getItems();
         const monsterArray = await getMonsters();
         let gameMusic = new Audio('../assets/game-music.mp3');
-
         const main = element.querySelector('.main');
         const boardSpot = element.querySelector('.board-location');
         const pulledBoard = retrieveBoard(character);
@@ -44,7 +42,6 @@ class GameApp extends Component {
                 gameMusic.play();
                 musicNotPlaying = false;
             }
-
             const keyname = event.key;
             if (!acceptableKeys.includes(keyname) || disableMovement === true) return;
             if (keyname === 'ArrowLeft' && character.x >= 1) character.x--;
