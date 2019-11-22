@@ -15,7 +15,7 @@ class AboutApp extends Component {
         team.appendChild(aboutUsList.renderDOM());
 
         const footer = new Footer();
-        document.body.appendChild(footer.renderDOM());
+        dom.appendChild(footer.renderDOM());
     }
 
 
@@ -23,14 +23,6 @@ class AboutApp extends Component {
         return /*html*/`
             <main>
                 <section class ="team-profiles">
-                    <br >
-                    <br >
-                    <br >
-                    <br >
-                    <br >
-                    <br >
-                    <br >
-                    <br >
                 </section>
             </main>
         `;
