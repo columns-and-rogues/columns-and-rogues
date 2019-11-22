@@ -67,7 +67,7 @@ background-repeat: no-repeat;
 }
 #board {
     width: 600px;
-    height: 570px;
+    height: 600px;
     display: grid;
     justify-content: center;
     /* background-image: url(../assets/background1.gif); */
@@ -151,6 +151,63 @@ background-repeat: no-repeat;
 }
 
 .modal {
+    z-index: 5;
+    border: solid brown;
+}
+
+#game-over {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    background-image: url('../assets/blood-drip.gif');
+    background-size: cover;
+    /* background-color: rgb(123, 17, 17); */
+    color: white;
+    width: 100vw;
+    height: 100vh;
+}
+
+h2 {
+    font-family: 'Soul Calibur';
+    font-size: 15em;
+    margin: 0;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 50px;
+    letter-spacing: 5px;
+    font-size: 30px;
+}
+
+#restart-button {
+    width: 242px;
+    height: 70px;
+    border-radius: 22px;
+    border: 2px solid red;
+    font-size: 25px;
+    background: rgb(136, 12, 12);
+    box-shadow: inset -4px -4px 5px black;
+    outline: none;
+    color: white;
+}
+#restart-button:active {
+    box-shadow: inset 4px 4px 5px black;
+}
+
+.dead {
+    list-style: none;
+    font-family: 'Impact', 'Haettenschweiler', 'Arial Narrow Bold', sans-serif;
+    letter-spacing: 5px;
+}
+
+.modal-content {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -165,5 +222,6 @@ background-repeat: no-repeat;
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
+

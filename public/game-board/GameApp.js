@@ -11,22 +11,17 @@ import saveBoard from '../util/saveBoard.js';
 import retrieveBoard from '../util/retrieveBoard.js';
 import { acceptableKeys } from '../util/acceptableKeys.js';
 import { doorLocation } from '../util/doorLocation.js';
-import { getCharacterById, /*getItems, getMonsters, */updateCharacter } from '../services/game-api.js';
-
-
-let disableMovement = false; 
-
+import runDeath from './death.js';
+import { getCharacterById, getItems, getMonsters, updateCharacter } from '../services/game-api.js';
+let disableMovement = false;
 class GameApp extends Component {
     async onRender(element) {
-        const character = await getCharacterById(localStorage.getItem('USERID')
-        );
+        const character = await getCharacterById(localStorage.getItem('USERID'));
         const itemArray = await getItems();
         const monsterArray = await getMonsters();
 
-
         const main = element.querySelector('.main');
-        const boardSpot = element.querySelector('.board-location'); 
-
+        const boardSpot = element.querySelector('.board-location');
         const pulledBoard = retrieveBoard(character);
         let boardSize = Math.sqrt(pulledBoard.length);
         const doorLoc = doorLocation(boardSize);
@@ -38,17 +33,14 @@ class GameApp extends Component {
         };
 
         let limit = boardSize - 2;
-        
         //KEY CONTROLS//
         this.handler = (event) => {
             const keyname = event.key;
             if (!acceptableKeys.includes(keyname) || disableMovement === true) return;
-
             if (keyname === 'ArrowLeft' && character.x >= 1) character.x--;
             if (keyname === 'ArrowUp' && character.y >= 1) character.y--;
             if (keyname === 'ArrowRight' && character.x <= limit) character.x++;
             if (keyname === 'ArrowDown' && character.y <= limit) character.y++;
-            
             let currentCell = pulledBoard.find(object => (object.x === character.x && object.y === character.y));
         
             //NEW TILE AND EVENT
@@ -60,8 +52,16 @@ class GameApp extends Component {
                         itemArray: itemArray,
                         monsterArray: monsterArray, 
                         character: character,
-                        modalDisplay: true, });
+                        modalDisplay: true,
+                    });
                     element.prepend(myModal.renderDOM());
+                    stats.update();
+
+                    if (character.hp < 1) {
+                        runDeath(character);
+                        document.removeEventListener('keydown', this.handler);
+                        return;
+                    }
 
                     const modalButton = document.getElementById('submit');
 
@@ -70,11 +70,8 @@ class GameApp extends Component {
                     stats.update();
                 }
             }
-
-          
             
-            if (character.x === doorLoc.x && 
-                character.y === doorLoc.y){
+            if (character.x === doorLoc.x && character.y === doorLoc.y){
                 document.removeEventListener('keydown', this.handler);
                 let audio = new Audio('../assets/win-sound.wav');
                 audio.play();
@@ -99,13 +96,12 @@ class GameApp extends Component {
             }
             board.update();
         };
-        
         document.addEventListener('keydown', this.handler);
-
         const header = new Header();
         element.prepend(header.renderDOM());
-
-        const stats = new Stats({ character: character });
+        const stats = new Stats({
+            character: character
+        });
         boardSpot.appendChild(stats.renderDOM());
 
         const info = new Info({ character: character, itemArray: itemArray });
@@ -143,13 +139,11 @@ class GameApp extends Component {
             boardSize: boardSize, 
             doorLocation: doorLoc });
         boardSpot.appendChild(board.renderDOM());
-
         const footer = new Footer();
         document.body.appendChild(footer.renderDOM());
     }
-
     renderHTML() {
-        return /*html*/`
+        return /*html*/ `
         <div class="stats-here">
             <div class="main">
                 <div class="board-location">
@@ -159,5 +153,4 @@ class GameApp extends Component {
         `;
     }
 }
-
 export default GameApp;
