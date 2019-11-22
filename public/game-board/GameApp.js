@@ -89,7 +89,7 @@ class GameApp extends Component {
 
                     //below should run on click on modal
                     setTimeout(function() {
-                        //that.update();
+                        that.update();
                         return;
                     }, 5000);
                 }, 1500);
