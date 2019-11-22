@@ -101,6 +101,29 @@ class GameApp extends Component {
 
         document.getElementById('save-button').addEventListener('click', saveEvent);
 
+        // add delete function to info pane for discarding items
+        const deleteItemTwo = () => {
+            character.itemTwo = 0;
+            info.update();
+        };
+        const deleteItemThree = () => {
+            character.itemThree = 0;
+            info.update();
+        };
+        const deleteItemFour = () => {
+            character.itemFour = 0;
+            info.update();
+        };
+        const deleteItemFive = () => {
+            character.itemFive = 0;
+            info.update();
+        };
+
+        document.getElementById('delete-item-two').addEventListener('click', deleteItemTwo);
+        document.getElementById('delete-item-three').addEventListener('click', deleteItemThree);
+        document.getElementById('delete-item-four').addEventListener('click', deleteItemFour);
+        document.getElementById('delete-item-five').addEventListener('click', deleteItemFive);
+
         const board = new Board({ 
             character: character, 
             boardArr: pulledBoard, 

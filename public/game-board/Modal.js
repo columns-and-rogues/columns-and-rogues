@@ -1,5 +1,8 @@
 import Component from '../Component.js';
-
+/*
+Look at case 3 for example of how to make these modal components dynamic.
+For monsters / gold, we'll want some kind of interactivity with a button that is normally hidden. When it comes up, hide the close modal button and reveal that button. When they have finished the encounter, hide the interaction buttons (use item 1,2,3,4,5 for items, double or nothing for gold) and pass down / pass up with props / callback functions. I tried to do this but my brain isn't working.
+*/
 
 class Modal extends Component {
     
