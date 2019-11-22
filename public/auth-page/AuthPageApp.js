@@ -16,7 +16,6 @@ const success = async(user) => {
     let newCharacter = newChar();
     newCharacter.userId = user.id;
 
-    console.log(newCharacter);
     await addCharacter(newCharacter);
 
     let main = document.querySelector('main'); 

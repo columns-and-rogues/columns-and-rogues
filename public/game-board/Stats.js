@@ -6,7 +6,7 @@ class Stats extends Component {
 
         return /*html*/`
         <div id="stats">
-            <span id="user">User Name ${character.displayName}</span>
+            <span id="user">Name ${character.displayName}</span>
             <span id="hp">HP: ${character.hp} </span>
             <span id="gold">Gold: ${character.gold}</span>
         </div>
