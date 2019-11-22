@@ -10,6 +10,7 @@ function levelComplete(boardSize, character) {
     //Redward Player
     character.boardsSurvived++;
     character.hp = character.hp + 2;
+    boardSize = boardSize + character.boardsSurvived;
 
     //Reset states
     character.goldTilesRemaining = 3;
