@@ -17,7 +17,6 @@ class GameApp extends Component {
     async onRender(element) {
         const character = await getCharacterById(localStorage.getItem('USERID')
         );
-        character.itemTilesRemaining = 15; // testing
         const itemArray = await getItems();
         const monsterArray = await getMonsters();
         console.log(itemArray);
