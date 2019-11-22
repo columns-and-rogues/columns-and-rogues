@@ -34,6 +34,7 @@ class Info extends Component {
                 <button id="delete-item-4">Throw Away!</button>
                 <li id="item-5">Item 5: ${itemsToDisplay[4].name}</li>
                 <button id="delete-item-5">Throw Away!</button>
+                <li></li>
                 <button id="save-button">Save Game</button>
         </div>
         `;

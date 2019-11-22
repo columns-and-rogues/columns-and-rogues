@@ -17,6 +17,7 @@ class GameApp extends Component {
     async onRender(element) {
         const character = await getCharacterById(localStorage.getItem('USERID')
         );
+        character.itemTilesRemaining = 15;
         const itemArray = await getItems();
         const monsterArray = await getMonsters();
         console.log(itemArray);
@@ -100,9 +101,9 @@ class GameApp extends Component {
         };
 
         document.getElementById('save-button').addEventListener('click', saveEvent);
-
         // add delete function to info pane for discarding items
         const deleteItemTwo = () => {
+            console.log(character.itemTwo);
             character.itemTwo = 0;
             info.update();
         };
@@ -119,10 +120,10 @@ class GameApp extends Component {
             info.update();
         };
 
-        document.getElementById('delete-item-two').addEventListener('click', deleteItemTwo);
-        document.getElementById('delete-item-three').addEventListener('click', deleteItemThree);
-        document.getElementById('delete-item-four').addEventListener('click', deleteItemFour);
-        document.getElementById('delete-item-five').addEventListener('click', deleteItemFive);
+        document.getElementById('delete-item-2').addEventListener('click', deleteItemTwo);
+        document.getElementById('delete-item-3').addEventListener('click', deleteItemThree);
+        document.getElementById('delete-item-4').addEventListener('click', deleteItemFour);
+        document.getElementById('delete-item-5').addEventListener('click', deleteItemFive);
 
         const board = new Board({ 
             character: character, 
