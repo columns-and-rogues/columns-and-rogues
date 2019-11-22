@@ -19,18 +19,21 @@ class GameApp extends Component {
         const character = await getCharacterById(localStorage.getItem('USERID'));
         const itemArray = await getItems();
         const monsterArray = await getMonsters();
-        console.log(itemArray);
-        console.log(monsterArray);
+
         const main = element.querySelector('.main');
         const boardSpot = element.querySelector('.board-location');
         const pulledBoard = retrieveBoard(character);
-        const boardSize = Math.sqrt(pulledBoard.length);
+        let boardSize = Math.sqrt(pulledBoard.length);
         const doorLoc = doorLocation(boardSize);
-        //const modalBool = false;
-        //const pulledBoard = createBoard(boardSize);
+
+        //SAVE EVENT MOVED HERE
+        const saveEvent = async() => {
+            saveBoard(pulledBoard, character);
+            await updateCharacter(character);
+        };
+
         let limit = boardSize - 2;
         //KEY CONTROLS//
-        if (this.handler) document.removeEventListener('keydown', this.handler);
         this.handler = (event) => {
             const keyname = event.key;
             if (!acceptableKeys.includes(keyname) || disableMovement === true) return;
@@ -39,43 +42,57 @@ class GameApp extends Component {
             if (keyname === 'ArrowRight' && character.x <= limit) character.x++;
             if (keyname === 'ArrowDown' && character.y <= limit) character.y++;
             let currentCell = pulledBoard.find(object => (object.x === character.x && object.y === character.y));
+        
+            //NEW TILE AND EVENT
             if (currentCell.contents === null) {
                 currentCell.contents = probabilityFunction(character);
                 if (currentCell.contents !== 0) {
-                    const myModal = new Modal({
+                    const myModal = new Modal({ 
                         cell: currentCell,
+                        itemArray: itemArray,
+                        monsterArray: monsterArray, 
                         character: character,
                         modalDisplay: true,
                     });
                     element.prepend(myModal.renderDOM());
                     stats.update();
+
                     if (character.hp < 1) {
                         runDeath(character);
                         document.removeEventListener('keydown', this.handler);
-                        // something happens
                         return;
                     }
+
                     const modalButton = document.getElementById('submit');
-                    disableMovement = true;
-                    modalButton.addEventListener('click', () => myModal.update({
-                        modalDisplay: false
-                    }, disableMovement = false));
+
+                    disableMovement = true; 
+                    modalButton.addEventListener('click', () => myModal.update({ modalDisplay: false }, disableMovement = false));
+                    stats.update();
                 }
             }
-            if (character.x === doorLoc.x &&
-                character.y === doorLoc.y &&
-                keyname === 'Enter') {
-                currentCell.contents = 4;
-                const endGameModal = new Modal({
-                    cell: currentCell,
-                    character: character,
-                    doorLocation: doorLoc
-                });
-                element.prepend(endGameModal.renderDOM());
-                levelComplete();
-                //boardSize = boardSize + 1;
-                this.update(boardSize);
-                return;
+            
+            if (character.x === doorLoc.x && character.y === doorLoc.y){
+                document.removeEventListener('keydown', this.handler);
+                let audio = new Audio('../assets/win-sound.wav');
+                audio.play();
+                const that = this;
+                
+                setTimeout(function(){
+                    levelComplete(boardSize, character);
+                    const endGameModal = new Modal({
+                        cell: currentCell, 
+                        character: character,
+                        modalDisplay: true });
+                    element.prepend(endGameModal.renderDOM());
+
+                    //below should run on click on modal
+                    setTimeout(function() {
+                        that.update();
+                        return;
+                    }, 5000);
+                }, 1500);
+
+
             }
             board.update();
         };
@@ -86,22 +103,41 @@ class GameApp extends Component {
             character: character
         });
         boardSpot.appendChild(stats.renderDOM());
-        const info = new Info({
-            character: character
-        });
+
+        const info = new Info({ character: character, itemArray: itemArray });
         main.appendChild(info.renderDOM());
         // adding save button event listener
-        const saveEvent = async () => {
-            saveBoard(pulledBoard, character);
-            await updateCharacter(character);
-        };
+
         document.getElementById('save-button').addEventListener('click', saveEvent);
-        const board = new Board({
-            character: character,
-            boardArr: pulledBoard,
-            boardSize: boardSize,
-            doorLocation: doorLoc
-        });
+        // add delete function to info pane for discarding items
+        const deleteItemTwo = () => {
+            console.log(character.itemTwo);
+            character.itemTwo = 0;
+            console.log(character.itemTwo);
+        };
+        const deleteItemThree = () => {
+            character.itemThree = 0;
+            info.update();
+        };
+        const deleteItemFour = () => {
+            character.itemFour = 0;
+            info.update();
+        };
+        const deleteItemFive = () => {
+            character.itemFive = 0;
+            info.update();
+        };
+
+        document.getElementById('delete-item-2').addEventListener('click', () => deleteItemTwo());
+        document.getElementById('delete-item-3').addEventListener('click', deleteItemThree);
+        document.getElementById('delete-item-4').addEventListener('click', deleteItemFour);
+        document.getElementById('delete-item-5').addEventListener('click', deleteItemFive);
+
+        const board = new Board({ 
+            character: character, 
+            boardArr: pulledBoard, 
+            boardSize: boardSize, 
+            doorLocation: doorLoc });
         boardSpot.appendChild(board.renderDOM());
         const footer = new Footer();
         document.body.appendChild(footer.renderDOM());

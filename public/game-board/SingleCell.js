@@ -26,7 +26,10 @@ class SingleCell extends Component {
 
         displayPlayer = character.x === cell.x && character.y === cell.y ? 'displayPlayer' : ''; 
         
-        if (cell.x === doorLoaction.x && cell.y === doorLoaction.y) displayClass = 'door';
+        if (cell.x === doorLoaction.x && cell.y === doorLoaction.y) {
+            displayClass = 'door';
+            cell.contents = 4;
+        }
 
         if (displayPlayer === 'displayPlayer' && displayClass === 'door') {
             displayClass = 'door-open';
