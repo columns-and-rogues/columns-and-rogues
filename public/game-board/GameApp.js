@@ -31,7 +31,6 @@ class GameApp extends Component {
         let limit = boardSize - 2;
 
         let gameMusic = new Audio('../assets/game-music.mp3');
-
         const main = element.querySelector('.main');
         const boardSpot = element.querySelector('.board-location');
 

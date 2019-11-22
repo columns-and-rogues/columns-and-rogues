@@ -3,9 +3,6 @@ import saveBoard from '../util/saveBoard.js';
 import { updateCharacter } from '../services/game-api.js';
 
 function levelComplete(boardSize, character) {
-    //STRETCH - play animation of going through door.
-    //STRETCH - play sound of door.
-
     //Position Change
     character.x = 0;
     character.y = 0;
@@ -17,7 +14,7 @@ function levelComplete(boardSize, character) {
     //Reset states
     character.goldTilesRemaining = 3;
     character.itemTilesRemaining = 3;
-    character.monsterTilesRemaining = 10;
+    character.monsterTilesRemaining = 5;
     character.unknownTilesRemaining = 24;
     let nextBoard = createBoard(boardSize);
 

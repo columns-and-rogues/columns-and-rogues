@@ -19,7 +19,7 @@ function newCharacter() {
         unknownTilesRemaining: newBoard.length - 1,
         goldTilesRemaining: 3,
         itemTilesRemaining: 3,
-        monsterTilesRemaining: 4,
+        monsterTilesRemaining: 5,
         boardsSurvived: 0
     };
 
