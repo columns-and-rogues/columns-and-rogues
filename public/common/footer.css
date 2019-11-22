@@ -4,4 +4,7 @@ footer img {
     height: 20px;
     width: auto;
     margin-right: 25px;
+    position: fixed;
+    bottom: 5px;
+    right: 0;
 }

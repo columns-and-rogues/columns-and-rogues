@@ -13,9 +13,9 @@ html{
     padding: 0;   
 }
 
-.board-location{
+/* .board-location{
 
-}
+} */
 
 #user{
     justify-content: center;
@@ -51,7 +51,7 @@ border-style: outset;
 border-width: 5px;
 padding: 8px; 
 background-image: url(../assets/itemCandle.gif);
-background-size: 170%;
+background-size: contain;
 background-position: bottom;
 background-repeat: no-repeat;
 }
@@ -67,7 +67,7 @@ background-repeat: no-repeat;
 }
 #board {
     width: 600px;
-    height: 570px;
+    height: 600px;
     display: grid;
     justify-content: center;
     /* background-image: url(../assets/background1.gif); */
@@ -90,54 +90,66 @@ background-repeat: no-repeat;
     background-repeat: no-repeat;
 }
 
+.unexplored {
+    background-color: #000000ed;
+}
+
 .empty {
-    background-color: lightslategray;
+    background-color: #00000078; ;
 }
 
 .gold {
-    background-color: lightslategray; 
+    background-color: #00000078; ; 
     background-image: url(../assets/gold-star.gif);
+    background-position-y: bottom;
 }
 
 .monster {
-    background-color: lightslategray; 
-    background-image: url(../assets/monster-icon.png); 
+    background-color: #00000078; 
+    background-image: url(../assets/monster-icon.gif);
+    background-size: cover;
+    background-position-x: center;
 }
 
 .item {
-    background-color: lightslategray; 
-    background-image: url(../assets/item-logo.gif);
-}
-
-.door {
-    background-image: url('../assets/door.gif');
+    background-color: #00000078; ; 
+    background-image: url(../assets/item-logo.png);
+    background-size: 50%;
+    background-position-y: center;
+    background-position-x: center;
 }
 
 .displayPlayer {
     background-image: url('../assets/temp-char.png');
     border: dashed 3px darkblue;
     animation: myAnimation .5s linear 0s 1 forwards;
-
+    
 }
 
 @keyframes myAnimation {
     50% {
-    border: 10px dashed rgb(255, 0, 0);
+        border: 10px dashed rgb(255, 0, 0);
     }	
 }
 
-
-
 .door-open {
-    background-image: url('../assets/door-open.gif');
+    background-image: url('../assets/door.gif');
     display: flex;
-    justify-content: flex-start
+    align-items: flex-end;
+    animation: doorOpen .25s linear .5s 1 forwards;
+}
+
+@keyframes doorOpen {
+    100% {
+        background-image: url('../assets/door-open.gif');
+    }
 }
 
 #character {
     width: 80%;
     height: 80%;
-    animation: anotherAnimation 1s linear .3s 1 forwards;
+    margin-left: 0px;
+    animation: anotherAnimation 1s linear 1s 1 forwards;
 }
 
 @keyframes anotherAnimation {
@@ -151,6 +163,63 @@ background-repeat: no-repeat;
 }
 
 .modal {
+    z-index: 5;
+    border: solid brown;
+}
+
+#game-over {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    background-image: url('../assets/blood-drip.gif');
+    background-size: cover;
+    /* background-color: rgb(123, 17, 17); */
+    color: white;
+    width: 100vw;
+    height: 100vh;
+}
+
+h2 {
+    font-family: 'Soul Calibur';
+    font-size: 15em;
+    margin: 0;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 50px;
+    letter-spacing: 5px;
+    font-size: 30px;
+}
+
+#restart-button {
+    width: 242px;
+    height: 70px;
+    border-radius: 22px;
+    border: 2px solid red;
+    font-size: 25px;
+    background: rgb(136, 12, 12);
+    box-shadow: inset -4px -4px 5px black;
+    outline: none;
+    color: white;
+}
+#restart-button:active {
+    box-shadow: inset 4px 4px 5px black;
+}
+
+.dead {
+    list-style: none;
+    font-family: 'Impact', 'Haettenschweiler', 'Arial Narrow Bold', sans-serif;
+    letter-spacing: 5px;
+}
+
+.modal-content {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -165,6 +234,6 @@ background-repeat: no-repeat;
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 

@@ -1,54 +1,30 @@
-import character from '../game-board/character-obj.js';
-//import { updateCharcter } from '../services/game-api.js';
+import { createBoard } from '../game-board/boardCellArray.js';
+import saveBoard from '../util/saveBoard.js';
+import { updateCharacter } from '../services/game-api.js';
 
-// let backgroundImg = ['../assets/forest-background-image1.gif', '../assets/underwater-background-image1', '../assets/village-background-image1'
-// ];
-
-// let backgroundCount = 0; 
-
-function levelComplete() {
-    //STRETCH - play animation of going through door.
-    //STRETCH - play sound of door.
-    // const player = document.getElementById('character');
-    // player.classList.add('fade');
-    // console.log(player);
-    //setTimeout();
-    
-    //Redward Player
-    character.currentLevel++;
-    character.hp = character.hp + 10;
-    character.gold = character.gold + 50;
-    character.goldTilesRemaining = character.currentLevel;
-    character.itemTilesRemaining = character.currentLevel;
-    character.monsterTilesRemaining = character.currentLevel;
-
+function levelComplete(boardSize, character) {
     //Position Change
     character.x = 0;
     character.y = 0;
-
-    //display stat changes
-    //module
-
-    //save player progress to database
-    alert(`You Won!
-    Save and Continue?`);
-
-    // ('#board').css('background-image', 'url(' + backgroundImg[backgroundCount] + ')'); 
     
-    // backgroundCount++;
-    
-    // if (backgroundCount > backgroundImg.length - 1) backgroundCount = 0;
-    // ('#board').css('background-image', 'url(' + backgroundImg[backgroundCount] + ')');
+    //Redward Player
+    character.boardsSurvived++;
+    character.hp = character.hp + 2;
 
+    //Reset states
+    character.goldTilesRemaining = 3;
+    character.itemTilesRemaining = 3;
+    character.monsterTilesRemaining = 5;
+    character.unknownTilesRemaining = 24;
+    let nextBoard = createBoard(boardSize);
 
-    //
-    //if yes, setup next board
-    console.log('hi');
-    //updateCharcter(character);
+    //Save Character
+    const saveEvent = async() => {
+        saveBoard(nextBoard, character);
+        await updateCharacter(character);
+    };
 
-    //Reset Board
-    // alert('Levele Complete');
-
+    saveEvent();
 }
 
 export default levelComplete;

@@ -8,33 +8,44 @@ class SingleCell extends Component {
 
         let displayClass = ''; 
         let displayPlayer = ''; 
+        let explored = 'unexplored';
 
+        if (cell.x === 0 && cell.y === 0) explored = 'explored';
+        
         switch (cell.contents) {
             case 0: 
-                displayClass = 'empty'; 
+                displayClass = 'empty';
                 break; 
             case 1: 
                 displayClass = 'gold'; 
                 break; 
             case 2:
-                displayClass = 'monster'; 
+                displayClass = 'monster';
                 break;
             case 3:
                 displayClass = 'item'; 
                 break;
         }
 
-        displayPlayer = character.x === cell.x && character.y === cell.y ? 'displayPlayer' : ''; 
+        if (character.x === cell.x && character.y === cell.y) {
+            displayPlayer = 'displayPlayer';
+            explored = 'explored';
+        }
         
-        if (cell.x === doorLoaction.x && cell.y === doorLoaction.y) displayClass = 'door';
+        if (cell.x === doorLoaction.x && cell.y === doorLoaction.y) {
+            displayClass = 'door';
+            cell.contents = 4;
+        }
 
         if (displayPlayer === 'displayPlayer' && displayClass === 'door') {
             displayClass = 'door-open';
             displayPlayer = '';
+            explored = 'explored';
             return /*html*/ `
             <span 
                 class='
                     cell
+                    ${explored}
                     ${displayClass} 
                     ${displayPlayer}' 
                 id='x${cell.x}-y${cell.y}'>
@@ -47,6 +58,7 @@ class SingleCell extends Component {
             <span 
                 class='
                     cell
+                    ${explored}
                     ${displayClass} 
                     ${displayPlayer}' 
                 id='x${cell.x}-y${cell.y}'>
