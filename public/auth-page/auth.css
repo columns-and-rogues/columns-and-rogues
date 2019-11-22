@@ -45,6 +45,10 @@
     display: flex;
 }
 
+#save-button {
+    margin: 30px;
+}
+
 input {
     height: 30px;
     width: 160px;

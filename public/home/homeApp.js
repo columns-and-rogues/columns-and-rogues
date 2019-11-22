@@ -23,7 +23,7 @@ class App extends Component {
                     <h2>
                     Welcome to the world of <br><span class="c-a-r">Columns and Rogues</span>
                 </h2>
-                <ul>
+                <ul class="rules-list">
                     <li>
                         When you start your game, you will be placed at the starting point of the grid, from there you will explore the dangerous and unexplored wilderness around you.
                     </li>
