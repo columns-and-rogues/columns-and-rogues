@@ -84,8 +84,6 @@ class GameApp extends Component {
                 musicNotPlaying = true;
                 let winSound = new Audio('../assets/win-sound.mp3');
                 winSound.play();
-                let audio = new Audio('../assets/win-sound.wav');
-                audio.play();
                 const that = this;
                 
                 setTimeout(function(){
