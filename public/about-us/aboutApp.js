@@ -23,7 +23,14 @@ class AboutApp extends Component {
         return /*html*/`
             <main>
                 <section class ="team-profiles">
-                    Here are the Team Profiles
+                    <br >
+                    <br >
+                    <br >
+                    <br >
+                    <br >
+                    <br >
+                    <br >
+                    <br >
                 </section>
             </main>
         `;
