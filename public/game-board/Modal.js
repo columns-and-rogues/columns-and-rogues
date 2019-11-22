@@ -32,6 +32,7 @@ class Modal extends Component {
                 modalImage = 'gold-star.gif';
                 modalText = 'This is the text for finding gold!';
                 character.gold++;
+                modalButtonText = 'Pick up gold';
                 break;
             case 2:
                 randomMonster = monstersList[Math.floor(Math.random() * monstersList.length)];
@@ -41,6 +42,7 @@ class Modal extends Component {
                 modalImage = 'monster-icon.png';
                 modalText = `Argh! Attacked by a wild ${randomMonster.name}! It has ${randomMonster.hp} HP, rolls a 1d${randomMonster.dice} for attack, and is ${randomMonster.effect}. What item will you use to attack it?`;
                 character.hp--;
+                modalButtonText = 'Fight Monster';
                 break;
             case 3:
                 randomItem = itemsList[Math.floor(Math.random() * itemsList.length)];
@@ -58,11 +60,18 @@ class Modal extends Component {
                 break;
             case 4:
                 modalImage = 'temp-char.png';
-                modalText = character;
+                modalText = /*html*/`
+                    <div id="win-modal-display">
+                        <h3>Levels Survived: ${character.boardsSurvived}</h3>
+                        <h4>HP: ${character.hp}</h4>
+                        <h4>Gold: ${character.gold}</h4>
+                    <div>
+                    `;
+                modalButtonText = 'Next Level';
                 break;
             case 5:
                 modalImage = '';
-                //endgame
+                //Death
                 break;
         }
         
