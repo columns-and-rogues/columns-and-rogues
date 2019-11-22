@@ -85,9 +85,14 @@ class GameApp extends Component {
                 document.removeEventListener('keydown', this.handler);
                 gameMusic.pause();
                 musicNotPlaying = true;
-                let winSound = new Audio('../assets/win-sound.mp3');
-                winSound.play();
+                let doorSound = new Audio('../assets/door-open.mp3');
+                doorSound.play();
                 const that = this;
+
+                setTimeout(function(){
+                    let winSound = new Audio('../assets/win-sound.mp3');
+                    winSound.play();
+                }, 1000);
                 
                 setTimeout(function(){
                     levelComplete(boardSize, character);
@@ -101,7 +106,7 @@ class GameApp extends Component {
                     setTimeout(function() {
                         that.update();
                         return;
-                    }, 6000);
+                    }, 7000);
                 }, 1500);
 
 
