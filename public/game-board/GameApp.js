@@ -17,7 +17,7 @@ class GameApp extends Component {
     async onRender(element) {
         const character = await getCharacterById(localStorage.getItem('USERID')
         );
-        character.itemTilesRemaining = 15;
+        character.itemTilesRemaining = 15; // testing
         const itemArray = await getItems();
         const monsterArray = await getMonsters();
         console.log(itemArray);
@@ -105,7 +105,7 @@ class GameApp extends Component {
         const deleteItemTwo = () => {
             console.log(character.itemTwo);
             character.itemTwo = 0;
-            info.update();
+            console.log(character.itemTwo);
         };
         const deleteItemThree = () => {
             character.itemThree = 0;
@@ -120,7 +120,7 @@ class GameApp extends Component {
             info.update();
         };
 
-        document.getElementById('delete-item-2').addEventListener('click', deleteItemTwo);
+        document.getElementById('delete-item-2').addEventListener('click', () => deleteItemTwo());
         document.getElementById('delete-item-3').addEventListener('click', deleteItemThree);
         document.getElementById('delete-item-4').addEventListener('click', deleteItemFour);
         document.getElementById('delete-item-5').addEventListener('click', deleteItemFive);
