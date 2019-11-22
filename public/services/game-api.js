@@ -63,11 +63,13 @@ export function getUser(email){
 }
 
 export function addCharacter(character){
+    const myToken = localStorage.getItem('TOKEN');
     const url = `${URL}/character`;
     return fetchWithError(url, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': myToken
         },
         body: JSON.stringify(character)
     });

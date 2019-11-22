@@ -3,7 +3,7 @@ import UserSignIn from './UserSignIn.js';
 import UserSignUp from './UserSignUp.js';
 import Header from '../common/Header.js';
 import newChar from '../util/newCharacter.js';
-import { signIn, signUp, addCharacter } from '../services/game-api.js';
+import { signIn, signUp, addCharacter, getCharacterById } from '../services/game-api.js';
 import Footer from '../common/Footer.js';
 import Loading from '../common/loading.js'; 
 
@@ -15,10 +15,13 @@ const success = async(user) => {
 
     let newCharacter = newChar();
     newCharacter.userId = user.id;
-
-    console.log(newCharacter);
-    await addCharacter(newCharacter);
-
+    
+    try {
+        await getCharacterById(localStorage.getItem('USERID'));
+    }
+    catch (err) {
+        await addCharacter(newCharacter);
+    }
     let main = document.querySelector('main'); 
     
     const loading = new Loading({ loading: false });

@@ -1,3 +1,9 @@
+@font-face {
+    font-family: 'Soul Calibur';
+    src: url(../assets/Soul_Calibur.ttf); 
+}
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
+
 .background {
     display: flex;
     justify-content: center;
@@ -18,4 +24,29 @@
     font-size: 16pt;
     color: white;
     border: black 2px;
+}
+
+h2 {
+    text-align: center;
+    font-size: 50px;
+    letter-spacing: 10px;
+    margin-bottom: 20px;
+    font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.c-a-r {
+    font-family: 'Soul Calibur';
+    font-size: 60px;
+    letter-spacing: 8px;
+    padding: 20px;
+}
+
+br {
+    display: block; 
+    content: ""; 
+    margin-top: 20px;
+}
+
+li {
+    font-family: 'Press Start 2P', cursive;
 }
