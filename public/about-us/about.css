@@ -15,8 +15,9 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     margin-top: 6%;
+    padding: 50px 10px;
     list-style: none;
     width: 13vw;
     height: 60vh;
