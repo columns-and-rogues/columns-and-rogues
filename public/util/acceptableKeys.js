@@ -29,4 +29,5 @@ export function translateKeys(keypress) {
     if (keypress === 'ArrowRight') return 'right';
     if (keypress === 'd') return 'right';
     if (keypress === 'l') return 'right';
+    
 }
