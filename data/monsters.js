@@ -17,7 +17,7 @@ module.exports = [
         name: 'Mighty Cookie Monstah',
         hp: 3,
         dice: 8,
-        effect: 'hangry',
+        effect: 'hangry', // lol
         image: 'https://p7.hiclipart.com/preview/153/389/303/cookie-monster-elmo-zoe-big-bird-ernie-cookie-monster-thumbnail.jpg',
     },
 ];

@@ -2,12 +2,12 @@ import { updateCharacter } from '../services/game-api.js';
 import { createBoard } from './boardCellArray.js';
 import saveBoard from '../util/saveBoard.js';
 
-const runDeath = (character) => {
+const runDeath = async (character) => {
     const gameOver = document.querySelector('#game-over');
     gameOver.classList.remove('hidden');
-    
+
     character.boardsSurvived = 0;
-    character.hp = 10;
+    character.hp = 10; // might
     character.gold = 0;
     character.itemOne = 1;
     character.itemTwo = 0;
@@ -23,10 +23,10 @@ const runDeath = (character) => {
 
     saveBoard(createBoard(2), character);
 
-    const saveEvent = async() => {
+    const saveEvent = async () => {
         await updateCharacter(character);
     };
-    saveEvent();
+    await saveEvent();
 };
 
 export default runDeath;

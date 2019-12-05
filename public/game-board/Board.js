@@ -4,16 +4,17 @@ import newCharacter from '../util/newCharacter.js';
 
 class Board extends Component {
     onRender(element) {
-        let boardArr = this.props.boardArr;
+        let boardArr = this.props.boardArr; // all the this.props stuff should be destructured: const { boardArr, boardSize, etc } = this.props
         const boardSize = this.props.boardSize;
 
         boardArr.forEach(cell => {
-            const props = { 
-                cell: cell, 
-                character: this.props.character, 
-                boardSize: boardSize, 
-                doorLocation: this.props.doorLocation };
-                
+            const props = {
+                cell,
+                character: this.props.character,
+                boardSize: boardSize,
+                doorLocation: this.props.doorLocation
+            };
+
             const singleCell = new SingleCell(props);
             const singleCellDOM = singleCell.renderDOM();
             element.appendChild(singleCellDOM);
@@ -34,7 +35,7 @@ class Board extends Component {
         const backgroundNum = this.props.backgroundNum;
         let gridString = '';
         for (let i = 0; i < boardSize; i++) {
-            gridString = gridString.concat(`1fr `);
+            gridString = gridString.concat(`1fr `); // super cool
         }
         gridString = gridString.substring(0, gridString.length - 1);
 

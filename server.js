@@ -29,7 +29,7 @@ const authRoutes = createAuthRoutes({
         FROM users
         WHERE email = $1;
         `,
-        [email]).then(result => result.rows[0]);
+            [email]).then(result => result.rows[0]);
     },
     insertUser(user, hash) {
         console.log(user);
@@ -38,7 +38,7 @@ const authRoutes = createAuthRoutes({
         VALUES ($1, $2, $3)
         RETURNING id, email, display_name as "displayName";
         `,
-        [user.email, hash, user.displayName]).then(result => result.rows[0]);
+            [user.email, hash, user.displayName]).then(result => result.rows[0]);
     }
 });
 
@@ -47,7 +47,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api', ensureAuth);
 
 // database routes
-app.get('/api/items', async(req, res) => {
+app.get('/api/items', async (req, res) => {
 
     try {
         const result = await client.query(`
@@ -70,7 +70,7 @@ app.get('/api/items', async(req, res) => {
 
 });
 
-app.get('/api/monsters', async(req, res) => {
+app.get('/api/monsters', async (req, res) => {
 
     try {
         const result = await client.query(`
@@ -94,7 +94,7 @@ app.get('/api/monsters', async(req, res) => {
 
 });
 
-app.get('/api/user/:id', async(req, res) => {
+app.get('/api/user/:id', async (req, res) => {
     const email = req.params.id;
 
     try {
@@ -103,7 +103,7 @@ app.get('/api/user/:id', async(req, res) => {
             FROM users
             WHERE email = $1;
         `,
-        [email]);
+            [email]);
 
         const user = result.rows[0];
         if (!user) {
@@ -122,7 +122,7 @@ app.get('/api/user/:id', async(req, res) => {
     }
 });
 
-app.post('/api/character', async(req, res) => {
+app.post('/api/character', async (req, res) => {
     const character = req.body;
 
     try {
@@ -130,8 +130,8 @@ app.post('/api/character', async(req, res) => {
             INSERT INTO characters (user_id, hp, gold, item_one, item_two, item_three, item_four, item_five, image, x, y, board_state_string, unknown_tiles_remaining, gold_tiles_remaining, item_tiles_remaining, monster_tiles_remaining, boards_survived)
             VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17)
             RETURNING *;
-        `, 
-        [character.userId, character.hp, character.gold, character.itemOne, character.itemTwo, character.itemThree, character.itemFour, character.itemFive, character.image, character.x, character.y, character.boardStateString, character.unknownTilesRemaining, character.goldTilesRemaining, character.itemTilesRemaining, character.monsterTilesRemaining, character.boardsSurvived]);
+        `,
+            [character.userId, character.hp, character.gold, character.itemOne, character.itemTwo, character.itemThree, character.itemFour, character.itemFive, character.image, character.x, character.y, character.boardStateString, character.unknownTilesRemaining, character.goldTilesRemaining, character.itemTilesRemaining, character.monsterTilesRemaining, character.boardsSurvived]); // these could be destructured from `character`
         res.json(result.rows[0]);
     }
     catch (err) {
@@ -142,7 +142,7 @@ app.post('/api/character', async(req, res) => {
     }
 });
 
-app.get('/api/character/:id', async(req, res) => {
+app.get('/api/character/:id', async (req, res) => {
     const id = req.params.id;
 
     try {
@@ -171,7 +171,7 @@ app.get('/api/character/:id', async(req, res) => {
             ON    u.id = c.user_id
             WHERE u.id = $1
         `,
-        [id]);
+            [id]);
 
         const character = result.rows[0];
         if (!character) {
@@ -190,7 +190,7 @@ app.get('/api/character/:id', async(req, res) => {
     }
 });
 
-app.put('/api/character/:id', async(req, res) => {
+app.put('/api/character/:id', async (req, res) => {
     const user_id = req.params.id.slice(1);
     const character = req.body;
     console.log(character);
@@ -217,7 +217,7 @@ app.put('/api/character/:id', async(req, res) => {
             WHERE user_id = $1
             RETURNING *;
         `,
-        [user_id, character.hp, character.gold, character.itemOne, character.itemTwo, character.itemThree, character.itemFour, character.itemFive, character.image, character.x, character.y, character.boardStateString, character.unknownTilesRemaining, character.goldTilesRemaining, character.itemTilesRemaining, character.monsterTilesRemaining, character.boardsSurvived]);
+            [user_id, character.hp, character.gold, character.itemOne, character.itemTwo, character.itemThree, character.itemFour, character.itemFive, character.image, character.x, character.y, character.boardStateString, character.unknownTilesRemaining, character.goldTilesRemaining, character.itemTilesRemaining, character.monsterTilesRemaining, character.boardsSurvived]); // this could be destructured from `character`
 
         res.json(result.rows[0]);
 

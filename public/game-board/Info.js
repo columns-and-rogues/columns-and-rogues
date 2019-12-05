@@ -1,27 +1,23 @@
 import Component from '../Component.js';
 
+const evaluateItems = (items)
 class Info extends Component {
     renderHTML() {
         const character = this.props.character;
         const items = this.props.itemArray;
         const itemsToDisplay = [];
-        
-        if (character.itemOne > 0) {
-            itemsToDisplay.push(items.filter((item) => item.id === character.itemOne)[0]);
-        } else itemsToDisplay.push({ name: 'Empty Item Slot' });
-        if (character.itemTwo > 0) {
-            itemsToDisplay.push(items.filter((item) => item.id === character.itemTwo)[0]);
-        } else itemsToDisplay.push({ name: 'Empty Item Slot' });
-        if (character.itemThree > 0) {
-            itemsToDisplay.push(items.filter((item) => item.id === character.itemThree)[0]);
-        } else itemsToDisplay.push({ name: 'Empty Item Slot' });
-        if (character.itemFour > 0) {
-            itemsToDisplay.push(items.filter((item) => item.id === character.itemFour)[0]);
-        } else itemsToDisplay.push({ name: 'Empty Item Slot' });
-        if (character.itemFive > 0) {
-            itemsToDisplay.push(items.filter((item) => item.id === character.itemFive)[0]);
-        } else itemsToDisplay.push({ name: 'Empty Item Slot' });
 
+        ['itemOne', 'itemTwo', 'itemThree', 'itemFour', 'itemFive']
+            .forEach(itemName => {
+                const toPush = character[itemName] > 0
+                    ? items.find(({ id }) => id === character[itemName])
+                    : { name: 'Empty Item Slot' };
+
+                itemsToDisplay.push(toPush);
+            });
+
+
+        // this list of similar li and buttons could also be created with a forEach
         return /*html*/`
         <div id="info">
             <ul class = 'items'>Items

@@ -6,7 +6,8 @@ async function run() {
 
     try {
         await client.connect();
-    
+
+        // nice, didn't realize you could chain drop tables
         await client.query(`
         DROP TABLE IF EXISTS users,
                                 characters,
@@ -23,5 +24,5 @@ async function run() {
     finally {
         client.end();
     }
-    
+
 }
