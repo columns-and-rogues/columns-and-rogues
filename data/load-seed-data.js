@@ -10,26 +10,30 @@ async function run() {
     try {
         await client.connect();
 
-        await Promise.all(
+        await Promise.all( // woooah
             monsters.map(async monster => {
-                const result = await client.query(`
+                const {
+                    result: {
+                        rows: [firstRow]
+                    }
+                } = await client.query(`
             INSERT INTO monsters (name, hp, dice, effect, image)
             VALUES ($1, $2, $3, $4, $5)
             RETURNING *;
             `,
-                [monster.name, monster.hp, monster.dice, monster.effect, monster.image]);
-                return result.rows[0];
+                    [monster.name, monster.hp, monster.dice, monster.effect, monster.image]);
+                return firstRow;
             })
         );
 
-        await Promise.all(
+        await Promise.all( // loving these promise maps!
             items.map(async item => {
                 const result = await client.query(`
             INSERT INTO items (name, dice, effect, image)
             VALUES ($1, $2, $3, $4)
             RETURNING *;
             `,
-                [item.name, item.dice, item.effect, item.image]);
+                    [item.name, item.dice, item.effect, item.image]);
                 return result.rows[0];
             })
         );
@@ -42,5 +46,5 @@ async function run() {
     finally {
         client.end();
     }
-    
+
 }
